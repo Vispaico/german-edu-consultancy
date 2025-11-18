@@ -50,7 +50,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2">
             <Image
               alt="Startin DE logo"
-              src="/images/Logo-StartinDE_001.webp"
+              src="/images/Logo-StartinDE.webp"
               width={160}
               height={48}
               className="h-12 w-auto"
