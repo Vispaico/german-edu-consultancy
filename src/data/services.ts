@@ -38,7 +38,7 @@ export const servicesList: ServiceSummary[] = [
     title: 'Visa Processing',
     emoji: '✈️',
     description:
-      'Step-by-step support for Australian student visa (Subclass 500) with high success rate.',
+      'Step-by-step support for German student visa with high success rate.',
     features: [
       'Visa eligibility assessment',
       'Document preparation',
@@ -62,7 +62,7 @@ export const servicesList: ServiceSummary[] = [
     slug: 'career-counseling',
     title: 'Career Counseling',
     emoji: '💼',
-    description: 'Professional advice on career paths and job prospects in Australia.',
+    description: 'Professional advice on career paths and job prospects in Germany.',
     features: [
       'Industry insights',
       'Job market analysis',
@@ -75,7 +75,7 @@ export const servicesList: ServiceSummary[] = [
     title: 'Pre-Departure Support',
     emoji: '🏠',
     description:
-      'Accommodation, travel, and settlement assistance for your move to Australia.',
+      'Accommodation, travel, and settlement assistance for your move to Germany.',
     features: [
       'Accommodation booking',
       'Airport pickup arrangement',

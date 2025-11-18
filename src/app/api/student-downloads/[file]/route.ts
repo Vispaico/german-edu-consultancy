@@ -3,9 +3,9 @@ import path from 'path'
 import { promises as fs } from 'fs'
 
 const DOWNLOADABLE_FILES = {
-  'study-in-australia-with-confidence': {
-    fileName: 'study-in-australia-with-confidence.pdf',
-    downloadName: 'study-in-australia-with-confidence.pdf',
+  'study-in-germany-with-confidence': {
+    fileName: 'study-in-germany-with-confidence.pdf',
+    downloadName: 'study-in-germany-with-confidence.pdf',
     contentType: 'application/pdf',
   },
 } as const

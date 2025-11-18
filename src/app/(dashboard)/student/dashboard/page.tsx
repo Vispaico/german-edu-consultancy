@@ -47,8 +47,8 @@ export default function StudentDashboard() {
         <CardContent>
           <div className="space-y-4">
             {[
-              { uni: 'University of Melbourne', program: 'Master of Computer Science', status: 'Under Review', color: 'blue' },
-              { uni: 'ANU', program: 'Master of Engineering', status: 'Documents Required', color: 'yellow' }
+              { uni: 'Technical University of Munich', program: 'Master of Computer Science', status: 'Under Review', color: 'blue' },
+              { uni: 'Heidelberg University', program: 'Master of Engineering', status: 'Documents Required', color: 'yellow' }
             ].map((app, idx) => (
               <div key={idx} className="flex items-center justify-between p-4 border rounded-lg">
                 <div>
@@ -71,7 +71,7 @@ export default function StudentDashboard() {
       <Card>
         <CardHeader>
           <CardTitle>Visa Application Timeline</CardTitle>
-          <CardDescription>Australian Student Visa (Subclass 500)</CardDescription>
+          <CardDescription>German Student Visa</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -110,11 +110,11 @@ export default function StudentDashboard() {
           <div className="space-y-4">
             <div className="flex items-center justify-between p-4 border rounded-lg">
               <div>
-                <h3 className="font-semibold">Study in Australia with Confidence</h3>
+                <h3 className="font-semibold">Study in Germany with Confidence</h3>
                 <p className="text-sm text-gray-600">Comprehensive guide to prepare for your studies.</p>
               </div>
               <Button asChild className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
-                <a href="/api/student-downloads/study-in-australia-with-confidence" download>
+                <a href="/api/student-downloads/study-in-germany-with-confidence" download>
                   Download
                 </a>
               </Button>

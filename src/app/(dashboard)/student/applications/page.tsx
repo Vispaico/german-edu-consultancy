@@ -6,18 +6,18 @@ export default function StudentApplicationsPage() {
   const applications = [
     {
       id: 1,
-      university: 'University of Melbourne',
+      university: 'Technical University of Munich',
       program: 'Master of Computer Science',
-      intake: 'February 2025',
+      intake: 'Winter 2025',
       status: 'Under Review',
       submittedDate: '2025-10-20',
       lastUpdate: '2025-11-01'
     },
     {
       id: 2,
-      university: 'Australian National University',
+      university: 'Heidelberg University',
       program: 'Master of Engineering',
-      intake: 'July 2025',
+      intake: 'Summer 2026',
       status: 'Documents Required',
       submittedDate: '2025-10-25',
       lastUpdate: '2025-11-05'

@@ -5,10 +5,10 @@ import Link from 'next/link'
 
 export default function AdminBlogPage() {
   const posts = [
-    { id: 1, title: 'Top 10 Universities in Australia', status: 'Published', views: 1234, date: '2025-11-05' },
+    { id: 1, title: 'Top 10 Universities in Germany', status: 'Published', views: 1234, date: '2025-11-05' },
     { id: 2, title: 'IELTS Preparation Tips', status: 'Published', views: 892, date: '2025-11-03' },
     { id: 3, title: 'Student Visa Guide 2025', status: 'Published', views: 2156, date: '2025-11-01' },
-    { id: 4, title: 'Cost of Living in Australia', status: 'Draft', views: 0, date: '2025-10-30' }
+    { id: 4, title: 'Cost of Living in Germany', status: 'Draft', views: 0, date: '2025-10-30' }
   ]
 
   return (

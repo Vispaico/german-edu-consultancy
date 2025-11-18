@@ -1,47 +1,122 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
-
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import {
+  Briefcase,
+  ClipboardList,
+  FileSignature,
+  GraduationCap,
+  ShieldCheck,
+  TrendingUp,
+  ArrowRight,
+  CheckCircle2,
+} from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import { servicesList, type ServiceSlug } from '@/data/services'
-import { serviceDetails } from '@/data/service-details'
 
-type ServicePageProps = {
-  params: Promise<{
-    slug: string
-  }>
+const service = {
+  slug: 'diploma-conversion',
+  hero: {
+    eyebrow: 'Unlock your potential',
+    title: 'Diploma Conversion & Professional Recognition',
+    description:
+      'Leverage your existing qualifications to work in Germany. We navigate the official recognition process (Anerkennung) to get your diploma certified for the German job market.',
+    image:
+      'https://images.unsplash.com/photo-1713947505221-8a11da8aa744?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'Two professionals shaking hands in a formal meeting',
+  },
+  stats: [
+    {
+      value: '1,000+',
+      label: 'Qualifications assessed',
+      description: 'Experience with diplomas from various fields, including engineering, healthcare, and IT.',
+    },
+    {
+      value: '6 months',
+      label: 'Average recognition time',
+      description: 'Efficiently managed process to get your qualifications recognized by German authorities.',
+    },
+    {
+      value: 'Full/Partial',
+      label: 'Recognition outcomes',
+      description: 'Guidance on bridging courses if partial recognition is granted, ensuring a path to full certification.',
+    },
+  ],
+  benefits: [
+    {
+      icon: GraduationCap,
+      title: 'Official certification',
+      description: 'Receive a legally binding notice from German authorities confirming the equivalence of your diploma.',
+    },
+    {
+      icon: Briefcase,
+      title: 'Enhanced job prospects',
+      description: 'Apply for qualified positions with a recognized diploma, significantly boosting your career opportunities.',
+    },
+    {
+      icon: TrendingUp,
+      title: 'Higher earning potential',
+      description: 'A recognized qualification allows you to command a salary appropriate for your skills and experience.',
+    },
+  ],
+  focus: {
+    eyebrow: 'The recognition journey',
+    title: 'A clear process for getting your diploma certified',
+    description:
+      'We handle the entire process, from document collection and certified translations to communicating with the relevant German recognition bodies (IHK, HWK, etc.).',
+    bullets: [
+      'Initial assessment to determine the likelihood of recognition for your specific diploma',
+      'Compilation and certified translation of all necessary documents (transcripts, certificates, etc.)',
+      'Submission of the application to the correct German authority and follow-up communications',
+    ],
+    image:
+      'https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
+    imageAlt: 'A person reviewing official documents and certificates',
+  },
+  support: {
+    eyebrow: 'Beyond certification',
+    title: 'Integrating into the German workforce',
+    description:
+      'Our support doesn’t end with recognition. We assist you in adapting your CV, preparing for interviews, and understanding German work culture to ensure a successful job search.',
+    bullets: [
+      'CV and cover letter optimization to meet German standards',
+      'Job interview coaching focused on highlighting your recognized qualifications',
+      'Networking strategies to connect with employers in your industry',
+    ],
+    image:
+      'https://images.unsplash.com/photo-1758873271949-742d6648b6b0?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'A professional updating their resume on a laptop',
+  },
+  process: [
+    {
+      icon: ClipboardList,
+      title: 'Document evaluation',
+      description: 'We assess your diploma and transcripts to prepare for the recognition application.',
+    },
+    {
+      icon: FileSignature,
+      title: 'Application submission',
+      description: 'We manage the entire application process with the relevant German authorities.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Bridging course guidance',
+      description: 'If needed, we help you find and apply for courses to achieve full recognition.',
+    },
+    {
+      icon: Briefcase,
+      title: 'Job market entry',
+      description: 'Receive support in your job search with your newly recognized qualification.',
+    },
+  ],
+  cta: {
+    title: 'Get your diploma recognized and work in Germany',
+    description:
+      'Schedule a consultation to start the diploma recognition process and unlock your career potential in Germany.',
+    buttonLabel: 'Start diploma recognition',
+  },
 }
 
-export async function generateStaticParams() {
-  return servicesList.map(({ slug }) => ({ slug }))
-}
-
-export async function generateMetadata({ params }: ServicePageProps) {
-  const { slug } = await params
-  const service = serviceDetails[slug as ServiceSlug]
-
-  if (!service) {
-    return {
-      title: 'Service not found',
-    }
-  }
-
-  return {
-    title: `${service.hero.title} | StartinDE`,
-    description: service.hero.description,
-  }
-}
-
-export default async function ServiceDetailPage({ params }: ServicePageProps) {
-  const { slug } = await params
-  const service = serviceDetails[slug as ServiceSlug]
-
-  if (!service) {
-    notFound()
-  }
-
+export default function DiplomaConversionPage() {
   return (
     <main className="bg-white text-gray-900">
       <section className="relative isolate overflow-hidden text-white">

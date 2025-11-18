@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Building2, Globe2, GraduationCap, MapPin, ScrollText } from "lucide-react"
 
 const heroImage =
-  "https://images.unsplash.com/photo-1719918508801-0dd00797d959?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400"
+  "https://images.unsplash.com/photo-1599882168093-8354a2d71343?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400"
 
-export default function AustralianNationalUniversityPage() {
+export default function HeidelbergUniversityPage() {
   return (
     <main className="bg-white">
       <section className="relative isolate overflow-hidden text-white">
         <Image
-          alt="Parliament House in Canberra"
+          alt="Heidelberg Castle"
           src={heroImage}
           fill
           priority
@@ -22,20 +22,20 @@ export default function AustralianNationalUniversityPage() {
         <div className="container mx-auto px-4 py-24 sm:py-28 lg:py-32">
           <div className="max-w-3xl space-y-6">
             <span className="inline-flex items-center rounded-full border border-white/30 px-4 py-1 text-sm uppercase tracking-widest">
-              Flagship research • Canberra, ACT
+              Germany&apos;s oldest university • Heidelberg, Baden-Württemberg
             </span>
-            <h1 className="text-4xl font-bold sm:text-5xl">Australian National University (ANU)</h1>
+            <h1 className="text-4xl font-bold sm:text-5xl">Heidelberg University</h1>
             <p className="text-lg text-blue-100">
-              A globally ranked institution located in Australia&apos;s capital, known for leadership in public policy, sciences, and Asia-Pacific studies.
+              A world-renowned research university with a strong international focus, known for its excellence in medicine, life sciences, and humanities.
             </p>
             <div className="flex flex-wrap gap-4 text-sm text-blue-100/90">
               <div className="flex items-center gap-2">
                 <ScrollText className="size-4" aria-hidden />
-                QS Top 30 worldwide
+                Excellence University in Germany
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="size-4" aria-hidden />
-                Acton campus overlooking Lake Burley Griffin
+                Historic campus in the heart of Heidelberg
               </div>
             </div>
           </div>
@@ -46,12 +46,12 @@ export default function AustralianNationalUniversityPage() {
         <div className="container mx-auto px-4">
           <div className="grid gap-12 lg:grid-cols-[2fr,1fr]">
             <div className="space-y-6 text-gray-600">
-              <h2 className="text-2xl font-semibold text-gray-900">Why Vietnamese students choose ANU</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">Why Vietnamese students choose Heidelberg</h2>
               <p>
-                ANU offers a personalised academic experience with small cohort sizes, access to world-leading researchers, and strong ties to government and diplomatic communities. Students benefit from mentorship, internships, and policy immersion unique to the capital city.
+                Heidelberg University offers a unique combination of academic excellence, historical charm, and a vibrant international community. Students benefit from world-class research opportunities, close ties to industry, and a supportive environment for international students.
               </p>
               <p>
-                With modern residential colleges and support services tailored for Southeast Asian students, ANU provides a supportive environment to pursue degrees in public policy, engineering, business, and emerging sciences.
+                With a wide range of English-taught programs and strong support services for international students, Heidelberg provides a welcoming environment to pursue degrees in medicine, law, natural sciences, and humanities.
               </p>
             </div>
 
@@ -60,14 +60,14 @@ export default function AustralianNationalUniversityPage() {
                 <GraduationCap className="mt-1 size-5" aria-hidden />
                 <div>
                   <p className="font-semibold">Signature faculties</p>
-                  <p>National Security College • Crawford School of Public Policy • ANU College of Science</p>
+                  <p>Faculty of Medicine • Faculty of Law • Faculty of Biosciences</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Building2 className="mt-1 size-5" aria-hidden />
                 <div>
-                  <p className="font-semibold">Canberra advantage</p>
-                  <p>Policy internships with Australian government departments and embassies.</p>
+                  <p className="font-semibold">Heidelberg advantage</p>
+                  <p>Close collaborations with leading research institutes like the German Cancer Research Center (DKFZ).</p>
                 </div>
               </div>
             </div>
@@ -92,9 +92,9 @@ export default function AustralianNationalUniversityPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl rounded-3xl border border-blue-100 bg-blue-50/50 p-10 text-center">
-            <h2 className="text-3xl font-semibold text-gray-900">Design your ANU journey with expert support</h2>
+            <h2 className="text-3xl font-semibold text-gray-900">Design your Heidelberg journey with expert support</h2>
             <p className="mt-4 text-gray-600">
-              We help you build a competitive application, from scholarship essays to GTE preparation.
+              We help you build a competitive application, from scholarship essays to visa preparation.
             </p>
             <Button className="mt-8 h-12 rounded-full px-8 text-base font-semibold" asChild>
               <Link href="/contact">
@@ -111,18 +111,18 @@ export default function AustralianNationalUniversityPage() {
 
 const highlights = [
   {
-    title: "Scholarships for Vietnam",
-    description: "ANU Global Diversity Scholarships and College of Business & Economics merits dedicated to Southeast Asian applicants.",
+    title: "DAAD Scholarships",
+    description: "Numerous scholarship opportunities for international students through the German Academic Exchange Service (DAAD).",
     icon: Globe2,
   },
   {
     title: "Hands-on research",
-    description: "Access the ANU Innovation Institute, National Computational Infrastructure, and astronomy labs.",
+    description: "Access to state-of-the-art research facilities and close collaboration with industry partners.",
     icon: Building2,
   },
   {
     title: "Supportive community",
-    description: "Vietnamese Students Association connects newcomers with alumni mentors, cultural events, and internship tips.",
+    description: "The Vietnamese Students Association in Heidelberg connects newcomers with alumni mentors, cultural events, and internship tips.",
     icon: MapPin,
   },
 ]

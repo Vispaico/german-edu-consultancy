@@ -10,8 +10,8 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative isolate flex min-h-[60vh] items-center justify-center overflow-hidden bg-gray-900 text-white">
         <Image
-          src="/images/Bizz-About-Us_VN.webp"
-          alt="Person in front of Office of Bizz Education Vietnam"
+          src="/images/About-startinDE.webp"
+          alt="Hamburg Train front of Office of StartinDE"
           fill
           priority
           sizes="100vw"
@@ -21,11 +21,11 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 text-center">
           <div className="mx-auto max-w-3xl space-y-4">
             <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-sm font-semibold tracking-wide uppercase backdrop-blur">
-              Since 2014
+              Since 2025
             </span>
             <h1 className="text-4xl font-bold md:text-5xl">About Us</h1>
             <p className="text-lg text-blue-100 md:text-xl">
-              Your trusted partner for studying in Australia since 2014
+              Your trusted partner for studying in Germany since 2025
             </p>
           </div>
         </div>
@@ -35,17 +35,17 @@ export default function AboutPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-center mb-8">Our Story</h2>
-          <div className="prose prose-lg mx-auto text-gray-600">
+          <div className="text-2xl mx-auto text-gray-600">
             <p>
-              Founded in 2014, Edu Consultancy has helped over 500 Vietnamese students
-              achieve their dream of studying at top Australian universities. Our team
+              Founded in 2025, StartinDE has helped over 50 Vietnamese students
+              achieve their dream of studying at top German universities.<br/><br/>Our team
               of experienced education consultants understands the unique challenges
               Vietnamese students face and provides personalized support throughout
               the entire process.
             </p>
             <p>
-              We maintain strong partnerships with over 50 Australian universities
-              and have achieved a 95% visa success rate. Our commitment to excellence
+              We maintain strong partnerships with over 100 German universities
+              and have achieved a 98% visa success rate.<br/><br/>Our commitment to excellence
               and personalized service has made us one of the most trusted education
               consultancies in Vietnam.
             </p>
@@ -62,11 +62,11 @@ export default function AboutPage() {
               <div className="text-gray-600">Students Placed</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">50+</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">100+</div>
               <div className="text-gray-600">Partner Universities</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">95%</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">98%</div>
               <div className="text-gray-600">Visa Success Rate</div>
             </div>
             <div>
@@ -87,7 +87,7 @@ export default function AboutPage() {
             </span>
             <h2 className="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">Our leadership team</h2>
             <p className="mt-4 text-gray-600">
-              Bilingual consultants who studied, worked, and built communities across Australia to guide your family every step of the journey.
+              Bilingual consultants who studied, worked, and built communities across Germany to guide your family every step of the journey.
             </p>
           </div>
 
@@ -127,7 +127,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Start Your Journey Today</h2>
           <p className="mb-8 max-w-2xl mx-auto">
-            Let us help you achieve your dream of studying in Australia
+            Let us help you achieve your dream of studying in Germany
           </p>
           <Button
             size="lg"
@@ -141,5 +141,3 @@ export default function AboutPage() {
     </div>
   )
 }
-
-import { teamMembers } from '@/data/team'

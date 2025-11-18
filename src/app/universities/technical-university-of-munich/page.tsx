@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Compass, GraduationCap, MapPin, Star } from "lucide-react"
 
 const heroImage =
-  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.1.0&auto=format&fit=crop&w=2400&q=80"
+  "https://images.unsplash.com/photo-1564594736624-def7a1a0f3df?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400"
 
-export default function UniversityOfMelbournePage() {
+export default function TechnicalUniversityOfMunichPage() {
   return (
     <main className="bg-white">
       <section className="relative isolate overflow-hidden text-white">
         <Image
-          alt="University of Melbourne campus"
+          alt="Technical University of Munich campus"
           src={heroImage}
           fill
           priority
@@ -22,20 +22,20 @@ export default function UniversityOfMelbournePage() {
         <div className="container mx-auto px-4 py-24 sm:py-28 lg:py-32">
           <div className="max-w-3xl space-y-6">
             <span className="inline-flex items-center rounded-full border border-white/30 px-4 py-1 text-sm uppercase tracking-widest">
-              Group of Eight • Melbourne, Victoria
+              TU9 • Munich, Bavaria
             </span>
-            <h1 className="text-4xl font-bold sm:text-5xl">University of Melbourne</h1>
+            <h1 className="text-4xl font-bold sm:text-5xl">Technical University of Munich</h1>
             <p className="text-lg text-blue-100">
-              Australia&apos;s leading research university with a global reputation for academic excellence, innovation, and vibrant campus life in the heart of Melbourne&apos;s cultural district.
+              Germany&apos;s leading technical university with a global reputation for academic excellence, innovation, and vibrant campus life in the heart of Munich.
             </p>
             <div className="flex flex-wrap gap-4 text-sm text-blue-100/90">
               <div className="flex items-center gap-2">
                 <Star className="size-4" aria-hidden />
-                #1 in Australia (THE 2025)
+                #1 in Germany (THE 2025)
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="size-4" aria-hidden />
-                Parkville campus • CBD adjacent
+                Garching campus • City center adjacent
               </div>
             </div>
           </div>
@@ -46,12 +46,12 @@ export default function UniversityOfMelbournePage() {
         <div className="container mx-auto px-4">
           <div className="grid gap-12 lg:grid-cols-[2fr,1fr]">
             <div className="space-y-6 text-gray-600">
-              <h2 className="text-2xl font-semibold text-gray-900">Why choose the University of Melbourne?</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">Why choose the Technical University of Munich?</h2>
               <p>
-                The University of Melbourne offers Vietnamese students access to world-class teaching, interdisciplinary learning, and a dynamic global alumni network. Students benefit from flexible degree structures, industry-integrated learning, and strong support services tailored for international communities.
+                The Technical University of Munich offers Vietnamese students access to world-class teaching, interdisciplinary learning, and a dynamic global alumni network. Students benefit from flexible degree structures, industry-integrated learning, and strong support services tailored for international communities.
               </p>
               <p>
-                The Parkville campus blends historic sandstone buildings with cutting-edge research facilities across medicine, engineering, business, and design. With extensive internships and post-study work opportunities, students graduate career-ready for global roles.
+                The Garching campus is a hub of innovation with cutting-edge research facilities across engineering, computer science, and natural sciences. With extensive internships and post-study work opportunities, students graduate career-ready for global roles.
               </p>
             </div>
 
@@ -60,14 +60,14 @@ export default function UniversityOfMelbournePage() {
                 <GraduationCap className="mt-1 size-5" aria-hidden />
                 <div>
                   <p className="font-semibold">Top programs</p>
-                  <p>Business & Economics • Biomedicine • Engineering • Law</p>
+                  <p>Engineering • Computer Science • Natural Sciences • Management</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Compass className="mt-1 size-5" aria-hidden />
                 <div>
                   <p className="font-semibold">Global connections</p>
-                  <p>280+ exchange partners and industry mentors across Asia-Pacific.</p>
+                  <p>300+ exchange partners and industry mentors across Europe.</p>
                 </div>
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function UniversityOfMelbournePage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl rounded-3xl border border-blue-100 bg-blue-50/50 p-10 text-center">
-            <h2 className="text-3xl font-semibold text-gray-900">Plan your Melbourne pathway with us</h2>
+            <h2 className="text-3xl font-semibold text-gray-900">Plan your Munich pathway with us</h2>
             <p className="mt-4 text-gray-600">
               Our advisors guide you through course selection, scholarship strategy, and visa preparation tailored to your academic goals.
             </p>
@@ -114,17 +114,17 @@ export default function UniversityOfMelbournePage() {
 const highlights = [
   {
     title: "Scholarship opportunities",
-    description: "Access to Melbourne International Undergraduate Scholarships and Faculty-specific merits for high-achieving Vietnamese students.",
+    description: "Access to TUM-specific scholarships and DAAD grants for high-achieving Vietnamese students.",
     icon: Star,
   },
   {
     title: "Immersive campus life",
-    description: "Join 200+ clubs including the Melbourne University Vietnamese Students Association and entrepreneurship societies.",
+    description: "Join 200+ clubs including the Vietnamese Student Association Munich and entrepreneurship societies.",
     icon: MapPin,
   },
   {
     title: "Career readiness",
-    description: "Internships with Deloitte, PwC, CSL, and start-ups within the Melbourne Innovation District.",
+    description: "Internships with BMW, Siemens, Google, and start-ups within the Munich Innovation District.",
     icon: Compass,
   },
 ]

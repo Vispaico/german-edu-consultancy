@@ -7,10 +7,8 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    outputFileTracingIncludes: {
-      "/api/student-downloads/[file]": ["./src/templates/**/*"],
-    },
+  outputFileTracingIncludes: {
+    "/api/student-downloads/[file]": ["./src/templates/**/*"],
   },
 }
 

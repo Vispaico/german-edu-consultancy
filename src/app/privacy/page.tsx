@@ -1,10 +1,10 @@
 import Link from "next/link"
 
-const COMPANY_NAME = "BIZZ EDUCATION VIETNAM"
-const WEBSITE_URL = "bizzedu.vn"
-const CONTACT_EMAIL = "info@bizzedu.vn"
+const COMPANY_NAME = "StartinDE"
+const WEBSITE_URL = "startin-DE.com"
+const CONTACT_EMAIL = "info@startin-DE.com"
 const CONTACT_PHONE = "+84 123 456 789"
-const ADDRESS = "Hanoi, Vietnam"
+const ADDRESS = "Haiphong, Vietnam"
 const EFFECTIVE_DATE = "8 November 2025"
 
 const PRIVACY_SECTIONS = [
@@ -34,7 +34,7 @@ const PRIVACY_SECTIONS = [
           <li>Provide counselling, shortlist universities, and recommend scholarships</li>
           <li>Prepare and submit university, visa, and accommodation applications on your behalf</li>
           <li>Arrange language training, interview coaching, and pre-departure briefings</li>
-          <li>Comply with immigration, tax, and reporting requirements in Vietnam and Australia</li>
+          <li>Comply with immigration, tax, and reporting requirements in Vietnam and Germany</li>
           <li>Send service updates, reminders, and important notices relating to your journey</li>
           <li>Improve our services through aggregated analytics and customer feedback</li>
         </ul>
@@ -63,7 +63,7 @@ const PRIVACY_SECTIONS = [
           {COMPANY_NAME} only shares your data with trusted partners who help us fulfil your requests. These partners include:
         </p>
         <ul>
-          <li>Australian universities, colleges, and language centres processing your applications</li>
+          <li>German universities, colleges, and language centres processing your applications</li>
           <li>Certified translators, testing centres, and accommodation providers</li>
           <li>Immigration professionals or government departments when legally required</li>
           <li>Technology vendors (such as CRM, cloud hosting, and communication tools) operating under strict confidentiality agreements</li>
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
           <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Privacy Policy</p>
           <h1 className="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">Protecting your personal data with clarity and care</h1>
           <p className="mt-4 max-w-2xl text-base text-gray-600">
-            {COMPANY_NAME} is committed to safeguarding the information you share with us while pursuing your Australian study ambitions. This policy explains the data we collect, how it is used, and the rights you have to control it.
+            {COMPANY_NAME} is committed to safeguarding the information you share with us while pursuing your German study ambitions. This policy explains the data we collect, how it is used, and the rights you have to control it.
           </p>
           <p className="mt-6 text-sm text-gray-500">Effective date: {EFFECTIVE_DATE}</p>
         </div>

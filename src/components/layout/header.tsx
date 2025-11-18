@@ -23,9 +23,10 @@ const serviceNavLinks = servicesList.map((service) => ({
 
 const navItems = [
   { href: '/universities', label: 'Universities' },
+  { href: '/vocational-training', label: 'Vocational Training' },
+  { href: '/diploma-conversion', label: 'Diploma Conversion' },
   { href: '/services', label: 'Services', children: serviceNavLinks },
   { href: '/blog', label: 'Blog' },
-  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -48,8 +49,8 @@ export function Header() {
         <div className="flex items-center justify-between h-18">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              alt="Bizz Education Vietnam logo"
-              src="/images/Logo-Bizz-Education-Vietnam.svg"
+              alt="Startin DE logo"
+              src="/images/Logo-StartinDE_001.webp"
               width={160}
               height={48}
               className="h-12 w-auto"
@@ -109,7 +110,7 @@ export function Header() {
             type="button"
             onClick={toggleMenu}
             className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 transition hover:bg-gray-100 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600 md:hidden"
-            aria-expanded={isMenuOpen}
+            aria-expanded={isMenuOpen ? 'true' : 'false'}
             aria-controls="mobile-navigation"
           >
             <span className="sr-only">Toggle navigation</span>
@@ -121,7 +122,7 @@ export function Header() {
       <div
         id="mobile-navigation"
         className={`md:hidden transition-[max-height] duration-300 ease-in-out overflow-hidden border-t border-gray-200 bg-white ${
-          isMenuOpen ? 'max-h-[32rem]' : 'max-h-0'
+          isMenuOpen ? 'max-h-128' : 'max-h-0'
         }`}
       >
         <div className="container mx-auto px-4 py-4 space-y-4">
@@ -133,7 +134,7 @@ export function Header() {
                     type="button"
                     onClick={() => setIsServicesMenuOpen((prev) => !prev)}
                     className="flex w-full items-center justify-between rounded-lg border border-gray-200 px-3 py-2 text-left text-gray-700 transition hover:border-gray-300 hover:text-gray-900 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                    aria-expanded={isServicesMenuOpen}
+                    aria-expanded={isServicesMenuOpen ? 'true' : 'false'}
                   >
                     <span>{item.label}</span>
                     <ChevronDown

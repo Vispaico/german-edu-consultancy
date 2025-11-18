@@ -8,7 +8,7 @@ export default function StudentTestsPage() {
     {
       id: 1,
       type: 'IELTS Academic',
-      center: 'British Council - Hanoi UAC',
+      center: 'British Council - Haiphong UAC',
       date: '2025-11-15',
       time: '09:00 AM',
       status: 'Confirmed'
@@ -26,7 +26,7 @@ export default function StudentTestsPage() {
   ]
 
   const testCenters = [
-    { name: 'British Council - Hanoi UAC', location: 'Hanoi', provider: 'British Council' },
+    { name: 'British Council - Haiphong UAC', location: 'Haiphong', provider: 'British Council' },
     { name: 'IDP IELTS - HCMC', location: 'Ho Chi Minh City', provider: 'IDP' },
     { name: 'British Council - HCMC UAC', location: 'Ho Chi Minh City', provider: 'British Council' }
   ]

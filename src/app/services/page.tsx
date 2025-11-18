@@ -35,7 +35,7 @@ export default function ServicesPage() {
                   </p>
                   <div>
                     <p className="text-sm font-semibold text-gray-900">Nguyen Duyen Ngan · Branch Director</p>
-                    <p className="text-xs uppercase tracking-wide text-blue-600">BIZZ Education Vietnam</p>
+                    <p className="text-xs uppercase tracking-wide text-blue-600">StartinDE</p>
                   </div>
                 </div>
               </CardContent>

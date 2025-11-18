@@ -89,8 +89,8 @@ export default function ContactPage() {
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-4">📍 Office Location</h3>
                 <p className="text-gray-600">
-                  123 Example Street<br />
-                  Hanoi, Vietnam
+                  23/32 To 2 Xom Trung<br />
+                  Haiphong, Vietnam
                 </p>
               </CardContent>
             </Card>
@@ -105,7 +105,7 @@ export default function ContactPage() {
             <Card>
               <CardContent className="pt-6">
                 <h3 className="font-semibold mb-4">✉️ Email</h3>
-                <p className="text-gray-600">info@educonsultancy.vn</p>
+                <p className="text-gray-600">info@startin-de.com</p>
               </CardContent>
             </Card>
 

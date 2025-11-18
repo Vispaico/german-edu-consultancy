@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, BookOpen, HeartHandshake, MapPin, ShieldCheck, Trophy } from "lucide-react"
 
 const heroImage =
-  "https://images.unsplash.com/photo-1656501378592-efc5bc197d73?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400"
+  "https://images.unsplash.com/photo-1600056526339-a8b270219409?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400"
 
-export default function UniversityOfSydneyPage() {
+export default function RwthAachenUniversityPage() {
   return (
     <main className="bg-white">
       <section className="relative isolate overflow-hidden text-white">
         <Image
-          alt="University of Sydney Quadrangle"
+          alt="RWTH Aachen University Main Building"
           src={heroImage}
           fill
           priority
@@ -22,20 +22,20 @@ export default function UniversityOfSydneyPage() {
         <div className="container mx-auto px-4 py-24 sm:py-28 lg:py-32">
           <div className="max-w-3xl space-y-6">
             <span className="inline-flex items-center rounded-full border border-white/30 px-4 py-1 text-sm uppercase tracking-widest">
-              Heritage & innovation • Sydney, NSW
+              Leading technical university • Aachen, NRW
             </span>
-            <h1 className="text-4xl font-bold sm:text-5xl">University of Sydney</h1>
+            <h1 className="text-4xl font-bold sm:text-5xl">RWTH Aachen University</h1>
             <p className="text-lg text-blue-100">
-              Australia&apos;s first university, blending sandstone heritage with leading research across health, engineering, business, and creative arts.
+              One of Germany&apos;s leading universities of technology, renowned for its world-class engineering programs and strong industry collaborations.
             </p>
             <div className="flex flex-wrap gap-4 text-sm text-blue-100/90">
               <div className="flex items-center gap-2">
                 <Trophy className="size-4" aria-hidden />
-                QS Top 20 worldwide (2025)
+                Part of the TU9 German Institutes of Technology
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="size-4" aria-hidden />
-                Camperdown/Darlington campus • minutes from CBD
+                Campus integrated into the city of Aachen
               </div>
             </div>
           </div>
@@ -48,10 +48,10 @@ export default function UniversityOfSydneyPage() {
             <div className="space-y-6 text-gray-600">
               <h2 className="text-2xl font-semibold text-gray-900">A supportive pathway for Vietnamese students</h2>
               <p>
-                The University of Sydney offers flexible double degrees, early professional placements, and research-led teaching that prepares students for global careers. Vietnamese learners benefit from strong health sciences, data, and design programs complemented by internship pipelines.
+                RWTH Aachen University offers flexible degree programs, early professional placements, and research-led teaching that prepares students for global careers. Vietnamese learners benefit from strong engineering, computer science, and natural sciences programs complemented by internship pipelines.
               </p>
               <p>
-                Campus life is vibrant with cultural societies, state-of-the-art sport facilities, and the renowned International Student Support hub providing visa, housing, and employment guidance.
+                Campus life is vibrant with cultural societies, state-of-the-art sport facilities, and the renowned International Office providing visa, housing, and employment guidance.
               </p>
             </div>
 
@@ -60,14 +60,14 @@ export default function UniversityOfSydneyPage() {
                 <ShieldCheck className="mt-1 size-5" aria-hidden />
                 <div>
                   <p className="font-semibold">Standout faculties</p>
-                  <p>Sydney Business School • Faculty of Medicine & Health • School of Computer Science</p>
+                  <p>Faculty of Mechanical Engineering • Faculty of Electrical Engineering and Information Technology • Faculty of Mathematics, Computer Science and Natural Sciences</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <HeartHandshake className="mt-1 size-5" aria-hidden />
                 <div>
                   <p className="font-semibold">Student care</p>
-                  <p>Dedicated academic advisors, peer mentoring, and VietSoc mentoring for first-year students.</p>
+                  <p>Dedicated academic advisors, peer mentoring, and a Vietnamese Student Association for first-year students.</p>
                 </div>
               </div>
             </div>
@@ -92,9 +92,9 @@ export default function UniversityOfSydneyPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl rounded-3xl border border-blue-100 bg-blue-50/50 p-10 text-center">
-            <h2 className="text-3xl font-semibold text-gray-900">Map your University of Sydney application with us</h2>
+            <h2 className="text-3xl font-semibold text-gray-900">Map your RWTH Aachen application with us</h2>
             <p className="mt-4 text-gray-600">
-              From portfolio guidance to clinical placement preparation, our consultants assist every step.
+              From portfolio guidance to practical project preparation, our consultants assist every step.
             </p>
             <Button className="mt-8 h-12 rounded-full px-8 text-base font-semibold" asChild>
               <Link href="/contact">
@@ -112,17 +112,17 @@ export default function UniversityOfSydneyPage() {
 const highlights = [
   {
     title: "Research excellence",
-    description: "Join world-leading labs in AI, health tech, and sustainability, with access to the Sydney Nano and Charles Perkins Centre.",
+    description: "Join world-leading labs in production technology, automotive engineering, and materials science.",
     icon: BookOpen,
   },
   {
     title: "City lifestyle",
-    description: "Live near Newtown&apos;s creative district, with quick transport to internships in Sydney&apos;s CBD and tech precincts.",
+    description: "Live in a historic city at the border triangle of Germany, Belgium, and the Netherlands.",
     icon: MapPin,
   },
   {
     title: "Global alumni",
-    description: "400,000+ alumni worldwide, including high-profile leaders across medicine, law, and the arts.",
+    description: "A vast network of alumni in leading positions in industry and research worldwide.",
     icon: Trophy,
   },
 ]

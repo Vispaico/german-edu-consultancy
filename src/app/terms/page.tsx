@@ -1,9 +1,9 @@
 import Link from "next/link"
 
-const COMPANY_NAME = "BIZZ EDUCATION VIETNAM"
-const WEBSITE_URL = "bizzedu.vn"
-const CONTACT_EMAIL = "info@bizzedu.vn"
-const ADDRESS = "Hanoi, Vietnam"
+const COMPANY_NAME = "StartinDE"
+const WEBSITE_URL = "startin-DE.com"
+const CONTACT_EMAIL = "info@startin-DE.com"
+const ADDRESS = "Haiphong, Vietnam"
 const EFFECTIVE_DATE = "8 November 2025"
 
 const TERMS_SECTIONS = [
@@ -21,7 +21,7 @@ const TERMS_SECTIONS = [
     title: "2. Services we provide",
     body: (
       <>
-        <p>We offer education consultancy and related support for studying in Australia, including:</p>
+        <p>We offer education consultancy and related support for studying in Germany, including:</p>
         <ul>
           <li>Consultations, course advice, and university shortlisting tailored to your goals</li>
           <li>Application preparation, submission, and liaising with educational partners</li>
@@ -29,7 +29,7 @@ const TERMS_SECTIONS = [
           <li>Referral to third-party providers such as language centres or accommodation partners</li>
         </ul>
         <p>
-          Services are delivered in accordance with Australian education policies, Vietnamese regulations, and partner institution requirements.
+          Services are delivered in accordance with German education policies, Vietnamese regulations, and partner institution requirements.
         </p>
       </>
     ),
@@ -139,7 +139,7 @@ const TERMS_SECTIONS = [
     body: (
       <>
         <p>
-          These Terms are governed by the laws of the Socialist Republic of Vietnam. Any disputes will be handled through good-faith negotiation, followed by the competent courts in Vietnam if necessary.
+          These Terms are governed by the laws of Germany. Any disputes will be handled through good-faith negotiation, followed by the competent courts in Germany if necessary.
         </p>
       </>
     ),
@@ -171,7 +171,7 @@ export default function TermsPage() {
           <p className="text-sm font-semibold uppercase tracking-wider text-blue-700">Terms of Service</p>
           <h1 className="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">Service terms for {COMPANY_NAME} study abroad support</h1>
           <p className="mt-4 max-w-2xl text-base text-gray-600">
-            These Terms outline the responsibilities of both {COMPANY_NAME} and our clients when using education consultancy services for Australian study pathways.
+            These Terms outline the responsibilities of both {COMPANY_NAME} and our clients when using education consultancy services for German study pathways.
           </p>
           <p className="mt-6 text-sm text-gray-500">Effective date: {EFFECTIVE_DATE}</p>
         </div>

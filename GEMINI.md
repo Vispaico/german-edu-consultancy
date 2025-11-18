@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a Next.js web application for an educational consultancy that helps Vietnamese students study in Australia. The application is built with a modern tech stack, including:
+This is a Next.js web application for an educational consultancy that helps Vietnamese students study in Germany. The application is built with a modern tech stack, including:
 
 *   **Framework:** Next.js (React)
 *   **Database:** Prisma with a SQLite database for development.

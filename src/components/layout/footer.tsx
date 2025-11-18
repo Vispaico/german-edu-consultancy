@@ -8,16 +8,16 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="text-center md:text-left">
             <Image
-              alt="Bizz Education Vietnam"
-              src="/images/Logo-Bizz-Education-Vietnam-footer.png"
+              alt="StartinDE"
+              src="/images/Logo-startinDE-footer001.webp"
               width={262}
               height={94}
               className="mb-4 h-18 w-auto mx-auto md:mx-0"
               priority
             />
             <p className="text-sm text-center md:text-left">
-              Your trusted partner for studying in Australia.
-              Professional guidance since 2014.
+              Your trusted partner for living, working and studying in Germany.
+              Professional guidance since 2025.
             </p>
           </div>
 
@@ -38,6 +38,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-center md:text-left">
               <li><Link href="/universities">Universities</Link></li>
               <li><Link href="/blog">Blog</Link></li>
+              <li><Link href="/about">About Us</Link></li>
               <li><Link href="/faq">FAQ</Link></li>
               <li><Link href="/contact">Contact Us</Link></li>
             </ul>
@@ -46,15 +47,15 @@ export function Footer() {
           <div className="text-center md:text-left">
             <h4 className="mb-4 font-semibold text-white">Contact</h4>
             <ul className="space-y-2 text-sm text-center md:text-left">
-              <li>📍 Hanoi, Vietnam</li>
+              <li>📍 Haiphong, Vietnam</li>
               <li>📞 +84 123 456 789</li>
-              <li>✉️ info@bizzedu.vn</li>
+              <li>✉️ info@startin-de.com</li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
-          <p>&copy; 2025 BIZZ EDUCATION VIETNAM. All rights reserved.</p>
+          <p>&copy; 2025 StartinDE. All rights reserved.</p>
           <div className="mt-2 space-x-4">
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms of Service</Link>

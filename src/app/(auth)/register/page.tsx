@@ -64,7 +64,7 @@ export default function RegisterPage() {
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">Create an Account</CardTitle>
           <CardDescription className="text-center">
-            Start your journey to study in Australia
+            Start your journey to study in Germany
           </CardDescription>
         </CardHeader>
         <CardContent>

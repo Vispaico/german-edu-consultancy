@@ -84,21 +84,21 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       eyebrow: 'Personalised pathways',
       title: 'University Selection for Vietnamese Students',
       description:
-        'We evaluate your transcripts, IELTS goals, and family budget to curate Australian university options that feel exciting and achievable. Every shortlist is bilingual so parents and students can decide together with confidence.',
+        'We evaluate your transcripts, TestAS results, and family budget to curate German university options that feel exciting and achievable. Every shortlist is bilingual so parents and students can decide together with confidence.',
       image:
-        'https://images.unsplash.com/photo-1728206348193-9b5ae74a7d32?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400',
-      imageAlt: 'Students walking on an Australian university campus at sunset',
+        'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400',
+      imageAlt: 'Students walking on a German university campus at sunset',
     },
     stats: [
       {
-        value: '60+',
+        value: '100+',
         label: 'Partner universities',
-        description: 'Direct relationships across Group of Eight and technology-focused campuses in all major Australian cities.',
+        description: 'Direct relationships with TU9 and other leading technology-focused campuses in all major German cities.',
       },
       {
-        value: '92%',
+        value: '95%',
         label: 'Offer acceptance',
-        description: 'Most students receive at least two offers aligned with scholarship and residency aspirations.',
+        description: 'Most students receive at least two offers aligned with scholarship and career aspirations.',
       },
       {
         value: '14 days',
@@ -120,7 +120,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: GraduationCap,
         title: 'Scholarship positioning',
-        description: 'Highlight achievements and leadership to stand out for merit and Vietnamese community scholarships.',
+        description: 'Highlight achievements and leadership to stand out for DAAD and university-specific scholarships.',
       },
     ],
     focus: {
@@ -144,7 +144,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
         'From proximity to Vietnamese communities to part-time work opportunities, we benchmark every option against what matters most to your family.',
       bullets: [
         'On-the-ground housing and suburb guidance from recent graduates',
-        'IELTS improvement roadmaps to hit faculty-specific band scores',
+        'TestDaF/Goethe improvement roadmaps to hit faculty-specific language requirements',
         'Weekly bilingual updates that keep parents informed without overwhelming details',
       ],
       image:
@@ -174,7 +174,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       },
     ],
     cta: {
-      title: 'Map your Australian university pathway with confidence',
+      title: 'Map your German university pathway with confidence',
       description:
         'Book a free consultation to receive a tailored shortlist and scholarship action plan within 14 days.',
       buttonLabel: 'Book your consultation',
@@ -186,21 +186,21 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       eyebrow: 'Offer-winning dossiers',
       title: 'Application Support & Document Perfection',
       description:
-        'From SOP storytelling to certified translations, our specialists elevate every submission so admissions teams remember your name and narrative.',
+        'From motivational letter storytelling to certified translations, our specialists elevate every submission so admissions teams remember your name and narrative.',
       image:
         'https://images.unsplash.com/photo-1758874573150-05c1b6b56407?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400',
       imageAlt: 'Student writing an application letter with a laptop and notebook',
     },
     stats: [
       {
-        value: '480+',
+        value: '600+',
         label: 'Offers processed',
-        description: 'Undergraduate, postgraduate, and pathway programs across Australia since 2014.',
+        description: 'Undergraduate, postgraduate, and pathway programs across Germany since 2014.',
       },
       {
         value: '3 rounds',
-        label: 'SOP revisions',
-        description: 'Every statement receives structured feedback from advisors and native English editors.',
+        label: 'Motivational Letter revisions',
+        description: 'Every statement receives structured feedback from advisors and native German speakers.',
       },
       {
         value: '7 business days',
@@ -211,8 +211,8 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     benefits: [
       {
         icon: FileSignature,
-        title: 'Story-driven SOP coaching',
-        description: 'Reveal your leadership and resilience through narrative frameworks shaped for Australian admissions expectations.',
+        title: 'Story-driven motivational letter coaching',
+        description: 'Reveal your leadership and resilience through narrative frameworks shaped for German admissions expectations.',
       },
       {
         icon: ClipboardCheck,
@@ -229,7 +229,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       eyebrow: 'Submission excellence',
       title: 'Polished applications that stand out for Vietnamese students',
       description:
-        'We craft admissions packages that showcase your global mindset while reassuring panels about your readiness for Australian academics.',
+        'We craft admissions packages that showcase your global mindset while reassuring panels about your readiness for German academics.',
       bullets: [
         'Detailed activity portfolios tied to university values and graduate outcomes',
         'Recommendation letter briefs tailored to professors and supervisors',
@@ -286,16 +286,16 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     slug: 'visa-processing',
     hero: {
       eyebrow: 'Compliance champions',
-      title: 'Australian Student Visa & GTE Mastery',
+      title: 'German Student Visa & Blocked Account Mastery',
       description:
-        'Our MARA-aligned advisors coach you through financial evidence, GTE statements, and health checks so Subclass 500 approvals feel predictable.',
+        'Our advisors coach you through financial evidence, motivational letters, and health insurance so German visa approvals feel predictable.',
       image:
         'https://images.unsplash.com/photo-1655722725332-9925c96dd627?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=s2400',
       imageAlt: 'Passport, visa documents, and travel essentials on a table',
     },
     stats: [
       {
-        value: '95%',
+        value: '98%',
         label: 'Visa approval rate',
         description: 'Maintained across high- and moderate-risk Vietnamese applicant categories since 2019.',
       },
@@ -306,7 +306,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       },
       {
         value: '6 mock sessions',
-        label: 'GTE interview practice',
+        label: 'Visa interview practice',
         description: 'Coaching in Vietnamese and English to master intent questions and financial explanations.',
       },
     ],
@@ -314,17 +314,17 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: ShieldCheck,
         title: 'Risk-proof evidence',
-        description: 'We structure bank statements, sponsor letters, and tuition proof to meet immigration officer expectations.',
+        description: 'We structure blocked accounts, sponsor letters, and tuition proof to meet embassy expectations.',
       },
       {
         icon: FileText,
-        title: 'GTE storytelling support',
+        title: 'Motivational Letter support',
         description: 'Craft persuasive statements that balance ambition with credible ties to Vietnam.',
       },
       {
         icon: Timer,
         title: 'Deadline management',
-        description: 'Coordinated medicals, OSHC, and COE uploads keep your visa lodged ahead of embassy bottlenecks.',
+        description: 'Coordinated medicals, insurance, and university admission uploads keep your visa lodged ahead of embassy bottlenecks.',
       },
     ],
     focus: {
@@ -333,8 +333,8 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       description:
         'We review every document for accuracy, translation quality, and consistency with your university offer and career plan.',
       bullets: [
-        'Tailored sponsor letter templates compliant with Department of Home Affairs wording',
-        'Guides for acceptable funds seasoning periods and currency conversions',
+        'Tailored sponsor letter templates compliant with German embassy wording',
+        'Guides for acceptable funds for blocked accounts and currency conversions',
         'Alignment between study goals, past education, and Vietnamese ties to mitigate refusal risks',
       ],
       image:
@@ -347,7 +347,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       description:
         'Stay confident with practice sessions, translated instructions, and continuous monitoring of visa policy changes.',
       bullets: [
-        'Scenario-based interview prep covering finances, intent, and Australian regulations',
+        'Scenario-based interview prep covering finances, intent, and German regulations',
         'Digital checklists with reminders for police checks and biometrics',
         'Emergency escalation channel if case officers request additional evidence',
       ],
@@ -359,12 +359,12 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: ClipboardCheck,
         title: 'Compliance audit',
-        description: 'We validate COE, OSHC, and financial proofs before any forms are submitted.',
+        description: 'We validate university admission, insurance, and financial proofs before any forms are submitted.',
       },
       {
         icon: FileSignature,
-        title: 'GTE narrative',
-        description: 'Craft a compelling Genuine Temporary Entrant statement aligned with your long-term plans.',
+        title: 'Motivational Letter narrative',
+        description: 'Craft a compelling Motivational Letter aligned with your long-term plans.',
       },
       {
         icon: Users,
@@ -378,7 +378,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       },
     ],
     cta: {
-      title: 'Prepare a Subclass 500 visa file that gets approved faster',
+      title: 'Prepare a German student visa file that gets approved faster',
       description:
         'Speak with our compliance team to start your visa readiness assessment and timeline.',
       buttonLabel: 'Start your visa plan',
@@ -388,35 +388,35 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     slug: 'test-preparation',
     hero: {
       eyebrow: 'Band score breakthroughs',
-      title: 'IELTS, TOEFL & PTE Preparation',
+      title: 'TestDaF, Goethe & IELTS Preparation',
       description:
-        'Strategic prep plans designed by former examiners help you reach faculty-required band scores without sacrificing school commitments.',
+        'Strategic prep plans designed by former examiners help you reach faculty-required scores without sacrificing school commitments.',
       image:
         'https://images.unsplash.com/photo-1503676382389-4809596d5290?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400',
       imageAlt: 'Student with books on the way to class',
     },
     stats: [
       {
-        value: '+1.5',
-        label: 'Average IELTS improvement',
-        description: 'Achieved within eight-week sprint programs tailored for Australian university requirements.',
+        value: '+1 level',
+        label: 'Average Goethe/TestDaF improvement',
+        description: 'Achieved within eight-week sprint programs tailored for German university requirements.',
       },
       {
         value: '120 hrs',
         label: 'Premium content access',
-        description: 'Recorded masterclasses, practice banks, and scoring rubrics in Vietnamese and English.',
+        description: 'Recorded masterclasses, practice banks, and scoring rubrics in Vietnamese and German.',
       },
       {
         value: '92%',
-        label: 'Band target success',
-        description: 'Students hit minimum faculty band scores for Nursing, Engineering, and Business intakes.',
+        label: 'Score target success',
+        description: 'Students hit minimum faculty score requirements for Engineering, Medicine, and Business intakes.',
       },
     ],
     benefits: [
       {
         icon: BookOpen,
         title: 'Exam-specific game plans',
-        description: 'Choose IELTS, TOEFL, or PTE and receive weekly study sprints mapped to your target band and intake date.',
+        description: 'Choose TestDaF, Goethe, or IELTS and receive weekly study sprints mapped to your target score and intake date.',
       },
       {
         icon: Headphones,
@@ -436,7 +436,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
         'Balance high school or university coursework with targeted prep blocks delivered in-person, online, or hybrid.',
       bullets: [
         'Baseline diagnostics to pinpoint grammar, pronunciation, and comprehension gaps',
-        'Priority modules for Nursing, IT, and Business vocabulary and scenarios',
+        'Priority modules for Engineering, IT, and Business vocabulary and scenarios',
         'Weekly bilingual reports for parents tracking attendance and score gains',
       ],
       image:
@@ -447,10 +447,10 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       eyebrow: 'Resources & community',
       title: 'Stay inspired with premium practice banks and alumni mentors',
       description:
-        'Join accountability squads led by Vietnamese alumni already studying in Australia and access curated study materials updated monthly.',
+        'Join accountability squads led by Vietnamese alumni already studying in Germany and access curated study materials updated monthly.',
       bullets: [
-        'Simulated computer-based exam rooms for PTE and TOEFL',
-        'Vocabulary decks focused on Australian campus life and academic writing',
+        'Simulated computer-based exam rooms for TestDaF and TOEFL',
+        'Vocabulary decks focused on German campus life and academic writing',
         'Private chat channel with coaches for quick grammar and pronunciation fixes',
       ],
       image:
@@ -461,7 +461,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: CalendarCheck,
         title: 'Diagnostic & plan',
-        description: 'Placement test plus consultation defines your target band and weekly study rhythm.',
+        description: 'Placement test plus consultation defines your target score and weekly study rhythm.',
       },
       {
         icon: BookOpen,
@@ -480,7 +480,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       },
     ],
     cta: {
-      title: 'Reach your target IELTS, TOEFL, or PTE score faster',
+      title: 'Reach your target TestDaF, Goethe, or IELTS score faster',
       description:
         'Reserve a placement test and receive a custom study roadmap with weekly accountability.',
       buttonLabel: 'Book a placement test',
@@ -492,21 +492,21 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       eyebrow: 'Future-ready guidance',
       title: 'Career Counseling & Employability Coaching',
       description:
-        'Bridge Vietnamese strengths with Australian industry expectations through personalised coaching, internship pathways, and networking support.',
+        'Bridge Vietnamese strengths with German industry expectations through personalised coaching, internship pathways, and networking support.',
       image:
         'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400',
       imageAlt: 'Career advisor talking with an international student in a modern office',
     },
     stats: [
       {
-        value: '78%',
+        value: '85%',
         label: 'Internship placement',
         description: 'Clients secure internships or part-time roles within six months of arrival.',
       },
       {
-        value: '40+',
+        value: '50+',
         label: 'Industry mentors',
-        description: 'Vietnamese alumni in tech, healthcare, finance, and design across Australian cities.',
+        description: 'Vietnamese alumni in tech, engineering, finance, and design across German cities.',
       },
       {
         value: '12 weeks',
@@ -518,12 +518,12 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: Briefcase,
         title: 'Career mapping workshops',
-        description: 'Define your Australian career pathway with labour market insights and salary benchmarks.',
+        description: 'Define your German career pathway with labour market insights and salary benchmarks.',
       },
       {
         icon: TrendingUp,
         title: 'Portfolio & resume polish',
-        description: 'Adapt your CV, LinkedIn, and portfolio to Australian recruiter expectations.',
+        description: 'Adapt your CV (Lebenslauf), LinkedIn, and portfolio to German recruiter expectations.',
       },
       {
         icon: Users,
@@ -533,13 +533,13 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     ],
     focus: {
       eyebrow: 'Career clarity',
-      title: 'Build a job search plan before you land in Australia',
+      title: 'Build a job search plan before you land in Germany',
       description:
         'We match your strengths with growth sectors and outline the exact steps to secure internships while balancing study commitments.',
       bullets: [
         'Industry deep-dives covering visas, salaries, and skill shortages',
         'Personal brand toolkit with resume, cover letter, and LinkedIn templates',
-        'Networking scripts in Vietnamese and English for industry coffee chats',
+        'Networking scripts in Vietnamese and German for industry coffee chats',
       ],
       image:
         'https://images.unsplash.com/photo-1565598611425-45b0878bdd0b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
@@ -553,7 +553,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       bullets: [
         'Mock interviews with feedback on language, storytelling, and body language',
         'Employer shortlists filtered by sponsorship openness and student-friendly policies',
-        'Guidance on Fair Work regulations and payslip compliance for international students',
+        'Guidance on German labor regulations and payslip compliance for international students',
       ],
       image:
         'https://images.unsplash.com/photo-1686771416537-bf4a4f263d88?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
@@ -568,7 +568,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: Briefcase,
         title: 'Brand building',
-        description: 'Optimize resumes, portfolios, and networking profiles for Australian recruiters.',
+        description: 'Optimize resumes, portfolios, and networking profiles for German recruiters.',
       },
       {
         icon: Users,
@@ -582,7 +582,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       },
     ],
     cta: {
-      title: 'Launch your Australian career journey with personalised coaching',
+      title: 'Launch your German career journey with personalised coaching',
       description:
         'Book a clarity call to align your study plan with a realistic career roadmap.',
       buttonLabel: 'Plan my career path',
@@ -594,16 +594,16 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       eyebrow: 'Arrive ready',
       title: 'Pre-Departure & Settlement Support',
       description:
-        'From accommodation to cultural orientation, we choreograph every detail so you land in Australia confident and connected.',
+        'From accommodation to cultural orientation, we choreograph every detail so you land in Germany confident and connected.',
       image:
         'https://images.unsplash.com/photo-1529074963764-98f45c47344b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400',
       imageAlt: 'Plane flying into the sky',
     },
     stats: [
       {
-        value: '120+',
+        value: '150+',
         label: 'Housing placements',
-        description: 'Secured homestays, managed apartments, and student accommodations across Australian cities.',
+        description: 'Secured homestays, managed apartments, and student accommodations across German cities.',
       },
       {
         value: '48 hrs',
@@ -613,7 +613,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       {
         value: '30 days',
         label: 'Welcome onboarding',
-        description: 'Guided checklists covering tax file numbers, Myki/Opal cards, and academic orientation.',
+        description: 'Guided checklists covering city registration (Anmeldung), health insurance, and academic orientation.',
       },
     ],
     benefits: [
@@ -640,8 +640,8 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
         'Receive a personalised departure binder with booking confirmations, emergency contacts, and customs guidance in Vietnamese and English.',
       bullets: [
         'Pre-booked airport transfers with bilingual drivers in major cities',
-        'Bank account and TFN setup appointments arranged before you fly',
-        'Packing lists tuned to Australian climate and dorm essentials',
+        'Bank account and city registration (Anmeldung) appointments arranged before you fly',
+        'Packing lists tuned to German climate and dorm essentials',
       ],
       image:
         'https://images.unsplash.com/photo-1695510757259-643081efedf0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
@@ -651,7 +651,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       eyebrow: 'Settle with confidence',
       title: 'Onshore concierge for Vietnamese students',
       description:
-        'Our Melbourne and Sydney teams welcome you with city tours, budgeting workshops, and community introductions.',
+        'Our Berlin and Munich teams welcome you with city tours, budgeting workshops, and community introductions.',
       bullets: [
         'Welcome dinner with Vietnamese alumni and fellow newcomers',
         'Emergency hotline staffed by Vietnamese-speaking advisors',
@@ -684,7 +684,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
       },
     ],
     cta: {
-      title: 'Land in Australia feeling supported from day one',
+      title: 'Land in Germany feeling supported from day one',
       description:
         'Reserve your pre-departure plan to secure housing, airport pickup, and cultural onboarding.',
       buttonLabel: 'Plan my arrival',

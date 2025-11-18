@@ -73,10 +73,9 @@ model Student {
   major            String?
   gpa              Float?
   
-  // English Test Scores
-  ieltsScore       Float?
-  toeflScore       Int?
-  pteScore         Int?
+  // German Test Scores
+  testdafScore     String?
+  goetheScore      String?
   
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
@@ -114,7 +113,7 @@ model University {
   slug            String   @unique
   city            String
   state           String
-  country         String   @default("Australia")
+  country         String   @default("Germany")
   
   logo            String?
   website         String?
@@ -122,9 +121,6 @@ model University {
   
   description     String?
   descriptionVi   String?
-  
-  tuitionMin      Int?     // AUD per year
-  tuitionMax      Int?
   
   requirements    String?  // JSON string for requirements
   
@@ -146,7 +142,7 @@ model Course {
   nameVi        String?
   degree        String   // Bachelor, Master, PhD
   duration      Int      // Months
-  tuition       Int      // AUD per year
+  tuition       Int      // EUR per year
   
   description   String?
   requirements  String?  // JSON string
@@ -175,7 +171,7 @@ model Application {
   
   // Application Details
   status          ApplicationStatus @default(DRAFT)
-  intake          String   // e.g., "February 2025"
+  intake          String   // e.g., "Winter 2025"
   visaStatus      VisaStatus @default(NOT_STARTED)
   
   // Tracking
@@ -249,6 +245,8 @@ enum DocumentType {
   IELTS_CERTIFICATE
   TOEFL_CERTIFICATE
   PTE_CERTIFICATE
+  TESTDAF_CERTIFICATE
+  GOETHE_CERTIFICATE
   RECOMMENDATION_LETTER
   PERSONAL_STATEMENT
   CV

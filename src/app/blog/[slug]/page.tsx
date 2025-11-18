@@ -41,7 +41,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
     notFound()
   }
 
-  const formattedDate = new Date(post.date).toLocaleDateString('en-AU', {
+  const formattedDate = new Date(post.date).toLocaleDateString('de-DE', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -171,7 +171,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
             <div>
               <h3 className="text-xl font-semibold text-slate-900">Need personalised guidance?</h3>
               <p className="mt-2 text-sm text-slate-600">
-                Our advisors help you translate these insights into a tailored Australian study plan for your family.
+                Our advisors help you translate these insights into a tailored German study plan for your family.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">

@@ -13,7 +13,7 @@ export default function BlogPage() {
         <div className="max-w-4xl mx-auto text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Study Abroad Blog</h1>
           <p className="text-xl text-gray-600">
-            Tips, guides, and insights for Vietnamese students studying in Australia
+            Tips, guides, and insights for Vietnamese students studying in Germany
           </p>
         </div>
 

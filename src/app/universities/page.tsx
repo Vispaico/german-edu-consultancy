@@ -6,63 +6,63 @@ import { Button } from '@/components/ui/button'
 const universities = [
   {
     id: 1,
-    name: 'University of Melbourne',
-    city: 'Melbourne',
-    state: 'Victoria',
-    ranking: '#1 in Australia',
-    tuition: 'AUD $30,000 - $45,000/year',
+    name: 'Technical University of Munich',
+    city: 'Munich',
+    state: 'Bavaria',
+    ranking: '#1 in Germany',
+    tuition: 'No tuition fees',
     logo: '🎓',
-    slug: 'university-of-melbourne'
+    slug: 'technical-university-of-munich'
   },
   {
     id: 2,
-    name: 'Australian National University',
-    city: 'Canberra',
-    state: 'ACT',
-    ranking: '#2 in Australia',
-    tuition: 'AUD $32,000 - $48,000/year',
+    name: 'Heidelberg University',
+    city: 'Heidelberg',
+    state: 'Baden-Württemberg',
+    ranking: '#2 in Germany',
+    tuition: 'No tuition fees',
     logo: '🏛️',
-    slug: 'australian-national-university'
+    slug: 'heidelberg-university'
   },
   {
     id: 3,
-    name: 'University of New South Wales',
-    city: 'Sydney',
-    state: 'NSW',
-    ranking: '#3 in Australia',
-    tuition: 'AUD $35,000 - $50,000/year',
+    name: 'LMU Munich',
+    city: 'Munich',
+    state: 'Bavaria',
+    ranking: '#3 in Germany',
+    tuition: 'No tuition fees',
     logo: '🎯',
-    slug: 'university-of-new-south-wales'
+    slug: 'lmu-munich'
   },
   {
     id: 4,
-    name: 'University of Sydney',
-    city: 'Sydney',
-    state: 'NSW',
-    ranking: '#4 in Australia',
-    tuition: 'AUD $33,000 - $49,000/year',
+    name: 'Free University of Berlin',
+    city: 'Berlin',
+    state: 'Berlin',
+    ranking: '#4 in Germany',
+    tuition: 'No tuition fees',
     logo: '📚',
-    slug: 'university-of-sydney'
+    slug: 'free-university-of-berlin'
   },
   {
     id: 5,
-    name: 'Monash University',
-    city: 'Melbourne',
-    state: 'Victoria',
-    ranking: '#5 in Australia',
-    tuition: 'AUD $30,000 - $44,000/year',
+    name: 'Humboldt University of Berlin',
+    city: 'Berlin',
+    state: 'Berlin',
+    ranking: '#5 in Germany',
+    tuition: 'No tuition fees',
     logo: '🔬',
-    slug: 'monash-university'
+    slug: 'humboldt-university-of-berlin'
   },
   {
     id: 6,
-    name: 'University of Queensland',
-    city: 'Brisbane',
-    state: 'Queensland',
-    ranking: '#6 in Australia',
-    tuition: 'AUD $31,000 - $46,000/year',
+    name: 'RWTH Aachen University',
+    city: 'Aachen',
+    state: 'North Rhine-Westphalia',
+    ranking: '#6 in Germany',
+    tuition: 'No tuition fees',
     logo: '🌟',
-    slug: 'university-of-queensland'
+    slug: 'rwth-aachen-university'
   }
 ]
 
@@ -72,7 +72,7 @@ export default function UniversitiesPage() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12 space-y-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Australian Universities
+            German Universities
           </h1>
           <p className="text-xl text-gray-600">
             Browse top-ranked universities offering world-class education
@@ -91,11 +91,11 @@ export default function UniversitiesPage() {
               </div>
               <div className="space-y-2 text-center sm:text-left">
                 <p className="text-sm text-gray-600">
-                  “Choosing the right university isn&apos;t about ranking alone—it&apos;s about matching your ambitions with a campus that supports them. Our team curates shortlists based on your goals, portfolio, and visa strategy so you can focus on thriving once you land in Australia.”
+                  “Choosing the right university isn&apos;t about ranking alone—it&apos;s about matching your ambitions with a campus that supports them. Our team curates shortlists based on your goals, portfolio, and visa strategy so you can focus on thriving once you land in Germany.”
                 </p>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">Nguyen Duyen Ha Van · Operation Manager</p>
-                  <p className="text-xs uppercase tracking-wide text-blue-600">BIZZ Education Vietnam</p>
+                  <p className="text-xs uppercase tracking-wide text-blue-600">StartinDE</p>
                 </div>
               </div>
             </CardContent>

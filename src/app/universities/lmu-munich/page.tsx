@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Building2, CalendarDays, GraduationCap, MapPin, Microscope } from "lucide-react"
 
 const heroImage =
-  "https://images.unsplash.com/photo-1577878384911-cd47ad473607?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400"
+  "https://images.unsplash.com/photo-1564594736624-def7a1a0f3df?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400"
 
-export default function MonashUniversityPage() {
+export default function LmuMunichPage() {
   return (
     <main className="bg-white">
       <section className="relative isolate overflow-hidden text-white">
         <Image
-          alt="Melbourne city skyline"
+          alt="Munich city skyline"
           src={heroImage}
           fill
           priority
@@ -22,20 +22,20 @@ export default function MonashUniversityPage() {
         <div className="container mx-auto px-4 py-24 sm:py-28 lg:py-32">
           <div className="max-w-3xl space-y-6">
             <span className="inline-flex items-center rounded-full border border-white/30 px-4 py-1 text-sm uppercase tracking-widest">
-              Future-focused • Melbourne, Victoria
+              Excellence in research • Munich, Bavaria
             </span>
-            <h1 className="text-4xl font-bold sm:text-5xl">Monash University</h1>
+            <h1 className="text-4xl font-bold sm:text-5xl">LMU Munich</h1>
             <p className="text-lg text-blue-100">
-              A dynamic, industry-connected university renowned for engineering, health sciences, and business programs across five Melbourne campuses.
+              One of Europe&apos;s leading research universities, offering a wide range of subjects and a vibrant student life in the heart of Munich.
             </p>
             <div className="flex flex-wrap gap-4 text-sm text-blue-100/90">
               <div className="flex items-center gap-2">
                 <Microscope className="size-4" aria-hidden />
-                Top 40 worldwide for Pharmacy & Pharmacology
+                42 Nobel laureates affiliated with the university
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="size-4" aria-hidden />
-                Clayton & Caulfield campuses • connected by shuttle
+                Main campus in the Maxvorstadt district
               </div>
             </div>
           </div>
@@ -46,12 +46,12 @@ export default function MonashUniversityPage() {
         <div className="container mx-auto px-4">
           <div className="grid gap-12 lg:grid-cols-[2fr,1fr]">
             <div className="space-y-6 text-gray-600">
-              <h2 className="text-2xl font-semibold text-gray-900">Why Monash is a smart fit</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">Why LMU is a smart fit</h2>
               <p>
-                Monash combines globally recognised academics with practical industry immersion. Its Work Integrated Learning programs and Monash Talent recruitment network connect students to internships across Melbourne&apos;s tech, health, and finance sectors.
+                LMU combines world-class research with a strong focus on teaching. Its central location in Munich provides students with access to numerous cultural attractions, internships, and job opportunities in a thriving economic hub.
               </p>
               <p>
-                Vietnamese students appreciate Monash&apos;s supportive arrival services, extensive student housing, and vibrant cultural clubs situated in Melbourne—rated one of the world&apos;s most liveable cities.
+                Vietnamese students appreciate LMU&apos;s comprehensive support services, including language courses, orientation programs, and a dedicated international office, making the transition to studying in Germany seamless.
               </p>
             </div>
 
@@ -60,14 +60,14 @@ export default function MonashUniversityPage() {
                 <GraduationCap className="mt-1 size-5" aria-hidden />
                 <div>
                   <p className="font-semibold">Key faculties</p>
-                  <p>Engineering • Business & Economics • IT • Medicine, Nursing & Health Sciences</p>
+                  <p>Medicine • Law • Business Administration • Physics</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <CalendarDays className="mt-1 size-5" aria-hidden />
                 <div>
                   <p className="font-semibold">Flexible intakes</p>
-                  <p>Multiple start dates via Monash College pathways for Year 12 and Diploma graduates.</p>
+                  <p>Winter and Summer semester start dates for most programs.</p>
                 </div>
               </div>
             </div>
@@ -92,9 +92,9 @@ export default function MonashUniversityPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl rounded-3xl border border-blue-100 bg-blue-50/50 p-10 text-center">
-            <h2 className="text-3xl font-semibold text-gray-900">Plan your Monash pathway with confidence</h2>
+            <h2 className="text-3xl font-semibold text-gray-900">Plan your LMU pathway with confidence</h2>
             <p className="mt-4 text-gray-600">
-              From Monash College diplomas to direct entry, we align the right pathway with your academic profile.
+              From language preparation to direct entry, we align the right pathway with your academic profile.
             </p>
             <Button className="mt-8 h-12 rounded-full px-8 text-base font-semibold" asChild>
               <Link href="/contact">
@@ -112,17 +112,17 @@ export default function MonashUniversityPage() {
 const highlights = [
   {
     title: "Industry partnerships",
-    description: "Collaborations with Siemens, IBM, AstraZeneca, and Victorian Government for internships and research projects.",
+    description: "Collaborations with BMW, Siemens, Allianz, and numerous startups for internships and research projects.",
     icon: Building2,
   },
   {
-    title: "Global campuses",
-    description: "Opportunities to study at Monash Malaysia, Italy, or Indonesia campuses for global experience.",
+    title: "Global network",
+    description: "Opportunities to study at partner universities worldwide for global experience.",
     icon: MapPin,
   },
   {
     title: "Research impact",
-    description: "Home to the Monash Biomedicine Discovery Institute and world-leading green chemistry labs.",
+    description: "Home to the Munich Center for Neurosciences and the Center for Integrated Protein Science Munich.",
     icon: Microscope,
   },
 ]

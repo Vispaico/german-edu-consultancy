@@ -25,8 +25,8 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: 'top-universities-australia-2025',
-    title: 'Top 10 Universities in Australia for International Students 2025',
+    slug: 'top-universities-germany-2025',
+    title: 'Top 10 Universities in Germany for International Students 2025',
     excerpt:
       'Explore the universities Vietnamese families love most—complete with rankings, signature programs, and campus culture insights for 2025 intakes.',
     category: 'Universities',
@@ -36,36 +36,36 @@ export const blogPosts: BlogPost[] = [
     emoji: '📚',
     coverImage:
       'https://images.unsplash.com/photo-1731200303867-d157cdc54ad9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1600',
-    coverImageAlt: 'Students walking past sandstone buildings at an Australian university',
+    coverImageAlt: 'Students walking past historic buildings at a German university',
     sections: [
       {
         heading: 'How we ranked universities for Vietnamese students',
         paragraphs: [
-          'We combined QS 2025 rankings, Vietnamese student satisfaction surveys, and scholarship availability to create a shortlist that balances prestige with practical outcomes.',
+          'We combined THE 2025 rankings, Vietnamese student satisfaction surveys, and DAAD scholarship availability to create a shortlist that balances prestige with practical outcomes.',
           'Our advisors also considered airport access, Vietnamese community support, and internship pipelines that help you secure part-time work quickly.',
         ],
         highlights: [
-          'University of Melbourne retains the #1 spot for Business analytics.',
-          'Monash University shines for Engineering pathways via Monash College.',
-          'University of Queensland climbs two places thanks to new health science labs.',
+          'Technical University of Munich retains the #1 spot for Engineering.',
+          'Heidelberg University shines for Medicine and Life Sciences.',
+          'Humboldt University of Berlin climbs two places thanks to new research centers.',
         ],
       },
       {
         heading: 'Quick snapshot of 2025 intakes',
         image: {
-          src: 'https://images.unsplash.com/photo-1704630665217-dfdc8a48f057?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1400',
-          alt: 'Australian city skyline at sunset with university buildings',
+          src: 'https://images.unsplash.com/photo-1562619425-c307bb834a52?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1400',
+          alt: 'German city skyline at sunset with university buildings',
         },
         paragraphs: [
-          'Melbourne and Sydney remain the top picks, but 2025 sees a surge of interest in Brisbane thanks to more affordable rent and the 2032 Olympics talent push.',
-          'For students seeking smaller class sizes, consider Adelaide or Perth campuses where Vietnamese alumni networks run welcoming committees for new arrivals.',
+          'Munich and Berlin remain the top picks, but 2025 sees a surge of interest in cities like Hamburg and Frankfurt thanks to their strong job markets.',
+          'For students seeking smaller class sizes, consider universities in cities like Freiburg or Aachen where Vietnamese alumni networks run welcoming committees for new arrivals.',
         ],
       },
       {
         heading: 'Scholarship opportunities you should not miss',
         paragraphs: [
-          'Group of Eight universities are doubling down on ASEAN scholarships this year. Highlight STEM achievements, leadership, and community service in your application to stand out.',
-          'Our team has secured tuition waivers between 15–40% by combining university merit scholarships with faculty-specific bursaries—book a consultation to align deadlines now.',
+          'German universities offer numerous scholarships for international students, often funded by the DAAD (German Academic Exchange Service). Highlight your academic achievements, motivation, and community service to stand out.',
+          'Our team has secured tuition fee waivers and monthly stipends by combining university scholarships with DAAD programs—book a consultation to align deadlines now.',
         ],
       },
     ],
@@ -123,10 +123,10 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: 'student-visa-guide-2025',
-    title: 'Complete Guide to Australian Student Visa (Subclass 500) 2025',
+    slug: 'student-visa-guide-germany-2025',
+    title: 'Complete Guide to German Student Visa 2025',
     excerpt:
-      'Understand every step of the Subclass 500 visa—from GTE statements to financial evidence—so your visa file passes on the first submission.',
+      'Understand every step of the German student visa—from blocked accounts to health insurance—so your visa file passes on the first submission.',
     category: 'Visa',
     author: 'Visa Specialist',
     date: '2025-11-01',
@@ -134,91 +134,91 @@ export const blogPosts: BlogPost[] = [
     emoji: '✈️',
     coverImage:
       'https://images.unsplash.com/photo-1530469525856-cf37954301f7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1600',
-    coverImageAlt: 'Passport and visa documents on a desk with Australian flag colours',
+    coverImageAlt: 'Passport and visa documents on a desk with German flag colours',
     sections: [
       {
         heading: 'Document checklist for Vietnamese applicants',
         paragraphs: [
-          'Prepare a valid CoE, OSHC, passports for every family member, and certified academic transcripts. Financial evidence should cover one-year tuition and living costs.',
-          'Remember to translate documents via NAATI-certified translators. Consistency across bank statements, sponsor letters, and tuition receipts is critical.',
+          'Prepare a university admission letter, proof of financial resources (blocked account), travel health insurance, and certified academic transcripts. Financial evidence should cover one-year living costs.',
+          'Remember to get your documents translated by a certified translator. Consistency across all your documents is critical.',
         ],
       },
       {
-        heading: 'Crafting a persuasive Genuine Temporary Entrant statement',
+        heading: 'Crafting a persuasive Letter of Motivation',
         paragraphs: [
           'Explain your academic background, program choice, and career plan upon returning to Vietnam. Show strong ties—family business, property, or job offers.',
-          'Avoid copy-paste templates. Immigration case officers can detect repeated phrasing across submissions; personalise each paragraph with specific details.',
+          'Avoid copy-paste templates. Visa officers can detect repeated phrasing across submissions; personalise each paragraph with specific details.',
         ],
         highlights: [
           'Address any previous visa rejections honestly with new evidence.',
-          'Mention Australian regulations you understand—like work hour limits.',
+          'Mention German regulations you understand—like work hour limits.',
           'Show how the chosen program advances Vietnam-focused career plans.',
         ],
       },
       {
         heading: 'Timeline and interview preparation',
         paragraphs: [
-          'Allow 4–6 weeks from submission to decision. Use that time to rehearse possible phone interviews covering finances, course knowledge, and ties to Vietnam.',
+          'Allow 8–12 weeks from submission to decision. Use that time to rehearse possible interviews covering finances, course knowledge, and ties to Vietnam.',
           'Our advisors conduct bilingual mock interviews and supply embassy updates so you feel confident explaining your study plan in both English and Vietnamese.',
         ],
       },
     ],
     takeaway: [
-      'Double-check consistency between your SOP, GTE, and financial evidence.',
-      'Submit early to avoid seasonal embassy backlogs around July and December.',
+      'Double-check consistency between your Letter of Motivation and financial evidence.',
+      'Submit early to avoid seasonal embassy backlogs.',
       'Practice interview answers in Vietnamese and English to stay composed.',
     ],
   },
   {
-    slug: 'cost-of-living-australia',
-    title: 'Cost of Living for International Students in Australia',
+    slug: 'cost-of-living-germany',
+    title: 'Cost of Living for International Students in Germany',
     excerpt:
-      'Plan your Australian budget with city-by-city breakdowns covering accommodation, groceries, transport, and weekend adventures.',
+      'Plan your German budget with city-by-city breakdowns covering accommodation, groceries, transport, and weekend adventures.',
     category: 'Student Life',
     author: 'Student Advisor',
     date: '2025-10-28',
     readTime: '6 min read',
     emoji: '💰',
     coverImage:
-      'https://images.unsplash.com/photo-1720486570908-5aedf887ee63?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1600',
-    coverImageAlt: 'Adeleide city by night',
+      'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1600',
+    coverImageAlt: 'A student apartment in Germany',
     sections: [
       {
         heading: 'Monthly budget snapshot by city',
         paragraphs: [
-          'Sydney and Melbourne average AUD 2,300 per month including rent, compared to Brisbane at AUD 1,900 and Adelaide at AUD 1,750.',
-          'Consider shared apartments near tram or train lines for affordable commutes. Vietnamese communities in Footscray (Melbourne) and Bankstown (Sydney) offer great food at student-friendly prices.',
+          'Munich and Berlin average EUR 1,000-1,200 per month including rent, compared to Leipzig at EUR 800 and Dresden at EUR 750.',
+          'Consider shared apartments (WGs) near U-Bahn or S-Bahn lines for affordable commutes. Vietnamese communities in Berlin-Lichtenberg and Munich offer great food at student-friendly prices.',
         ],
         highlights: [
-          'Factor in one-off setup costs: bond, TFN registration, and initial groceries.',
-          'Use student concession cards for public transport savings up to 40%.',
+          'Factor in one-off setup costs: deposit (Kaution), semester contribution, and initial groceries.',
+          'Use student semester tickets for public transport savings.',
           'Join Vietnamese student associations for furniture swaps and job leads.',
         ],
       },
       {
         heading: 'Balancing part-time work and study',
         paragraphs: [
-          'With the 48-hour per fortnight limit, target industries with flexible rosters—hospitality, retail, tutoring, or on-campus roles.',
-          'Track your payslips and understand Fair Work minimum wage rules to avoid underpayment. Our team reviews your contracts before you say yes.',
+          'With the 120 full days or 240 half days per year limit, target industries with flexible rosters—hospitality, retail, tutoring, or on-campus roles (HiWi).',
+          'Track your payslips and understand German minimum wage rules to avoid underpayment. Our team reviews your contracts before you say yes.',
         ],
       },
       {
         heading: 'Stretching your dollar without missing out',
         paragraphs: [
           'Cook Vietnamese staples in bulk, plan weekend markets for fresh produce, and split rideshares with friends for late-night study sessions.',
-          'Leverage university wellness centres, free museums days, and community events to enjoy Australian life on a student budget.',
+          'Leverage university sports clubs, free museum days, and community events to enjoy German life on a student budget.',
         ],
       },
     ],
     takeaway: [
       'Build a three-month emergency fund before departure to handle surprises.',
-      'Track spending weekly so you can adjust work hours ahead of census date.',
+      'Track spending weekly so you can adjust work hours ahead of semester start.',
       'Join alumni groups for tips on affordable housing and part-time work leads.',
     ],
   },
   {
-    slug: 'scholarships-vietnamese-students',
-    title: 'Top Scholarships for Vietnamese Students in Australia',
+    slug: 'scholarships-vietnamese-students-germany',
+    title: 'Top Scholarships for Vietnamese Students in Germany',
     excerpt:
       'Unlock merit and need-based scholarships available in 2025, plus the documents you need to submit a standout application.',
     category: 'Scholarships',
@@ -233,11 +233,11 @@ export const blogPosts: BlogPost[] = [
       {
         heading: 'Government and university scholarships to watch',
         paragraphs: [
-          'Australia Awards scholarships cover full tuition and living expenses but require at least two years of relevant work experience upon return to Vietnam.',
-          'University of Sydney, UNSW, and RMIT offer 25–50% tuition waivers for high-achieving Vietnamese students—deadlines fall in April and October.',
+          'DAAD scholarships are the most prestigious, covering full tuition and living expenses, but require a strong academic profile and motivation.',
+          'Universities like TU Munich, Heidelberg University, and LMU Munich offer various scholarships for high-achieving Vietnamese students—deadlines fall in spring and autumn.',
         ],
         highlights: [
-          'Prepare notarised transcripts and IELTS 7.0+ early to meet eligibility.',
+          'Prepare notarised transcripts and German language certificates (if required) early to meet eligibility.',
           'Secure two recommendation letters that highlight leadership and impact.',
           'Draft a compelling personal statement linking goals to community impact.',
         ],
@@ -246,14 +246,14 @@ export const blogPosts: BlogPost[] = [
         heading: 'Strengthening your application narrative',
         paragraphs: [
           'Showcase real impact: tutoring peers, launching a community initiative, or supporting a family business. Numbers and outcomes strengthen your story.',
-          'Explain why studying in Australia accelerates your plan to contribute back home—scholarship panels love concrete roadmaps.',
+          'Explain why studying in Germany accelerates your plan to contribute back home—scholarship panels love concrete roadmaps.',
         ],
       },
       {
         heading: 'Timeline management',
         paragraphs: [
           'Create a scholarship tracker with requirements, deadlines, and status updates. We share a bilingual spreadsheet template with every student we coach.',
-          'Schedule interview practice sessions at least two weeks before the panel. Prepare answers in both English and Vietnamese to stay authentic.',
+          'Schedule interview practice sessions at least two weeks before the panel. Prepare answers in both English and German to stay authentic.',
         ],
       },
     ],
@@ -264,10 +264,10 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: 'choosing-right-course',
-    title: 'How to Choose the Right Course and University',
+    slug: 'choosing-right-course-germany',
+    title: 'How to Choose the Right Course and University in Germany',
     excerpt:
-      'Match your strengths with the perfect Australian course by balancing career goals, visa outcomes, and personal preferences.',
+      'Match your strengths with the perfect German course by balancing career goals, visa outcomes, and personal preferences.',
     category: 'Career Advice',
     author: 'Career Counselor',
     date: '2025-10-22',
@@ -280,7 +280,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: 'Clarify your long-term vision first',
         paragraphs: [
-          'Identify the industries booming in both Australia and Vietnam—technology, healthcare, renewable energy, and finance all seek bilingual talent.',
+          'Identify the industries booming in both Germany and Vietnam—engineering, IT, renewable energy, and healthcare all seek bilingual talent.',
           'List course outcomes, professional accreditations, and migration pathways to understand how each option supports your visa and career plans.',
         ],
       },
@@ -292,7 +292,7 @@ export const blogPosts: BlogPost[] = [
         ],
         highlights: [
           'Book virtual campus tours to feel each university’s vibe before applying.',
-          'Compare graduate salary data using QILT and LinkedIn insights.',
+          'Compare graduate salary data using StepStone and LinkedIn insights.',
           'Chat with current Vietnamese students via our alumni network evenings.',
         ],
       },
@@ -307,7 +307,7 @@ export const blogPosts: BlogPost[] = [
     takeaway: [
       'Rank each university on academics, support, lifestyle, and finances.',
       'Use mock offer comparisons to visualise tuition and scholarship differences.',
-      'Stay flexible—pathway colleges can unlock your dream course within a year.',
+      'Stay flexible—Studienkolleg can unlock your dream course within a year.',
     ],
   },
 ]

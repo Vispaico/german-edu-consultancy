@@ -1,47 +1,123 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
-
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import {
+  Briefcase,
+  ClipboardList,
+  FileSignature,
+  Plane,
+  ShieldCheck,
+  TrendingUp,
+  Users,
+  ArrowRight,
+  CheckCircle2,
+} from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import { servicesList, type ServiceSlug } from '@/data/services'
-import { serviceDetails } from '@/data/service-details'
 
-type ServicePageProps = {
-  params: Promise<{
-    slug: string
-  }>
+const service = {
+  slug: 'vocational-training',
+  hero: {
+    eyebrow: 'Hands-on careers',
+    title: 'Vocational Training in Germany',
+    description:
+      'Explore dual-system apprenticeships that blend classroom theory with paid, on-the-job training, creating a direct pathway to skilled employment in Germany’s strongest industries.',
+    image:
+      'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400',
+    imageAlt: 'Technician working on a complex piece of machinery',
+  },
+  stats: [
+    {
+      value: '300+',
+      label: 'Recognized occupations',
+      description: 'Access a wide range of state-recognized vocational roles in IT, healthcare, mechanics, and crafts.',
+    },
+    {
+      value: '€900+',
+      label: 'Average monthly stipend',
+      description: 'Earn while you learn with a competitive training salary that covers living expenses.',
+    },
+    {
+      value: '90%',
+      label: 'Employment rate',
+      description: 'Graduates are often hired directly by their training companies, ensuring a seamless career start.',
+    },
+  ],
+  benefits: [
+    {
+      icon: Briefcase,
+      title: 'Practical skill mastery',
+      description: 'Gain certified, in-demand skills through real-world projects at leading German companies.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Job security',
+      description: 'Enter high-demand fields with qualifications that are respected globally and lead to permanent residency.',
+    },
+    {
+      icon: TrendingUp,
+      title: 'Debt-free education',
+      description: 'Your training is company-sponsored, and you receive a monthly salary, avoiding student loans.',
+    },
+  ],
+  focus: {
+    eyebrow: 'Your training pathway',
+    title: 'From application to apprenticeship contract',
+    description:
+      'We guide you through finding the right "Ausbildung" program, preparing a compelling application, and acing interviews with German companies.',
+    bullets: [
+      'Matching your interests with available apprenticeship roles in your desired city',
+      'Crafting a German-style CV (Lebenslauf) and cover letter that impresses employers',
+      'Intensive interview coaching to handle technical and behavioral questions',
+    ],
+    image:
+      'https://images.unsplash.com/photo-1758873268379-39301764793f?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'Advisor helping a student with their vocational training application',
+  },
+  support: {
+    eyebrow: 'Seamless integration',
+    title: 'Full support for a successful start in Germany',
+    description:
+      'Our support extends beyond the contract, helping you with visa processes, finding accommodation, and adapting to the German work culture.',
+    bullets: [
+      'Specialized visa guidance for vocational trainees, including financial proofs',
+      'Accommodation support and city registration (Anmeldung) assistance',
+      'Cultural workshops on workplace etiquette and communication in Germany',
+    ],
+    image:
+      'https://images.unsplash.com/photo-1665686308827-eb62e4f6604d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
+    imageAlt: 'A group of young professionals in a modern German office',
+  },
+  process: [
+    {
+      icon: ClipboardList,
+      title: 'Career assessment',
+      description: 'Identify your skills and interests to find the perfect vocational training field.',
+    },
+    {
+      icon: FileSignature,
+      title: 'Application crafting',
+      description: 'Prepare a standout application package tailored to German employers.',
+    },
+    {
+      icon: Users,
+      title: 'Interview preparation',
+      description: 'Undergo mock interviews to build confidence and refine your answers.',
+    },
+    {
+      icon: Plane,
+      title: 'Relocation support',
+      description: 'Receive comprehensive assistance with visa, housing, and settling in.',
+    },
+  ],
+  cta: {
+    title: 'Start your hands-on career in Germany',
+    description:
+      'Contact us for a consultation to explore vocational training opportunities and begin your application.',
+    buttonLabel: 'Explore vocational training',
+  },
 }
 
-export async function generateStaticParams() {
-  return servicesList.map(({ slug }) => ({ slug }))
-}
-
-export async function generateMetadata({ params }: ServicePageProps) {
-  const { slug } = await params
-  const service = serviceDetails[slug as ServiceSlug]
-
-  if (!service) {
-    return {
-      title: 'Service not found',
-    }
-  }
-
-  return {
-    title: `${service.hero.title} | StartinDE`,
-    description: service.hero.description,
-  }
-}
-
-export default async function ServiceDetailPage({ params }: ServicePageProps) {
-  const { slug } = await params
-  const service = serviceDetails[slug as ServiceSlug]
-
-  if (!service) {
-    notFound()
-  }
-
+export default function VocationalTrainingPage() {
   return (
     <main className="bg-white text-gray-900">
       <section className="relative isolate overflow-hidden text-white">

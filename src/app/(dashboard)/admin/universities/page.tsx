@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button'
 
 export default function AdminUniversitiesPage() {
   const universities = [
-    { id: 1, name: 'University of Melbourne', city: 'Melbourne', programs: 45, students: 23 },
-    { id: 2, name: 'Australian National University', city: 'Canberra', programs: 38, students: 18 },
-    { id: 3, name: 'UNSW', city: 'Sydney', programs: 52, students: 31 }
+    { id: 1, name: 'Technical University of Munich', city: 'Munich', programs: 50, students: 30 },
+    { id: 2, name: 'Heidelberg University', city: 'Heidelberg', programs: 42, students: 25 },
+    { id: 3, name: 'LMU Munich', city: 'Munich', programs: 55, students: 35 }
   ]
 
   return (
