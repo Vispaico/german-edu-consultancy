@@ -21,8 +21,8 @@ export default function ServicesPage() {
               <CardContent className="flex flex-col items-center gap-4 px-6 py-6 text-left sm:flex-row sm:items-start">
                 <div className="shrink-0 overflow-hidden rounded-full border border-blue-200 shadow-sm">
                   <Image
-                    src="/images/team/ngan_avatar.webp"
-                    alt="Nguyen D. Ngan"
+                    src="/images/team/marita_avatar.webp"
+                    alt="Marita Teitge"
                     width={64}
                     height={64}
                     className="h-16 w-16 object-cover"
@@ -34,7 +34,7 @@ export default function ServicesPage() {
                     “Every family&apos;s journey is different, so our consultants map out the exact coaching, documentation, and visa milestones you need. That curated plan is what keeps students confident—from first consultation to orientation week.”
                   </p>
                   <div>
-                    <p className="text-sm font-semibold text-gray-900">Nguyen Duyen Ngan · Branch Director</p>
+                    <p className="text-sm font-semibold text-gray-900">Marita Teitge · Abroad Branch Director</p>
                     <p className="text-xs uppercase tracking-wide text-blue-600">StartinDE</p>
                   </div>
                 </div>

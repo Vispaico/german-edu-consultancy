@@ -81,8 +81,8 @@ export default function UniversitiesPage() {
             <CardContent className="flex flex-col items-center gap-4 px-6 py-6 text-left sm:flex-row sm:items-start">
               <div className="shrink-0 overflow-hidden rounded-full border border-blue-100 shadow-sm">
                 <Image
-                  src="/images/team/van_avatar.webp"
-                  alt="Ha Van"
+                  src="/images/team/huyen_avatar.webp"
+                  alt="Do Thi Huyen"
                   width={64}
                   height={64}
                   className="h-16 w-16 object-cover"
@@ -94,7 +94,7 @@ export default function UniversitiesPage() {
                   “Choosing the right university isn&apos;t about ranking alone—it&apos;s about matching your ambitions with a campus that supports them. Our team curates shortlists based on your goals, portfolio, and visa strategy so you can focus on thriving once you land in Germany.”
                 </p>
                 <div>
-                  <p className="text-sm font-semibold text-gray-900">Nguyen Duyen Ha Van · Operation Manager</p>
+                  <p className="text-sm font-semibold text-gray-900">Do Thi Huyen · General Director & Operation Manager</p>
                   <p className="text-xs uppercase tracking-wide text-blue-600">StartinDE</p>
                 </div>
               </div>
