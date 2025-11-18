@@ -56,7 +56,7 @@ export default function DashboardLayout({
         >
           <div className="flex h-full flex-col">
             <div className="flex items-center justify-between border-b px-4 py-4">
-              <span className="font-bold text-lg">BIZZ EDUCATION</span>
+              <span className="font-bold text-lg">StartinDE</span>
               <Button
                 variant="ghost"
                 size="icon"
