@@ -35,7 +35,7 @@ export function HeroSection() {
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-linear-to-br from-black/50 via-slate-700/45 to-blue-700/55"
+        className="absolute inset-0 -z-10 bg-linear-to-br from-black/50 via-slate-700/25 to-blue-700/55"
       />
       <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.25),transparent_60%)]" />
 
@@ -52,19 +52,19 @@ export function HeroSection() {
             A journey with experts who care.
           </h1>
           <p className="max-w-2xl text-lg text-white rounded-2xl bg-white/15 p-4 shadow-sm ring-1 ring-white/20 backdrop-blur sm:text-xl">
-            Our dedicated advisors mentor you from course selection to visa approval, ensuring a confident transition into top German universities.
+            Our dedicated advisors mentor you from program selection to visa approval, ensuring a smooth transition into the German life.
           </p>
         </div>
 
         <div className="flex flex-col items-start gap-3">
           <Button
             size="lg"
-            className="h-16 rounded-full px-7 text-lg font-semibold shadow-lg shadow-blue-500/30 transition-transform duration-200 hover:-translate-y-0.5 bg-blue-500 text-white hover:bg-blue-400 focus-visible:ring-blue-200"
+            className="h-16 rounded-full px-7 text-lg font-semibold shadow-lg shadow-blue-500/30 transition-transform duration-200 hover:-translate-y-0.5 bg-linear-to-br from-black/80 via-red-500/80 to-yellow-400/90 text-white hover:bg-blue-400 focus-visible:ring-blue-200"
             asChild
           >
             <Link href="/register" className="flex items-center gap-2">
               <GraduationCap className="h-6 w-6" aria-hidden />
-              <span>Start for Free - free resources inside</span>
+              <span>Start for Free - Free Resources inside</span>
               <ChevronRight className="h-6 w-6" aria-hidden />
             </Link>
           </Button>
@@ -78,7 +78,7 @@ export function HeroSection() {
                 key={stat.label}
                 className="flex min-w-56 flex-1 items-center gap-4 rounded-2xl bg-white/15 p-4 shadow-sm ring-1 ring-white/20 backdrop-blur"
               >
-                <div className="flex size-12 items-center justify-center rounded-full bg-blue-400/20 text-blue-100">
+                <div className="flex size-12 items-center justify-center rounded-full bg-blue-600/50 text-blue-100">
                   <Icon aria-hidden className="size-6" />
                 </div>
                 <div>
