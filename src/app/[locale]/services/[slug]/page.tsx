@@ -10,10 +10,10 @@ import { locales, type Locale } from '@/i18n/routing'
 import { Link } from '@/navigation'
 
 type ServicePageProps = {
-  params: {
-    locale: Locale
+  params: Promise<{
+    locale: string
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -22,8 +22,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ServicePageProps) {
-  const { slug, locale } = await Promise.resolve(params)
-  const service = getServiceDetail(locale, slug as ServiceSlug)
+  const { slug, locale } = await params
+  const service = getServiceDetail(locale as Locale, slug as ServiceSlug)
 
   if (!service) {
     return {
@@ -38,8 +38,8 @@ export async function generateMetadata({ params }: ServicePageProps) {
 }
 
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
-  const { slug, locale } = await Promise.resolve(params)
-  const service = getServiceDetail(locale, slug as ServiceSlug)
+  const { slug, locale } = await params
+  const service = getServiceDetail(locale as Locale, slug as ServiceSlug)
 
   if (!service) {
     notFound()

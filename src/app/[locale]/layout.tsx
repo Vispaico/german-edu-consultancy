@@ -13,12 +13,13 @@ export function generateStaticParams() {
 
 type LocaleLayoutProps = {
   children: React.ReactNode
-  params: { locale: (typeof locales)[number] }
+  params: Promise<{ locale: string }>
 }
 
 export async function generateMetadata({ params }: LocaleLayoutProps): Promise<Metadata> {
-  const { locale } = await Promise.resolve(params)
-  const t = await getTranslations({ locale, namespace: 'metadata' })
+  const { locale } = await params
+  const safeLocale = locales.includes(locale as (typeof locales)[number]) ? (locale as (typeof locales)[number]) : locales[0]
+  const t = await getTranslations({ locale: safeLocale, namespace: 'metadata' })
 
   return {
     title: t('title'),
@@ -27,19 +28,20 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
 }
 
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
-  const { locale } = await Promise.resolve(params)
-  setRequestLocale(locale)
+  const { locale } = await params
+  const safeLocale = locales.includes(locale as (typeof locales)[number]) ? (locale as (typeof locales)[number]) : locales[0]
+  setRequestLocale(safeLocale)
 
   let messages
   try {
-    messages = await getMessages({ locale })
+    messages = await getMessages({ locale: safeLocale })
   } catch (error) {
     console.error(error)
     notFound()
   }
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider locale={safeLocale} messages={messages}>
       <Header />
       {children}
       <Footer />

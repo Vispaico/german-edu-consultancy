@@ -18,8 +18,8 @@ import {
   Star,
 } from 'lucide-react'
 
-export default async function HomePage({ params }: { params: { locale: string } }) {
-  const { locale } = await Promise.resolve(params)
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
   const t = await getTranslations({ locale })
 
   const heroContent = t.raw('hero') as {

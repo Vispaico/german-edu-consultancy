@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button'
 import { servicesList } from '@/data/services'
 import { Link } from '@/navigation'
 
-export default async function ServicesPage({ params }: { params: { locale: string } }) {
-  const { locale } = await Promise.resolve(params)
+export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
   const t = await getTranslations({ locale })
 
   const heroTitle = t('services.page.hero.title')

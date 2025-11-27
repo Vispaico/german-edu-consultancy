@@ -14,9 +14,9 @@ type FileKey = keyof typeof DOWNLOADABLE_FILES
 
 export async function GET(
   _request: Request,
-  context: { params: { file: string } }
+  context: { params: Promise<{ file: string }> }
 ) {
-  const { file } = await Promise.resolve(context.params)
+  const { file } = await context.params
   const fileKey = file as FileKey
   const fileConfig = DOWNLOADABLE_FILES[fileKey]
 
