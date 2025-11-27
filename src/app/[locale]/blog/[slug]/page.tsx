@@ -8,9 +8,9 @@ import { Button } from '@/components/ui/button'
 import { blogPostBySlug, blogPosts } from '@/data/blog-posts'
 
 type PageProps = {
-  params: Promise<{
+  params: {
     slug: string
-  }>
+  }
 }
 
 export async function generateStaticParams() {
@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params
+  const { slug } = await Promise.resolve(params)
   const post = blogPostBySlug[slug]
 
   if (!post) {
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function BlogArticlePage({ params }: PageProps) {
-  const { slug } = await params
+  const { slug } = await Promise.resolve(params)
   const post = blogPostBySlug[slug]
 
   if (!post) {

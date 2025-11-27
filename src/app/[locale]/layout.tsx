@@ -13,11 +13,11 @@ export function generateStaticParams() {
 
 type LocaleLayoutProps = {
   children: React.ReactNode
-  params: Promise<{ locale: (typeof locales)[number] }>
+  params: { locale: (typeof locales)[number] }
 }
 
 export async function generateMetadata({ params }: LocaleLayoutProps): Promise<Metadata> {
-  const { locale } = await params
+  const { locale } = await Promise.resolve(params)
   const t = await getTranslations({ locale, namespace: 'metadata' })
 
   return {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
 }
 
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
-  const { locale } = await params
+  const { locale } = await Promise.resolve(params)
   setRequestLocale(locale)
 
   let messages
