@@ -14,12 +14,26 @@ const en = {
   navigation: {
     logoAlt: 'StartinDE logo',
     items: {
-      universities: 'Universities',
-      vocational: 'Vocational Training',
-      diplomaConversion: 'Diploma Conversion',
+      study: 'Study',
+      work: 'Work',
+      living: 'Living',
       services: 'Services',
       blog: 'Blog',
       contact: 'Contact',
+    },
+    studyMenu: {
+      guide: 'Study in Germany Guide',
+      guideDesc: 'Complete roadmap for international students',
+      universities: 'Browse Universities',
+      universitiesDesc: 'Top-ranked German institutions',
+      vocational: 'Vocational Training',
+      vocationalDesc: 'Dual education (Ausbildung) opportunities',
+    },
+    workMenu: {
+      guide: 'Work in Germany Guide',
+      guideDesc: 'Visa types, Blue Card & Job Search',
+      conversion: 'Diploma Recognition',
+      conversionDesc: 'Get your qualifications recognized',
     },
     servicesMenu: {
       label: 'Services',
@@ -34,6 +48,7 @@ const en = {
       toggle: 'Toggle navigation',
     },
   },
+
   hero: {
     titleSegment: 'with Confidence.',
     titlePrefix: 'Live in Germany',

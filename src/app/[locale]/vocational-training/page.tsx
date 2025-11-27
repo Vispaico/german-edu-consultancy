@@ -13,6 +13,23 @@ import {
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { constructMetadata } from '@/lib/metadata'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = constructMetadata({
+  title: 'Vocational Training in Germany (Ausbildung) - Earn While You Learn',
+  description: 'Discover dual-system apprenticeships in Germany. Get paid €900+/month while training in IT, healthcare, mechanics, and crafts. 90% employment rate after graduation.',
+  keywords: [
+    'ausbildung in germany',
+    'vocational training germany',
+    'dual education system germany',
+    'apprenticeship in germany for foreigners',
+    'paid vocational training germany',
+    'ausbildung for international students',
+    'learn and earn in germany',
+    'german vocational schools',
+  ],
+})
 
 const service = {
   slug: 'vocational-training',

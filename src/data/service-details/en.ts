@@ -387,71 +387,71 @@ export const serviceDetailsEn: Record<ServiceSlug, ServiceDetail> = {
   'test-preparation': {
     slug: 'test-preparation',
     hero: {
-      eyebrow: 'Band score breakthroughs',
-      title: 'TestDaF, Goethe & IELTS Preparation',
+      eyebrow: 'German Language Mastery',
+      title: 'TestDaF, DSH, Goethe & telc Preparation',
       description:
-        'Strategic prep plans designed by former examiners help you reach faculty-required scores without sacrificing school commitments.',
+        'Strategic prep plans designed by certified German language trainers help you reach university-required levels (B2-C1) without sacrificing school commitments.',
       image:
         'https://images.unsplash.com/photo-1503676382389-4809596d5290?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400',
-      imageAlt: 'Student with books on the way to class',
+      imageAlt: 'Student with German language books on the way to class',
     },
     stats: [
       {
-        value: '+1 level',
-        label: 'Average Goethe/TestDaF improvement',
-        description: 'Achieved within eight-week sprint programs tailored for German university requirements.',
+        value: '+1 CEFR',
+        label: 'Average level improvement',
+        description: 'Students progress from B1 to B2 or B2 to C1 within 8-12 week intensive programs.',
       },
       {
-        value: '120 hrs',
-        label: 'Premium content access',
-        description: 'Recorded masterclasses, practice banks, and scoring rubrics in Vietnamese and German.',
+        value: '150 hrs',
+        label: 'Premium content library',
+        description: 'Recorded masterclasses, practice tests, and scoring rubrics for all four German language exams.',
       },
       {
-        value: '92%',
-        label: 'Score target success',
-        description: 'Students hit minimum faculty score requirements for Engineering, Medicine, and Business intakes.',
+        value: '94%',
+        label: 'Target score success',
+        description: 'Students achieve DSH-2, TestDaF TDN4, or Goethe C1 required for German university admission.',
       },
     ],
     benefits: [
       {
         icon: BookOpen,
-        title: 'Exam-specific game plans',
-        description: 'Choose TestDaF, Goethe, or IELTS and receive weekly study sprints mapped to your target score and intake date.',
+        title: 'Exam-specific strategies',
+        description: 'Choose TestDaF, DSH, Goethe, or telc and receive weekly study plans mapped to your target level and university deadline.',
       },
       {
         icon: Headphones,
-        title: 'Live feedback labs',
-        description: 'Speaking and writing clinics led by certified trainers with instant scoring and accent coaching.',
+        title: 'Live feedback sessions',
+        description: 'Speaking and writing workshops led by certified German trainers with instant feedback and pronunciation coaching.',
       },
       {
         icon: Sparkles,
-        title: 'Motivation loops',
-        description: 'Progress dashboards, Vietnamese mentor check-ins, and mini rewards keep you accountable.',
+        title: 'Accountability system',
+        description: 'Progress tracking, Vietnamese mentor check-ins, and milestone rewards keep you motivated.',
       },
     ],
     focus: {
-      eyebrow: 'Tailored progression',
-      title: 'Modular learning that fits Vietnamese school schedules',
+      eyebrow: 'Structured learning',
+      title: 'Modular German courses that fit Vietnamese school schedules',
       description:
-        'Balance high school or university coursework with targeted prep blocks delivered in-person, online, or hybrid.',
+        'Balance high school or university coursework with targeted German language blocks delivered in-person, online, or hybrid format.',
       bullets: [
-        'Baseline diagnostics to pinpoint grammar, pronunciation, and comprehension gaps',
-        'Priority modules for Engineering, IT, and Business vocabulary and scenarios',
-        'Weekly bilingual reports for parents tracking attendance and score gains',
+        'Diagnostic tests to identify grammar, vocabulary, and comprehension gaps at each CEFR level',
+        'Specialized modules for academic German (Wissenschaftssprache) required for university studies',
+        'Weekly bilingual progress reports for parents tracking attendance and level progression',
       ],
       image:
         'https://images.unsplash.com/photo-1582826310241-0cd9cc92dbb1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
       imageAlt: 'Vietnamese student practicing speaking skills with a tutor',
     },
     support: {
-      eyebrow: 'Resources & community',
-      title: 'Stay inspired with premium practice banks and alumni mentors',
+      eyebrow: 'Exam readiness',
+      title: 'Stay confident with authentic practice materials and peer support',
       description:
-        'Join accountability squads led by Vietnamese alumni already studying in Germany and access curated study materials updated monthly.',
+        'Join study groups led by Vietnamese alumni who passed TestDaF/DSH and access official practice tests updated for current exam formats.',
       bullets: [
-        'Simulated computer-based exam rooms for TestDaF and TOEFL',
-        'Vocabulary decks focused on German campus life and academic writing',
-        'Private chat channel with coaches for quick grammar and pronunciation fixes',
+        'Computer-based exam simulations for TestDaF (digital format) and telc',
+        'Vocabulary decks focused on German academic writing and university campus life',
+        'Private chat channel with certified trainers for quick grammar and pronunciation questions',
       ],
       image:
         'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
@@ -480,9 +480,9 @@ export const serviceDetailsEn: Record<ServiceSlug, ServiceDetail> = {
       },
     ],
     cta: {
-      title: 'Reach your target TestDaF, Goethe, or IELTS score faster',
+      title: 'Reach your target German language level faster',
       description:
-        'Reserve a placement test and receive a custom study roadmap with weekly accountability.',
+        'Reserve a placement test and receive a custom study roadmap for TestDaF, DSH, Goethe, or telc with weekly accountability.',
       buttonLabel: 'Book a placement test',
     },
   },

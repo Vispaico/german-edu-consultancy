@@ -10,7 +10,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { servicesList } from '@/data/services'
@@ -19,7 +18,7 @@ import { LanguageSwitcher } from './language-switcher'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false)
+  const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null)
   const t = useTranslations()
   const tNav = useTranslations('navigation')
 
@@ -30,10 +29,32 @@ export function Header() {
   }))
 
   const navItems = [
-    { href: '/universities', label: tNav('items.universities') },
-    { href: '/vocational-training', label: tNav('items.vocational') },
-    { href: '/diploma-conversion', label: tNav('items.diplomaConversion') },
-    { href: '/services', label: tNav('servicesMenu.label'), children: serviceNavLinks },
+    {
+      label: tNav('items.study'),
+      href: '/study-in-germany',
+      children: [
+        { href: '/study-in-germany', label: tNav('studyMenu.guide'), description: tNav('studyMenu.guideDesc') },
+        { href: '/universities', label: tNav('studyMenu.universities'), description: tNav('studyMenu.universitiesDesc') },
+        { href: '/vocational-training', label: tNav('studyMenu.vocational'), description: tNav('studyMenu.vocationalDesc') },
+      ]
+    },
+    {
+      label: tNav('items.work'),
+      href: '/work-in-germany',
+      children: [
+        { href: '/work-in-germany', label: tNav('workMenu.guide'), description: tNav('workMenu.guideDesc') },
+        { href: '/diploma-conversion', label: tNav('workMenu.conversion'), description: tNav('workMenu.conversionDesc') },
+      ]
+    },
+    { href: '/living-in-germany', label: tNav('items.living') },
+    {
+      label: tNav('servicesMenu.label'),
+      href: '/services',
+      children: [
+        { href: '/services', label: tNav('servicesMenu.allServices'), description: tNav('servicesMenu.allServicesDescription') },
+        ...serviceNavLinks
+      ]
+    },
     { href: '/blog', label: tNav('items.blog') },
     { href: '/contact', label: tNav('items.contact') },
   ]
@@ -41,10 +62,14 @@ export function Header() {
   const toggleMenu = () => {
     setIsMenuOpen((prev) => {
       if (prev) {
-        setIsServicesMenuOpen(false)
+        setOpenMobileSubmenu(null)
       }
       return !prev
     })
+  }
+
+  const toggleMobileSubmenu = (label: string) => {
+    setOpenMobileSubmenu((prev) => (prev === label ? null : label))
   }
 
   return (
@@ -61,40 +86,36 @@ export function Header() {
               priority
             />
           </Link>
-          
+
+          {/* Desktop Navigation */}
           <nav className="hidden items-center gap-6 md:flex">
             {navItems.map((item) =>
               item.children ? (
-                <DropdownMenu key={item.href}>
+                <DropdownMenu key={item.label}>
                   <DropdownMenuTrigger asChild>
                     <button
                       type="button"
-                      className="inline-flex items-center gap-1 text-gray-600 transition hover:text-gray-900 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                      className="inline-flex items-center gap-1 text-gray-600 transition hover:text-gray-900 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600 font-medium"
                     >
                       {item.label}
-                      <ChevronDown className="size-4" aria-hidden />
+                      <ChevronDown className="size-4 opacity-50" aria-hidden />
                     </button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-80 rounded-xl border border-blue-100 bg-white/95 backdrop-blur">
-                    <DropdownMenuItem asChild className="flex flex-col gap-1 rounded-lg py-3">
-                      <Link href={item.href} className="text-left">
-                        <span className="text-sm font-semibold text-gray-900">{tNav('servicesMenu.allServices')}</span>
-                        <span className="text-xs text-gray-500">{tNav('servicesMenu.allServicesDescription')}</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator className="-mx-1" />
+                  <DropdownMenuContent align="start" className="w-80 rounded-xl border border-blue-100 bg-white/95 backdrop-blur p-2">
                     {item.children.map((child) => (
-                      <DropdownMenuItem key={child.href} asChild className="flex flex-col gap-1 rounded-lg py-3">
-                        <Link href={child.href} className="text-left">
+                      <DropdownMenuItem key={child.href} asChild className="rounded-lg p-3 focus:bg-blue-50 cursor-pointer">
+                        <Link href={child.href} className="flex flex-col gap-1">
                           <span className="text-sm font-semibold text-gray-900">{child.label}</span>
-                          <span className="text-xs text-gray-500">{child.description}</span>
+                          {child.description && (
+                            <span className="text-xs text-gray-500">{child.description}</span>
+                          )}
                         </Link>
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Link key={item.href} href={item.href} className="text-gray-600 hover:text-gray-900">
+                <Link key={item.href} href={item.href} className="text-gray-600 hover:text-gray-900 font-medium">
                   {item.label}
                 </Link>
               )
@@ -111,6 +132,7 @@ export function Header() {
             </Button>
           </div>
 
+          {/* Mobile Menu Toggle */}
           <button
             type="button"
             onClick={toggleMenu}
@@ -124,55 +146,42 @@ export function Header() {
         </div>
       </div>
 
+      {/* Mobile Navigation */}
       <div
         id="mobile-navigation"
-        className={`md:hidden transition-[max-height] duration-300 ease-in-out overflow-hidden border-t border-gray-200 bg-white ${
-          isMenuOpen ? 'max-h-128' : 'max-h-0'
-        }`}
+        className={`md:hidden transition-[max-height] duration-300 ease-in-out overflow-hidden border-t border-gray-200 bg-white ${isMenuOpen ? 'max-h-[85vh] overflow-y-auto' : 'max-h-0'
+          }`}
       >
         <div className="container mx-auto px-4 py-4 space-y-4">
-          <nav className="flex flex-col gap-3">
+          <nav className="flex flex-col gap-2">
             {navItems.map((item) =>
               item.children ? (
-                <div key={item.href} className="space-y-2">
+                <div key={item.label} className="space-y-1">
                   <button
                     type="button"
-                    onClick={() => setIsServicesMenuOpen((prev) => !prev)}
-                    className="flex w-full items-center justify-between rounded-lg border border-gray-200 px-3 py-2 text-left text-gray-700 transition hover:border-gray-300 hover:text-gray-900 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                    aria-expanded={isServicesMenuOpen ? 'true' : 'false'}
+                    onClick={() => toggleMobileSubmenu(item.label)}
+                    className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-gray-700 font-medium hover:bg-gray-50 transition"
+                    aria-expanded={openMobileSubmenu === item.label ? 'true' : 'false'}
                   >
                     <span>{item.label}</span>
                     <ChevronDown
-                      className={`size-4 transition-transform ${isServicesMenuOpen ? 'rotate-180' : ''}`}
+                      className={`size-4 transition-transform ${openMobileSubmenu === item.label ? 'rotate-180' : ''}`}
                       aria-hidden
                     />
                   </button>
                   <div
-                    className={`space-y-2 overflow-hidden transition-[max-height] duration-300 ease-in-out ${
-                      isServicesMenuOpen ? 'max-h-80' : 'max-h-0'
-                    }`}
+                    className={`space-y-1 overflow-hidden transition-[max-height] duration-300 ease-in-out pl-4 border-l-2 border-gray-100 ml-3 ${openMobileSubmenu === item.label ? 'max-h-96' : 'max-h-0'
+                      }`}
                   >
-                    <Link
-                      href={item.href}
-                      className="block rounded-lg bg-gray-50 px-3 py-2 text-sm font-semibold text-gray-800"
-                      onClick={() => {
-                        setIsMenuOpen(false)
-                        setIsServicesMenuOpen(false)
-                      }}
-                    >
-                      {tNav('servicesMenu.allServices')}
-                    </Link>
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                        onClick={() => {
-                          setIsMenuOpen(false)
-                          setIsServicesMenuOpen(false)
-                        }}
+                        className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                        onClick={() => setIsMenuOpen(false)}
                       >
-                        {child.label}
+                        <div className="font-medium">{child.label}</div>
+                        {child.description && <div className="text-xs text-gray-400 mt-0.5">{child.description}</div>}
                       </Link>
                     ))}
                   </div>
@@ -181,11 +190,8 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={() => {
-                    setIsMenuOpen(false)
-                    setIsServicesMenuOpen(false)
-                  }}
-                  className="text-gray-700 hover:text-gray-900"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block rounded-lg px-3 py-2 text-gray-700 font-medium hover:bg-gray-50"
                 >
                   {item.label}
                 </Link>
@@ -193,30 +199,20 @@ export function Header() {
             )}
           </nav>
 
-          <div className="flex flex-col gap-2 pt-2">
+          <div className="flex flex-col gap-2 pt-4 border-t border-gray-100">
             <LanguageSwitcher />
-            <Button variant="ghost" asChild>
-              <Link
-                href="/login"
-                onClick={() => {
-                  setIsMenuOpen(false)
-                  setIsServicesMenuOpen(false)
-                }}
-              >
-                {tNav('auth.login')}
-              </Link>
-            </Button>
-            <Button asChild>
-              <Link
-                href="/register"
-                onClick={() => {
-                  setIsMenuOpen(false)
-                  setIsServicesMenuOpen(false)
-                }}
-              >
-                {tNav('auth.signup')}
-              </Link>
-            </Button>
+            <div className="grid grid-cols-2 gap-3 mt-2">
+              <Button variant="outline" asChild className="w-full justify-center">
+                <Link href="/login" onClick={() => setIsMenuOpen(false)}>
+                  {tNav('auth.login')}
+                </Link>
+              </Button>
+              <Button asChild className="w-full justify-center">
+                <Link href="/register" onClick={() => setIsMenuOpen(false)}>
+                  {tNav('auth.signup')}
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

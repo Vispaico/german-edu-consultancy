@@ -12,6 +12,23 @@ import {
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { constructMetadata } from '@/lib/metadata'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = constructMetadata({
+  title: 'Diploma Recognition in Germany (Anerkennung) - Get Your Qualifications Certified',
+  description: 'Navigate the German diploma recognition process. Get your foreign qualifications officially certified for the German job market. 1000+ diplomas assessed, 6-month average process.',
+  keywords: [
+    'diploma recognition germany',
+    'anerkennung germany',
+    'foreign qualification recognition germany',
+    'professional recognition germany',
+    'diploma conversion germany',
+    'get diploma recognized in germany',
+    'foreign degree recognition germany',
+    'credential evaluation germany',
+  ],
+})
 
 const service = {
   slug: 'diploma-conversion',
