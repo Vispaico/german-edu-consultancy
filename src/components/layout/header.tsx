@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { ChevronDown, Menu, X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -14,25 +14,29 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { servicesList } from '@/data/services'
-
-const serviceNavLinks = servicesList.map((service) => ({
-  href: `/services/${service.slug}`,
-  label: service.title,
-  description: service.description,
-}))
-
-const navItems = [
-  { href: '/universities', label: 'Universities' },
-  { href: '/vocational-training', label: 'Vocational Training' },
-  { href: '/diploma-conversion', label: 'Diploma Conversion' },
-  { href: '/services', label: 'Services', children: serviceNavLinks },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
-]
+import { Link } from '@/navigation'
+import { LanguageSwitcher } from './language-switcher'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false)
+  const t = useTranslations()
+  const tNav = useTranslations('navigation')
+
+  const serviceNavLinks = servicesList.map((service) => ({
+    href: `/services/${service.slug}`,
+    label: t(service.titleKey),
+    description: t(service.descriptionKey),
+  }))
+
+  const navItems = [
+    { href: '/universities', label: tNav('items.universities') },
+    { href: '/vocational-training', label: tNav('items.vocational') },
+    { href: '/diploma-conversion', label: tNav('items.diplomaConversion') },
+    { href: '/services', label: tNav('servicesMenu.label'), children: serviceNavLinks },
+    { href: '/blog', label: tNav('items.blog') },
+    { href: '/contact', label: tNav('items.contact') },
+  ]
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => {
@@ -44,12 +48,12 @@ export function Header() {
   }
 
   return (
-    <header className="border-b bg-white sticky top-0 z-50">
+    <header className="sticky top-0 z-50 border-b bg-white">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-18">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              alt="Startin DE logo"
+              alt={tNav('logoAlt')}
               src="/images/Logo-StartinDE.webp"
               width={160}
               height={48}
@@ -58,7 +62,7 @@ export function Header() {
             />
           </Link>
           
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden items-center gap-6 md:flex">
             {navItems.map((item) =>
               item.children ? (
                 <DropdownMenu key={item.href}>
@@ -74,8 +78,8 @@ export function Header() {
                   <DropdownMenuContent align="start" className="w-80 rounded-xl border border-blue-100 bg-white/95 backdrop-blur">
                     <DropdownMenuItem asChild className="flex flex-col gap-1 rounded-lg py-3">
                       <Link href={item.href} className="text-left">
-                        <span className="text-sm font-semibold text-gray-900">All Services</span>
-                        <span className="text-xs text-gray-500">Explore every way we support your study journey</span>
+                        <span className="text-sm font-semibold text-gray-900">{tNav('servicesMenu.allServices')}</span>
+                        <span className="text-xs text-gray-500">{tNav('servicesMenu.allServicesDescription')}</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator className="-mx-1" />
@@ -97,12 +101,13 @@ export function Header() {
             )}
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden items-center gap-4 md:flex">
+            <LanguageSwitcher />
             <Button variant="ghost" asChild>
-              <Link href="/login">Login</Link>
+              <Link href="/login">{tNav('auth.login')}</Link>
             </Button>
             <Button asChild>
-              <Link href="/register">Sign Up</Link>
+              <Link href="/register">{tNav('auth.signup')}</Link>
             </Button>
           </div>
 
@@ -113,7 +118,7 @@ export function Header() {
             aria-expanded={isMenuOpen ? 'true' : 'false'}
             aria-controls="mobile-navigation"
           >
-            <span className="sr-only">Toggle navigation</span>
+            <span className="sr-only">{tNav('mobile.toggle')}</span>
             {isMenuOpen ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
           </button>
         </div>
@@ -155,7 +160,7 @@ export function Header() {
                         setIsServicesMenuOpen(false)
                       }}
                     >
-                      All Services
+                      {tNav('servicesMenu.allServices')}
                     </Link>
                     {item.children.map((child) => (
                       <Link
@@ -189,6 +194,7 @@ export function Header() {
           </nav>
 
           <div className="flex flex-col gap-2 pt-2">
+            <LanguageSwitcher />
             <Button variant="ghost" asChild>
               <Link
                 href="/login"
@@ -197,7 +203,7 @@ export function Header() {
                   setIsServicesMenuOpen(false)
                 }}
               >
-                Login
+                {tNav('auth.login')}
               </Link>
             </Button>
             <Button asChild>
@@ -208,7 +214,7 @@ export function Header() {
                   setIsServicesMenuOpen(false)
                 }}
               >
-                Sign Up
+                {tNav('auth.signup')}
               </Link>
             </Button>
           </div>

@@ -1,29 +1,20 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+
 import './globals.css'
 import '@/components/ProfileCard.css'
-import { Header } from '@/components/layout/header'
-import { Footer } from '@/components/layout/footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Edu Consultancy - Study in Germany',
-  description: 'Professional education consultancy helping Vietnamese students study in Germany',
+  title: 'Edu Consultancy',
+  description: 'Vietnam-focused guidance for studying, working, and living in Germany.',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }

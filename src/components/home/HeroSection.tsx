@@ -1,28 +1,25 @@
-import Link from "next/link"
-import Image from "next/image"
-import { BadgeCheck, ChevronRight, Globe2, GraduationCap } from "lucide-react"
+import Image from 'next/image'
+import { ChevronRight, GraduationCap } from 'lucide-react'
 
-import { Button } from "@/components/ui/button"
+import { Link } from '@/navigation'
+import { Button } from '@/components/ui/button'
 
-const stats = [
-  {
-    label: "Students placed",
-    value: "500+",
-    icon: GraduationCap,
-  },
-  {
-    label: "Visa success rate",
-    value: "95%",
-    icon: BadgeCheck,
-  },
-  {
-    label: "Global partner campuses",
-    value: "70+",
-    icon: Globe2,
-  },
-]
+type HeroStat = {
+  label: string
+  value: string
+  icon: typeof GraduationCap
+}
 
-export function HeroSection() {
+type HeroSectionProps = {
+  titlePrefix: string
+  titleSegment: string
+  titleSuffix: string
+  description: string
+  primaryCta: string
+  stats: HeroStat[]
+}
+
+export function HeroSection({ titlePrefix, titleSegment, titleSuffix, description, primaryCta, stats }: HeroSectionProps) {
   return (
     <section className="relative isolate overflow-hidden">
       <Image
@@ -42,17 +39,17 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-col gap-10 px-6 pb-24 pt-16 sm:gap-12 md:px-12 lg:px-20">
         <div className="max-w-3xl space-y-6 text-white">
           <h1 className="text-pretty text-4xl font-bold leading-tight tracking-tight sm:text-5xl xl:text-6xl">
-            Live in Germany
+            {titlePrefix}
             <span className="relative mx-3 inline-flex">
               <span className="absolute inset-x-0 bottom-1 h-3 rounded-full bg-white/30" aria-hidden />
               <span className="relative bg-linear-to-r from-sky-300 to-green-300 bg-clip-text text-transparent">
-                with Confidence.
+                {titleSegment}
               </span>
             </span>
-            A journey with experts who care.
+            {titleSuffix}
           </h1>
           <p className="max-w-2xl text-lg text-white rounded-2xl bg-white/15 p-4 shadow-sm ring-1 ring-white/20 backdrop-blur sm:text-xl">
-            Our dedicated advisors mentor you from program selection to visa approval, ensuring a smooth transition into the German life.
+            {description}
           </p>
         </div>
 
@@ -64,7 +61,7 @@ export function HeroSection() {
           >
             <Link href="/register" className="flex items-center gap-2">
               <GraduationCap className="h-6 w-6" aria-hidden />
-              <span>Start for Free - Free Resources inside</span>
+              <span>{primaryCta}</span>
               <ChevronRight className="h-6 w-6" aria-hidden />
             </Link>
           </Button>
@@ -92,6 +89,12 @@ export function HeroSection() {
       </div>
     </section>
   )
+}
+
+HeroSection.defaultProps = {
+  stats: [
+    { label: '', value: '', icon: GraduationCap },
+  ],
 }
 
 export default HeroSection

@@ -1,87 +1,55 @@
 export type ServiceSummary = {
   slug: string
-  title: string
   emoji: string
-  description: string
-  features: string[]
+  titleKey: string
+  descriptionKey: string
+  featuresKey: string
 }
+
+const baseKey = 'services.cards'
 
 export const servicesList: ServiceSummary[] = [
   {
     slug: 'university-selection',
-    title: 'University Selection',
     emoji: '🎓',
-    description:
-      'Expert guidance to choose the right university and program matching your goals, budget, and career aspirations.',
-    features: [
-      'Personalized university recommendations',
-      'Program comparison and analysis',
-      'Career outcome insights',
-      'Scholarship opportunities',
-    ],
+    titleKey: `${baseKey}.university-selection.title`,
+    descriptionKey: `${baseKey}.university-selection.description`,
+    featuresKey: `${baseKey}.university-selection.features`,
   },
   {
     slug: 'application-support',
-    title: 'Application Support',
     emoji: '📝',
-    description:
-      'Complete assistance with university applications, from document preparation to submission.',
-    features: [
-      'Application form completion',
-      'Document verification',
-      'Statement of Purpose editing',
-      'Recommendation letter guidance',
-    ],
+    titleKey: `${baseKey}.application-support.title`,
+    descriptionKey: `${baseKey}.application-support.description`,
+    featuresKey: `${baseKey}.application-support.features`,
   },
   {
     slug: 'visa-processing',
-    title: 'Visa Processing',
     emoji: '✈️',
-    description:
-      'Step-by-step support for German student visa with high success rate.',
-    features: [
-      'Visa eligibility assessment',
-      'Document preparation',
-      'Application lodgement',
-      'Interview preparation',
-    ],
+    titleKey: `${baseKey}.visa-processing.title`,
+    descriptionKey: `${baseKey}.visa-processing.description`,
+    featuresKey: `${baseKey}.visa-processing.features`,
   },
   {
     slug: 'test-preparation',
-    title: 'Test Preparation',
     emoji: '📚',
-    description: 'IELTS, TOEFL, and PTE test booking assistance and preparation resources.',
-    features: [
-      'Test center booking',
-      'Study materials',
-      'Practice tests',
-      'Score improvement tips',
-    ],
+    titleKey: `${baseKey}.test-preparation.title`,
+    descriptionKey: `${baseKey}.test-preparation.description`,
+    featuresKey: `${baseKey}.test-preparation.features`,
   },
   {
     slug: 'career-counseling',
-    title: 'Career Counseling',
     emoji: '💼',
-    description: 'Professional advice on career paths and job prospects in Germany.',
-    features: [
-      'Industry insights',
-      'Job market analysis',
-      'Resume building',
-      'Interview preparation',
-    ],
+    titleKey: `${baseKey}.career-counseling.title`,
+    descriptionKey: `${baseKey}.career-counseling.description`,
+    featuresKey: `${baseKey}.career-counseling.features`,
   },
   {
     slug: 'pre-departure-support',
-    title: 'Pre-Departure Support',
     emoji: '🏠',
-    description:
-      'Accommodation, travel, and settlement assistance for your move to Germany.',
-    features: [
-      'Accommodation booking',
-      'Airport pickup arrangement',
-      'Bank account setup',
-      'Orientation sessions',
-    ],
+    titleKey: `${baseKey}.pre-departure-support.title`,
+    descriptionKey: `${baseKey}.pre-departure-support.description`,
+    featuresKey: `${baseKey}.pre-departure-support.features`,
   },
 ]
 
