@@ -48,7 +48,7 @@ export default function TechnicalUniversityOfMunichPage() {
             <div className="space-y-6 text-gray-600">
               <h2 className="text-2xl font-semibold text-gray-900">Why choose the Technical University of Munich?</h2>
               <p>
-                The Technical University of Munich offers Vietnamese students access to world-class teaching, interdisciplinary learning, and a dynamic global alumni network. Students benefit from flexible degree structures, industry-integrated learning, and strong support services tailored for international communities.
+                The Technical University of Munich offers international students access to world-class teaching, interdisciplinary learning, and a dynamic global alumni network. Students benefit from flexible degree structures, industry-integrated learning, and strong support services tailored for international communities.
               </p>
               <p>
                 The Garching campus is a hub of innovation with cutting-edge research facilities across engineering, computer science, and natural sciences. With extensive internships and post-study work opportunities, students graduate career-ready for global roles.
@@ -114,12 +114,12 @@ export default function TechnicalUniversityOfMunichPage() {
 const highlights = [
   {
     title: "Scholarship opportunities",
-    description: "Access to TUM-specific scholarships and DAAD grants for high-achieving Vietnamese students.",
+    description: "Access to TUM-specific scholarships and DAAD grants for high-achieving international students.",
     icon: Star,
   },
   {
     title: "Immersive campus life",
-    description: "Join 200+ clubs including the Vietnamese Student Association Munich and entrepreneurship societies.",
+    description: "Join 200+ clubs including the International Student Association Munich and entrepreneurship societies.",
     icon: MapPin,
   },
   {

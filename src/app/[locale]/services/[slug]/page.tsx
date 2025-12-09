@@ -92,7 +92,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <span className="text-sm font-semibold uppercase tracking-widest text-blue-600">What this service delivers</span>
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Support crafted for Vietnamese students heading to Germany</h2>
+            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">Support crafted for international students heading to Germany</h2>
             <p className="mt-4 text-gray-600">
               Every engagement blends local expertise, bilingual communication, and actionable steps so your family feels confident at every milestone.
             </p>

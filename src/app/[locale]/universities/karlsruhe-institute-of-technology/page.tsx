@@ -48,7 +48,7 @@ export default function KarlsruheInstituteOfTechnologyPage() {
                         <div className="space-y-6 text-gray-600">
                             <h2 className="text-2xl font-semibold text-gray-900">Why choose Karlsruhe Institute of Technology?</h2>
                             <p>
-                                KIT offers Vietnamese students a unique combination of academic excellence and hands-on research experience. As one of Germany&apos;s elite TU9 universities, KIT provides cutting-edge facilities in engineering, computer science, and natural sciences with strong industry partnerships.
+                                KIT offers international students a unique combination of academic excellence and hands-on research experience. As one of Germany&apos;s elite TU9 universities, KIT provides cutting-edge facilities in engineering, computer science, and natural sciences with strong industry partnerships.
                             </p>
                             <p>
                                 Located in the technology region of Baden-Württemberg, students benefit from proximity to major tech companies and startups. The university&apos;s strong focus on innovation and entrepreneurship creates excellent career opportunities for international graduates.

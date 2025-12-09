@@ -46,12 +46,12 @@ export default function HumboldtUniversityOfBerlinPage() {
         <div className="container mx-auto px-4">
           <div className="grid gap-12 lg:grid-cols-[2fr,1fr]">
             <div className="space-y-6 text-gray-600">
-              <h2 className="text-2xl font-semibold text-gray-900">Why Humboldt University attracts Vietnamese students</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">Why Humboldt University attracts international students</h2>
               <p>
                 Humboldt University offers a unique blend of tradition and innovation, with a strong emphasis on interdisciplinary research and a global perspective. Its location in the heart of Berlin provides students with unparalleled access to cultural institutions, political organizations, and a thriving startup scene.
               </p>
               <p>
-                The university provides comprehensive arrival support, German language courses, and an active Vietnamese Student Association organising career mentoring and cultural celebrations throughout the year.
+                The university provides comprehensive arrival support, German language courses, and an active International Student Association organising career mentoring and cultural celebrations throughout the year.
               </p>
             </div>
 

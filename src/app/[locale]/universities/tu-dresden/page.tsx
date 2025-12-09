@@ -48,7 +48,7 @@ export default function TUDresdenPage() {
                         <div className="space-y-6 text-gray-600">
                             <h2 className="text-2xl font-semibold text-gray-900">Why choose TU Dresden?</h2>
                             <p>
-                                TU Dresden offers Vietnamese students access to world-class engineering and natural sciences programs in one of Germany&apos;s most beautiful cities. As both a TU9 member and Excellence University, Dresden combines technical excellence with comprehensive research facilities.
+                                TU Dresden offers international students access to world-class engineering and natural sciences programs in one of Germany&apos;s most beautiful cities. As both a TU9 member and Excellence University, Dresden combines technical excellence with comprehensive research facilities.
                             </p>
                             <p>
                                 Located in the cultural heart of Saxony, students enjoy affordable living costs, a rich cultural heritage, and strong connections to the region&apos;s growing technology sector. The university&apos;s modern campus and research clusters create excellent opportunities for innovation.

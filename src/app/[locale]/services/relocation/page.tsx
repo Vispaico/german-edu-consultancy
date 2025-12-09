@@ -80,7 +80,7 @@ const service = {
         eyebrow: 'Pre-departure planning',
         title: 'Everything organized before you board the plane',
         description:
-            'Receive a personalized departure binder with booking confirmations, emergency contacts, and customs guidance in English and Vietnamese.',
+            'Receive a personalized departure binder with booking confirmations, emergency contacts, and customs guidance in English and your native language.',
         bullets: [
             'Pre-booked airport transfers with English-speaking drivers in major cities',
             'Bank account and Anmeldung appointments scheduled before arrival',

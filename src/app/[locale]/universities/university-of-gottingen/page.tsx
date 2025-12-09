@@ -48,7 +48,7 @@ export default function UniversityOfGottingenPage() {
                         <div className="space-y-6 text-gray-600">
                             <h2 className="text-2xl font-semibold text-gray-900">Why choose University of Göttingen?</h2>
                             <p>
-                                The University of Göttingen offers Vietnamese students access to world-class research and teaching in a traditional academic setting. As a German Excellence University, Göttingen has produced more Nobel Prize winners than almost any other German university.
+                                The University of Göttingen offers international students access to world-class research and teaching in a traditional academic setting. As a German Excellence University, Göttingen has produced more Nobel Prize winners than almost any other German university.
                             </p>
                             <p>
                                 The university excels in natural sciences, medicine, humanities, and social sciences with state-of-the-art research facilities. The charming university town provides an ideal environment for focused study and academic excellence.

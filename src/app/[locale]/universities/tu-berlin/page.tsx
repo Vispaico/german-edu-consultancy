@@ -48,7 +48,7 @@ export default function TUBerlinPage() {
                         <div className="space-y-6 text-gray-600">
                             <h2 className="text-2xl font-semibold text-gray-900">Why choose TU Berlin?</h2>
                             <p>
-                                TU Berlin offers Vietnamese students the unique combination of technical excellence and Berlin&apos;s dynamic startup culture. As a TU9 member, the university provides world-class engineering, computer science, and architecture programs with strong industry connections.
+                                TU Berlin offers international students the unique combination of technical excellence and Berlin&apos;s dynamic startup culture. As a TU9 member, the university provides world-class engineering, computer science, and architecture programs with strong industry connections.
                             </p>
                             <p>
                                 Located in Germany&apos;s capital and Europe&apos;s startup hub, students benefit from unparalleled networking opportunities, internships, and career prospects. The diverse international community and vibrant cultural scene make Berlin an exciting place to study.

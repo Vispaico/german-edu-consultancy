@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 
+import { ResponsiveAdSlot } from '@/components/ads/ResponsiveAdSlot'
 import { Footer } from '@/components/layout/footer'
 import { Header } from '@/components/layout/header'
 import { locales } from '@/i18n/routing'
@@ -43,7 +44,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <NextIntlClientProvider locale={safeLocale} messages={messages}>
       <Header />
-      {children}
+      <div className="min-h-[50vh]">{children}</div>
+      <ResponsiveAdSlot label="Sitewide bottom sponsor" backgroundClass="bg-blue-50/40" className="border-t border-blue-100/40" />
       <Footer />
     </NextIntlClientProvider>
   )

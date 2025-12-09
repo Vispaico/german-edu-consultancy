@@ -29,7 +29,7 @@ const TERMS_SECTIONS = [
           <li>Referral to third-party providers such as language centres or accommodation partners</li>
         </ul>
         <p>
-          Services are delivered in accordance with German education policies, Vietnamese regulations, and partner institution requirements.
+          Services are delivered in accordance with German education policies, your home-country regulations, and partner institution requirements.
         </p>
       </>
     ),

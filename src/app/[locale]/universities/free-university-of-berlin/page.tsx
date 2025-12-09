@@ -46,12 +46,12 @@ export default function FreeUniversityOfBerlinPage() {
         <div className="container mx-auto px-4">
           <div className="grid gap-12 lg:grid-cols-[2fr,1fr]">
             <div className="space-y-6 text-gray-600">
-              <h2 className="text-2xl font-semibold text-gray-900">Why the Free University of Berlin appeals to ambitious Vietnamese students</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">Why the Free University of Berlin appeals to ambitious international students</h2>
               <p>
                 The Free University of Berlin delivers hands-on learning built around research projects, international collaborations, and a vibrant intellectual community. Its flexible degree options make it easy to combine subjects or pursue postgraduate pathways in humanities, social sciences, and natural sciences.
               </p>
               <p>
-                Support services include dedicated international student advisers, German language courses, and a vibrant Vietnamese Students Society that helps newcomers settle quickly into Berlin life.
+                Support services include dedicated international student advisers, German language courses, and a vibrant International Students Society that helps newcomers settle quickly into Berlin life.
               </p>
             </div>
 

@@ -28,7 +28,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'top-universities-germany-2025',
     title: 'Top 10 Universities in Germany for International Students 2025',
     excerpt:
-      'Explore the universities Vietnamese families love most—complete with rankings, signature programs, and campus culture insights for 2025 intakes.',
+      'Explore the universities international families love most—complete with rankings, signature programs, and campus culture insights for 2025 intakes.',
     category: 'Universities',
     author: 'Education Team',
     date: '2025-11-05',
@@ -39,10 +39,10 @@ export const blogPosts: BlogPost[] = [
     coverImageAlt: 'Students walking past historic buildings at a German university',
     sections: [
       {
-        heading: 'How we ranked universities for Vietnamese students',
+        heading: 'How we ranked universities for international students',
         paragraphs: [
-          'We combined THE 2025 rankings, Vietnamese student satisfaction surveys, and DAAD scholarship availability to create a shortlist that balances prestige with practical outcomes.',
-          'Our advisors also considered airport access, Vietnamese community support, and internship pipelines that help you secure part-time work quickly.',
+          'We combined THE 2025 rankings, international student satisfaction surveys, and DAAD scholarship availability to create a shortlist that balances prestige with practical outcomes.',
+          'Our advisors also considered airport access, student community support, and internship pipelines that help you secure part-time work quickly.',
         ],
         highlights: [
           'Technical University of Munich retains the #1 spot for Engineering.',
@@ -53,12 +53,12 @@ export const blogPosts: BlogPost[] = [
       {
         heading: 'Quick snapshot of 2025 intakes',
         image: {
-          src: 'https://images.unsplash.com/photo-1562619425-c307bb834a52?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1400',
+          src: 'https://images.unsplash.com/photo-1613931642562-863ea6ffbb2f?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
           alt: 'German city skyline at sunset with university buildings',
         },
         paragraphs: [
           'Munich and Berlin remain the top picks, but 2025 sees a surge of interest in cities like Hamburg and Frankfurt thanks to their strong job markets.',
-          'For students seeking smaller class sizes, consider universities in cities like Freiburg or Aachen where Vietnamese alumni networks run welcoming committees for new arrivals.',
+          'For students seeking smaller class sizes, consider universities in cities like Freiburg or Aachen where global alumni networks run welcoming committees for new arrivals.',
         ],
       },
       {
@@ -79,7 +79,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'ielts-preparation-tips',
     title: 'IELTS Preparation: 10 Tips to Achieve Your Target Score',
     excerpt:
-      'Boost your IELTS score with Vietnamese-friendly study schedules, proven resources, and mindset tips from our language coaching team.',
+      'Boost your IELTS score with student-friendly study schedules, proven resources, and mindset tips from our language coaching team.',
     category: 'Test Prep',
     author: 'Language Expert',
     date: '2025-11-03',
@@ -100,7 +100,7 @@ export const blogPosts: BlogPost[] = [
         heading: 'Structure your weekly study sprint',
         paragraphs: [
           'Allocate 90 minutes per weekday: 30 minutes for vocabulary, 30 for listening + shadowing, and 30 for writing frameworks. Weekends are perfect for full mock tests.',
-          'Use Vietnamese-English dual notes to remember idioms and data phrases that impress examiners without sounding memorised.',
+          'Use bilingual dual notes to remember idioms and data phrases that impress examiners without sounding memorised.',
         ],
         highlights: [
           'Record yourself answering common speaking questions and compare against Band 8 samples.',
@@ -137,7 +137,7 @@ export const blogPosts: BlogPost[] = [
     coverImageAlt: 'Passport and visa documents on a desk with German flag colours',
     sections: [
       {
-        heading: 'Document checklist for Vietnamese applicants',
+        heading: 'Document checklist for international applicants',
         paragraphs: [
           'Prepare a university admission letter, proof of financial resources (blocked account), travel health insurance, and certified academic transcripts. Financial evidence should cover one-year living costs.',
           'Remember to get your documents translated by a certified translator. Consistency across all your documents is critical.',
@@ -159,14 +159,14 @@ export const blogPosts: BlogPost[] = [
         heading: 'Timeline and interview preparation',
         paragraphs: [
           'Allow 8–12 weeks from submission to decision. Use that time to rehearse possible interviews covering finances, course knowledge, and ties to Vietnam.',
-          'Our advisors conduct bilingual mock interviews and supply embassy updates so you feel confident explaining your study plan in both English and Vietnamese.',
+          'Our advisors conduct bilingual mock interviews and supply embassy updates so you feel confident explaining your study plan in both English and your native language.',
         ],
       },
     ],
     takeaway: [
       'Double-check consistency between your Letter of Motivation and financial evidence.',
       'Submit early to avoid seasonal embassy backlogs.',
-      'Practice interview answers in Vietnamese and English to stay composed.',
+      'Practice interview answers in your native language and English to stay composed.',
     ],
   },
   {
@@ -187,12 +187,12 @@ export const blogPosts: BlogPost[] = [
         heading: 'Monthly budget snapshot by city',
         paragraphs: [
           'Munich and Berlin average EUR 1,000-1,200 per month including rent, compared to Leipzig at EUR 800 and Dresden at EUR 750.',
-          'Consider shared apartments (WGs) near U-Bahn or S-Bahn lines for affordable commutes. Vietnamese communities in Berlin-Lichtenberg and Munich offer great food at student-friendly prices.',
+          'Consider shared apartments (WGs) near U-Bahn or S-Bahn lines for affordable commutes. global communities in Berlin-Lichtenberg and Munich offer great food at student-friendly prices.',
         ],
         highlights: [
           'Factor in one-off setup costs: deposit (Kaution), semester contribution, and initial groceries.',
           'Use student semester tickets for public transport savings.',
-          'Join Vietnamese student associations for furniture swaps and job leads.',
+          'Join international student associations for furniture swaps and job leads.',
         ],
       },
       {
@@ -205,7 +205,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: 'Stretching your dollar without missing out',
         paragraphs: [
-          'Cook Vietnamese staples in bulk, plan weekend markets for fresh produce, and split rideshares with friends for late-night study sessions.',
+          'Cook your favorite staples in bulk, plan weekend markets for fresh produce, and split rideshares with friends for late-night study sessions.',
           'Leverage university sports clubs, free museum days, and community events to enjoy German life on a student budget.',
         ],
       },
@@ -218,7 +218,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'scholarships-vietnamese-students-germany',
-    title: 'Top Scholarships for Vietnamese Students in Germany',
+    title: 'Top Scholarships for International Students in Germany',
     excerpt:
       'Unlock merit and need-based scholarships available in 2025, plus the documents you need to submit a standout application.',
     category: 'Scholarships',
@@ -234,7 +234,7 @@ export const blogPosts: BlogPost[] = [
         heading: 'Government and university scholarships to watch',
         paragraphs: [
           'DAAD scholarships are the most prestigious, covering full tuition and living expenses, but require a strong academic profile and motivation.',
-          'Universities like TU Munich, Heidelberg University, and LMU Munich offer various scholarships for high-achieving Vietnamese students—deadlines fall in spring and autumn.',
+          'Universities like TU Munich, Heidelberg University, and LMU Munich offer various scholarships for high-achieving international students—deadlines fall in spring and autumn.',
         ],
         highlights: [
           'Prepare notarised transcripts and German language certificates (if required) early to meet eligibility.',
@@ -287,13 +287,13 @@ export const blogPosts: BlogPost[] = [
       {
         heading: 'Evaluate university support services',
         paragraphs: [
-          'Look beyond rankings. Investigate employability scores, mentorship programs, and Vietnamese student societies that ease cultural adjustment.',
+          'Look beyond rankings. Investigate employability scores, mentorship programs, and international student societies that ease cultural adjustment.',
           'Request course outlines to check group projects, internship requirements, and research components that align with your learning style.',
         ],
         highlights: [
           'Book virtual campus tours to feel each university’s vibe before applying.',
           'Compare graduate salary data using StepStone and LinkedIn insights.',
-          'Chat with current Vietnamese students via our alumni network evenings.',
+          'Chat with current international students via our alumni network evenings.',
         ],
       },
       {

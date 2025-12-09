@@ -51,7 +51,7 @@ export default function LmuMunichPage() {
                 LMU combines world-class research with a strong focus on teaching. Its central location in Munich provides students with access to numerous cultural attractions, internships, and job opportunities in a thriving economic hub.
               </p>
               <p>
-                Vietnamese students appreciate LMU&apos;s comprehensive support services, including language courses, orientation programs, and a dedicated international office, making the transition to studying in Germany seamless.
+                international students appreciate LMU&apos;s comprehensive support services, including language courses, orientation programs, and a dedicated international office, making the transition to studying in Germany seamless.
               </p>
             </div>
 

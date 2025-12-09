@@ -48,7 +48,7 @@ export default function UniversityOfFreiburgPage() {
                         <div className="space-y-6 text-gray-600">
                             <h2 className="text-2xl font-semibold text-gray-900">Why choose University of Freiburg?</h2>
                             <p>
-                                The University of Freiburg offers Vietnamese students a unique blend of academic excellence and exceptional quality of life. As a German Excellence University, Freiburg excels in medicine, law, natural sciences, and humanities with strong international programs.
+                                The University of Freiburg offers international students a unique blend of academic excellence and exceptional quality of life. As a German Excellence University, Freiburg excels in medicine, law, natural sciences, and humanities with strong international programs.
                             </p>
                             <p>
                                 Located in one of Germany&apos;s sunniest and most beautiful cities, students enjoy an outstanding environment for study and recreation. The university&apos;s proximity to France and Switzerland provides unique cross-border opportunities.

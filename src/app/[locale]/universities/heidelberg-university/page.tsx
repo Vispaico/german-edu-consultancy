@@ -46,7 +46,7 @@ export default function HeidelbergUniversityPage() {
         <div className="container mx-auto px-4">
           <div className="grid gap-12 lg:grid-cols-[2fr,1fr]">
             <div className="space-y-6 text-gray-600">
-              <h2 className="text-2xl font-semibold text-gray-900">Why Vietnamese students choose Heidelberg</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">Why international students choose Heidelberg</h2>
               <p>
                 Heidelberg University offers a unique combination of academic excellence, historical charm, and a vibrant international community. Students benefit from world-class research opportunities, close ties to industry, and a supportive environment for international students.
               </p>
@@ -122,7 +122,7 @@ const highlights = [
   },
   {
     title: "Supportive community",
-    description: "The Vietnamese Students Association in Heidelberg connects newcomers with alumni mentors, cultural events, and internship tips.",
+    description: "The International Students Association in Heidelberg connects newcomers with alumni mentors, cultural events, and internship tips.",
     icon: MapPin,
   },
 ]

@@ -48,7 +48,7 @@ export default function UniversityOfHamburgPage() {
                         <div className="space-y-6 text-gray-600">
                             <h2 className="text-2xl font-semibold text-gray-900">Why choose University of Hamburg?</h2>
                             <p>
-                                The University of Hamburg offers Vietnamese students access to comprehensive academic programs in Germany&apos;s second-largest city. As an Excellence University, Hamburg excels in law, medicine, business, and natural sciences with strong international connections.
+                                The University of Hamburg offers international students access to comprehensive academic programs in Germany&apos;s second-largest city. As an Excellence University, Hamburg excels in law, medicine, business, and natural sciences with strong international connections.
                             </p>
                             <p>
                                 Located in one of Europe&apos;s most important port cities, students benefit from a cosmopolitan atmosphere, excellent quality of life, and strong connections to international trade and business. The city&apos;s maritime heritage and global outlook create unique opportunities.

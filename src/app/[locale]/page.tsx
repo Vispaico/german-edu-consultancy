@@ -5,6 +5,7 @@ import HeroSection from '@/components/home/HeroSection'
 import { Button } from '@/components/ui/button'
 import { servicesList } from '@/data/services'
 import { Link } from '@/navigation'
+import { ResponsiveAdSlot } from '@/components/ads/ResponsiveAdSlot'
 import {
   ArrowRight,
   Building2,
@@ -120,6 +121,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      <ResponsiveAdSlot label="Program discovery" backgroundClass="bg-gray-50" />
+
       {/* Why Choose Us */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -199,6 +202,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
       </section>
+
+      <ResponsiveAdSlot label="Success stories" backgroundClass="bg-white" />
 
       {/* Quick Facts About Germany */}
       <section className="py-20 bg-blue-50">

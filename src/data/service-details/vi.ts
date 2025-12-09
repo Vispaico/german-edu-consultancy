@@ -82,7 +82,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
     slug: 'university-selection',
     hero: {
       eyebrow: 'Personalised pathways',
-      title: 'University Selection for Vietnamese Students',
+      title: 'University Selection for International Students',
       description:
         'We evaluate your transcripts, TestAS results, and family budget to curate German university options that feel exciting and achievable. Every shortlist is bilingual so parents and students can decide together with confidence.',
       image:
@@ -125,11 +125,11 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
     ],
     focus: {
       eyebrow: 'What you receive',
-      title: 'Bilingual decision decks built for Vietnamese families',
+      title: 'Bilingual decision decks built for international families',
       description:
-        'Every shortlist outlines academic fit, tuition projections, living costs, employment outcomes, and cultural life—available in English and Vietnamese for easier family discussions.',
+        'Every shortlist outlines academic fit, tuition projections, living costs, employment outcomes, and cultural life—available in English and your native language for easier family discussions.',
       bullets: [
-        'Campus culture snapshots and Vietnamese alumni insights for each city',
+        'Campus culture snapshots and global alumni insights for each city',
         'Scholarship and bursary eligibility by faculty and intake',
         'Cost-of-living breakdowns tailored to your financial plan',
       ],
@@ -139,9 +139,9 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
     },
     support: {
       eyebrow: 'Family-first support',
-      title: 'Advisors who understand Vietnamese priorities',
+      title: 'Advisors who understand family priorities',
       description:
-        'From proximity to Vietnamese communities to part-time work opportunities, we benchmark every option against what matters most to your family.',
+        'From proximity to global communities to part-time work opportunities, we benchmark every option against what matters most to your family.',
       bullets: [
         'On-the-ground housing and suburb guidance from recent graduates',
         'TestDaF/Goethe improvement roadmaps to hit faculty-specific language requirements',
@@ -149,13 +149,13 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       ],
       image:
         'https://images.unsplash.com/photo-1731458769726-cef60c792665?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
-      imageAlt: 'Vietnamese family meeting with an education consultant',
+      imageAlt: 'international family meeting with an education consultant',
     },
     process: [
       {
         icon: ClipboardList,
         title: 'Profile deep-dive',
-        description: 'We review academics, extracurriculars, finances, and relocation preferences in Vietnamese or English.',
+        description: 'We review academics, extracurriculars, finances, and relocation preferences in your native language or English.',
       },
       {
         icon: Map,
@@ -222,12 +222,12 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: Languages,
         title: 'Bilingual parent updates',
-        description: 'Weekly progress check-ins in Vietnamese ensure your family signs and approves forms without stress.',
+        description: 'Weekly progress check-ins in your native language ensure your family signs and approves forms without stress.',
       },
     ],
     focus: {
       eyebrow: 'Submission excellence',
-      title: 'Polished applications that stand out for Vietnamese students',
+      title: 'Polished applications that stand out for international students',
       description:
         'We craft admissions packages that showcase your global mindset while reassuring panels about your readiness for German academics.',
       bullets: [
@@ -262,7 +262,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: FileText,
         title: 'Narrative development',
-        description: 'Draft essays and statements with coaching focused on clarity, impact, and authentic Vietnamese perspective.',
+        description: 'Draft essays and statements with coaching focused on clarity, impact, and authentic global perspective.',
       },
       {
         icon: Sparkles,
@@ -297,7 +297,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         value: '98%',
         label: 'Visa approval rate',
-        description: 'Maintained across high- and moderate-risk Vietnamese applicant categories since 2019.',
+        description: 'Maintained across high- and moderate-risk international applicant categories since 2019.',
       },
       {
         value: '48 hours',
@@ -307,7 +307,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         value: '6 mock sessions',
         label: 'Visa interview practice',
-        description: 'Coaching in Vietnamese and English to master intent questions and financial explanations.',
+        description: 'Coaching in your native language and English to master intent questions and financial explanations.',
       },
     ],
     benefits: [
@@ -335,11 +335,11 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       bullets: [
         'Tailored sponsor letter templates compliant with German embassy wording',
         'Guides for acceptable funds for blocked accounts and currency conversions',
-        'Alignment between study goals, past education, and Vietnamese ties to mitigate refusal risks',
+        'Alignment between study goals, past education, and home-country ties to mitigate refusal risks',
       ],
       image:
         'https://images.unsplash.com/photo-1758691737421-86dd84bd2951?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
-      imageAlt: 'Immigration advisor reviewing visa documents with a Vietnamese student',
+      imageAlt: 'Immigration advisor reviewing visa documents with a international student',
     },
     support: {
       eyebrow: 'Peace of mind',
@@ -404,7 +404,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         value: '120 hrs',
         label: 'Premium content access',
-        description: 'Recorded masterclasses, practice banks, and scoring rubrics in Vietnamese and German.',
+        description: 'Recorded masterclasses, practice banks, and scoring rubrics in your native language and German.',
       },
       {
         value: '92%',
@@ -426,12 +426,12 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: Sparkles,
         title: 'Motivation loops',
-        description: 'Progress dashboards, Vietnamese mentor check-ins, and mini rewards keep you accountable.',
+        description: 'Progress dashboards, global mentor check-ins, and mini rewards keep you accountable.',
       },
     ],
     focus: {
       eyebrow: 'Tailored progression',
-      title: 'Modular learning that fits Vietnamese school schedules',
+      title: 'Modular learning that fits your school schedules',
       description:
         'Balance high school or university coursework with targeted prep blocks delivered in-person, online, or hybrid.',
       bullets: [
@@ -441,13 +441,13 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       ],
       image:
         'https://images.unsplash.com/photo-1582826310241-0cd9cc92dbb1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
-      imageAlt: 'Vietnamese student practicing speaking skills with a tutor',
+      imageAlt: 'international student practicing speaking skills with a tutor',
     },
     support: {
       eyebrow: 'Resources & community',
       title: 'Stay inspired with premium practice banks and alumni mentors',
       description:
-        'Join accountability squads led by Vietnamese alumni already studying in Germany and access curated study materials updated monthly.',
+        'Join accountability squads led by global alumni already studying in Germany and access curated study materials updated monthly.',
       bullets: [
         'Simulated computer-based exam rooms for TestDaF and TOEFL',
         'Vocabulary decks focused on German campus life and academic writing',
@@ -492,7 +492,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       eyebrow: 'Future-ready guidance',
       title: 'Career Counseling & Employability Coaching',
       description:
-        'Bridge Vietnamese strengths with German industry expectations through personalised coaching, internship pathways, and networking support.',
+        'Bridge your strengths with German industry expectations through personalised coaching, internship pathways, and networking support.',
       image:
         'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2400',
       imageAlt: 'Career advisor talking with an international student in a modern office',
@@ -506,7 +506,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         value: '50+',
         label: 'Industry mentors',
-        description: 'Vietnamese alumni in tech, engineering, finance, and design across German cities.',
+        description: 'global alumni in tech, engineering, finance, and design across German cities.',
       },
       {
         value: '12 weeks',
@@ -528,7 +528,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: Users,
         title: 'Mentor introductions',
-        description: 'Connect with Vietnamese professionals in your field for advice, referrals, and networking practice.',
+        description: 'Connect with international professionals in your field for advice, referrals, and networking practice.',
       },
     ],
     focus: {
@@ -539,7 +539,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       bullets: [
         'Industry deep-dives covering visas, salaries, and skill shortages',
         'Personal brand toolkit with resume, cover letter, and LinkedIn templates',
-        'Networking scripts in Vietnamese and German for industry coffee chats',
+        'Networking scripts in your native language and German for industry coffee chats',
       ],
       image:
         'https://images.unsplash.com/photo-1565598611425-45b0878bdd0b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2200',
@@ -573,7 +573,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: Users,
         title: 'Mentor pairing',
-        description: 'Match with Vietnamese alumni working in your target industry or city.',
+        description: 'Match with global alumni working in your target industry or city.',
       },
       {
         icon: TrendingUp,
@@ -620,7 +620,7 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: Home,
         title: 'Curated accommodation',
-        description: 'Match with safe housing options vetted by Vietnamese alumni in your university city.',
+        description: 'Match with safe housing options vetted by global alumni in your university city.',
       },
       {
         icon: Plane,
@@ -630,14 +630,14 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
       {
         icon: Globe,
         title: 'Culture-and-care pack',
-        description: 'Weekly survival tips covering banking, healthcare, transport, and Vietnamese community events.',
+        description: 'Weekly survival tips covering banking, healthcare, transport, and global community events.',
       },
     ],
     focus: {
       eyebrow: 'Logistics handled',
       title: 'Everything you need before boarding the plane',
       description:
-        'Receive a personalised departure binder with booking confirmations, emergency contacts, and customs guidance in Vietnamese and English.',
+        'Receive a personalised departure binder with booking confirmations, emergency contacts, and customs guidance in your native language and English.',
       bullets: [
         'Pre-booked airport transfers with bilingual drivers in major cities',
         'Bank account and city registration (Anmeldung) appointments arranged before you fly',
@@ -649,12 +649,12 @@ export const serviceDetailsVi: Record<ServiceSlug, ServiceDetail> = {
     },
     support: {
       eyebrow: 'Settle with confidence',
-      title: 'Onshore concierge for Vietnamese students',
+      title: 'Onshore concierge for international students',
       description:
         'Our Berlin and Munich teams welcome you with city tours, budgeting workshops, and community introductions.',
       bullets: [
-        'Welcome dinner with Vietnamese alumni and fellow newcomers',
-        'Emergency hotline staffed by Vietnamese-speaking advisors',
+        'Welcome dinner with global alumni and fellow newcomers',
+        'Emergency hotline staffed by multilingual advisors',
         'Monthly city guides featuring student deals and community events',
       ],
       image:

@@ -1,7 +1,7 @@
 const en = {
   metadata: {
     title: 'Edu Consultancy - Study in Germany',
-    description: 'Professional education consultancy helping Vietnamese students study in Germany',
+    description: 'Professional education consultancy helping international students study in Germany',
   },
   common: {
     bookConsultation: 'Book Free Consultation',
@@ -78,10 +78,10 @@ const en = {
       explore: 'Explore {title}',
     },
     whyUs: {
-      eyebrow: 'Why Vietnamese families trust us',
+      eyebrow: 'Why international families trust us',
       title: 'Results-driven guidance backed by proven expertise',
       description:
-        'We combine deep knowledge of German education with tailored support in Vietnamese to deliver confident study abroad journeys.',
+        'We combine deep knowledge of German education with tailored support in your native language to deliver confident study abroad journeys.',
       highlights: [
         {
           stat: '98%',
@@ -93,7 +93,7 @@ const en = {
         {
           stat: '150+',
           statLabel: 'Scholarships earned',
-          title: 'Scholarship strategies tailored to Vietnamese GPA profiles',
+          title: 'Scholarship strategies tailored to international GPA profiles',
           description:
             'We align your academic strengths with faculty-specific scholarships across TU9 and other leading universities.',
         },
@@ -115,7 +115,7 @@ const en = {
     },
     testimonials: {
       eyebrow: 'Student journeys',
-      title: 'Real stories from Vietnamese students thriving in Germany',
+      title: 'Real stories from international students thriving in Germany',
       description:
         'Hear how our mentorship transformed uncertainty into scholarships, visa approvals, and successful careers across Germany.',
       items: [
@@ -150,7 +150,7 @@ const en = {
     },
     quickFacts: {
       eyebrow: 'Why Germany stands out',
-      title: 'Key facts Vietnamese families ask us every day',
+      title: 'Key facts international families ask us every day',
       items: [
         {
           label: 'Average tuition per year',
@@ -186,7 +186,7 @@ const en = {
         {
           title: 'Application preparation',
           description:
-            'Motivational letter workshops, recommendation coaching, and certified document translations in Vietnamese and German.',
+            'Motivational letter workshops, recommendation coaching, and certified document translations in your native language and German.',
         },
         {
           title: 'Visa & compliance',
@@ -196,14 +196,14 @@ const en = {
         {
           title: 'Arrival & settlement',
           description:
-            'Airport pick-up coordination, housing guidance, Blocked Account/city registration, and introductions to Vietnamese alumni groups.',
+            'Airport pick-up coordination, housing guidance, Blocked Account/city registration, and introductions to global alumni groups.',
         },
       ],
     },
     faq: {
       eyebrow: 'common questions',
-      title: 'Everything Vietnamese parents ask before choosing Germany',
-      description: 'We answer in Vietnamese and English so families feel confident about every decision.',
+      title: 'Everything international parents ask before choosing Germany',
+      description: 'We answer in your native language and English so families feel confident about every decision.',
       items: [
         {
           question: 'What happens if my visa gets rejected?',
@@ -213,7 +213,7 @@ const en = {
         {
           question: 'How much savings do I need to prove for the visa?',
           answer:
-            'Most Vietnamese applicants need evidence of around EUR 11,208 per year for living expenses, usually in a blocked account. We help structure bank certificates and sponsor letters correctly.',
+            'Most international applicants need evidence of around EUR 11,208 per year for living expenses, usually in a blocked account. We help structure bank certificates and sponsor letters correctly.',
         },
         {
           question: 'Can I work while studying?',
@@ -357,7 +357,7 @@ const en = {
     story: {
       title: 'Our Story',
       paragraphs: [
-        'Founded in 2025, StartinDE has helped over 50 Vietnamese students achieve their dream of studying at top German universities. Our team understands the unique challenges Vietnamese students face and provides personalized support throughout the entire process.',
+        'Founded in 2025, StartinDE has helped over 50 international students achieve their dream of studying at top German universities. Our team understands the unique challenges international students face and provides personalized support throughout the entire process.',
         'We maintain strong partnerships with over 100 German universities and have achieved a 98% visa success rate. Our commitment to excellence and personalized service has made us one of the most trusted education consultancies in Vietnam.',
       ],
     },

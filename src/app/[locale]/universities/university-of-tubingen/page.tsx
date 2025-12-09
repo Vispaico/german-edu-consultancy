@@ -48,7 +48,7 @@ export default function UniversityOfTubingenPage() {
                         <div className="space-y-6 text-gray-600">
                             <h2 className="text-2xl font-semibold text-gray-900">Why choose University of Tübingen?</h2>
                             <p>
-                                The University of Tübingen offers Vietnamese students an exceptional academic experience in one of Germany&apos;s most beautiful university towns. As an Excellence University, Tübingen is renowned for medicine, theology, natural sciences, and humanities with cutting-edge research facilities.
+                                The University of Tübingen offers international students an exceptional academic experience in one of Germany&apos;s most beautiful university towns. As an Excellence University, Tübingen is renowned for medicine, theology, natural sciences, and humanities with cutting-edge research facilities.
                             </p>
                             <p>
                                 The picturesque medieval town creates an inspiring atmosphere for study, while the university&apos;s strong international programs and research clusters provide excellent opportunities for academic growth and career development.

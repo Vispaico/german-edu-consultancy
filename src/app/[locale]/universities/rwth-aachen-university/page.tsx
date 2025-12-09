@@ -46,9 +46,9 @@ export default function RwthAachenUniversityPage() {
         <div className="container mx-auto px-4">
           <div className="grid gap-12 lg:grid-cols-[2fr,1fr]">
             <div className="space-y-6 text-gray-600">
-              <h2 className="text-2xl font-semibold text-gray-900">A supportive pathway for Vietnamese students</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">A supportive pathway for international students</h2>
               <p>
-                RWTH Aachen University offers flexible degree programs, early professional placements, and research-led teaching that prepares students for global careers. Vietnamese learners benefit from strong engineering, computer science, and natural sciences programs complemented by internship pipelines.
+                RWTH Aachen University offers flexible degree programs, early professional placements, and research-led teaching that prepares students for global careers. International learners benefit from strong engineering, computer science, and natural sciences programs complemented by internship pipelines.
               </p>
               <p>
                 Campus life is vibrant with cultural societies, state-of-the-art sport facilities, and the renowned International Office providing visa, housing, and employment guidance.
@@ -67,7 +67,7 @@ export default function RwthAachenUniversityPage() {
                 <HeartHandshake className="mt-1 size-5" aria-hidden />
                 <div>
                   <p className="font-semibold">Student care</p>
-                  <p>Dedicated academic advisors, peer mentoring, and a Vietnamese Student Association for first-year students.</p>
+                  <p>Dedicated academic advisors, peer mentoring, and a International Student Association for first-year students.</p>
                 </div>
               </div>
             </div>

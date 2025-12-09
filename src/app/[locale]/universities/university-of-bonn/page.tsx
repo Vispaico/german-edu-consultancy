@@ -48,7 +48,7 @@ export default function UniversityOfBonnPage() {
                         <div className="space-y-6 text-gray-600">
                             <h2 className="text-2xl font-semibold text-gray-900">Why choose University of Bonn?</h2>
                             <p>
-                                The University of Bonn offers Vietnamese students access to world-class research and teaching in a historic setting. As a German Excellence University, Bonn provides exceptional opportunities in mathematics, physics, economics, and law with strong international connections.
+                                The University of Bonn offers international students access to world-class research and teaching in a historic setting. As a German Excellence University, Bonn provides exceptional opportunities in mathematics, physics, economics, and law with strong international connections.
                             </p>
                             <p>
                                 Located in Germany&apos;s former capital, students enjoy a vibrant cultural scene and excellent quality of life. The university&apos;s strong research focus and numerous Nobel Prize laureates create an inspiring academic environment.

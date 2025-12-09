@@ -48,7 +48,7 @@ export default function UniversityOfColognePage() {
                         <div className="space-y-6 text-gray-600">
                             <h2 className="text-2xl font-semibold text-gray-900">Why choose University of Cologne?</h2>
                             <p>
-                                The University of Cologne offers Vietnamese students access to one of Germany&apos;s most comprehensive academic institutions. As an Excellence University, Cologne is particularly strong in economics, law, medicine, and social sciences with excellent international programs.
+                                The University of Cologne offers international students access to one of Germany&apos;s most comprehensive academic institutions. As an Excellence University, Cologne is particularly strong in economics, law, medicine, and social sciences with excellent international programs.
                             </p>
                             <p>
                                 Located in the vibrant Rhine metropolis, students enjoy a dynamic cultural scene, excellent public transport, and strong connections to major German and international companies. The university&apos;s modern campus and research facilities provide an ideal learning environment.
