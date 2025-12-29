@@ -51,7 +51,7 @@ export default function LivingInGermanyPage() {
                     Living in Germany: What to Expect
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                    Germany offers a high quality of life, excellent public infrastructure, and a rich cultural heritage. But navigating the bureaucracy and finding a flat can be a challenge. We've compiled everything you need to know to make Germany your new home.
+                    Germany offers a high quality of life, excellent public infrastructure, and a rich cultural heritage. But navigating the bureaucracy and finding a flat can be a challenge. We&apos;ve compiled everything you need to know to make Germany your new home.
                 </p>
             </header>
 
@@ -124,29 +124,29 @@ export default function LivingInGermanyPage() {
                     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
                         <h3 className="font-bold text-lg text-blue-900 mb-2">1. Anmeldung (City Registration)</h3>
                         <p className="text-gray-600 mb-2">
-                            Within 14 days of moving in, you <strong>must</strong> register your address at the local "Bürgeramt".
+                            Within 14 days of moving in, you <strong>must</strong> register your address at the local &quot;Bürgeramt&quot;.
                         </p>
                         <ul className="text-sm text-gray-500 list-disc pl-5">
                             <li>Required for: Tax ID, Bank Account, Internet Contract.</li>
-                            <li>Bring: Passport, Rental Contract, "Wohnungsgeberbestätigung" (Landlord confirmation).</li>
+                            <li>Bring: Passport, Rental Contract, &quot;Wohnungsgeberbestätigung&quot; (Landlord confirmation).</li>
                         </ul>
                     </div>
 
                     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
                         <h3 className="font-bold text-lg text-blue-900 mb-2">2. Rundfunkbeitrag (TV Tax / GEZ)</h3>
                         <p className="text-gray-600 mb-2">
-                            Every household must pay approx. <strong>€18.36 per month</strong> for public broadcasting, even if you don't own a TV.
+                            Every household must pay approx. <strong>€18.36 per month</strong> for public broadcasting, even if you don&apos;t own a TV.
                         </p>
                         <ul className="text-sm text-gray-500 list-disc pl-5">
                             <li>You will receive a letter automatically after Anmeldung.</li>
-                            <li>Don't ignore it! Fines can be hefty.</li>
+                            <li>Don&apos;t ignore it! Fines can be hefty.</li>
                         </ul>
                     </div>
 
                     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
                         <h3 className="font-bold text-lg text-blue-900 mb-2">3. SCHUFA (Credit Score)</h3>
                         <p className="text-gray-600 mb-2">
-                            Your creditworthiness record. Landlords almost always ask for a "SCHUFA-Auskunft" before renting to you.
+                            Your creditworthiness record. Landlords almost always ask for a &quot;SCHUFA-Auskunft&quot; before renting to you.
                         </p>
                         <ul className="text-sm text-gray-500 list-disc pl-5">
                             <li>It tracks your contracts (Phone, Bank) and if you pay bills on time.</li>
@@ -178,7 +178,7 @@ export default function LivingInGermanyPage() {
             <section id="transport" className="mb-16">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Public Transport</h2>
                 <div className="bg-green-50 rounded-xl p-6 border border-green-100">
-                    <h3 className="font-bold text-xl text-green-900 mb-2">The "Deutschlandticket"</h3>
+                    <h3 className="font-bold text-xl text-green-900 mb-2">The &quot;Deutschlandticket&quot;</h3>
                     <p className="text-green-800 mb-4">
                         For just <strong>€49 per month</strong>, you can use all local and regional public transport (buses, trams, U-Bahn, S-Bahn, regional trains) across the entire country!
                     </p>
@@ -218,7 +218,7 @@ export default function LivingInGermanyPage() {
                     <div>
                         <h4 className="font-bold text-gray-900">Pfand System (Deposit)</h4>
                         <p className="text-sm text-gray-600">
-                            Don't throw away plastic bottles or cans! Most have a €0.25 deposit. Return them to machines in supermarkets to get your money back.
+                            Don&apos;t throw away plastic bottles or cans! Most have a €0.25 deposit. Return them to machines in supermarkets to get your money back.
                         </p>
                     </div>
                 </div>
@@ -232,7 +232,7 @@ export default function LivingInGermanyPage() {
                             <Coins className="w-5 h-5 text-yellow-600" /> Cash is King
                         </h3>
                         <p className="text-gray-600 mb-4">
-                            While card payments are increasing, many small bakeries, kiosks, and restaurants still only accept cash ("Nur Bares ist Wahres"). Always carry some Euros!
+                            While card payments are increasing, many small bakeries, kiosks, and restaurants still only accept cash (&quot;Nur Bares ist Wahres&quot;). Always carry some Euros!
                         </p>
                     </div>
                     <div>
@@ -240,7 +240,7 @@ export default function LivingInGermanyPage() {
                             <Beer className="w-5 h-5 text-yellow-600" /> Sundays are Quiet
                         </h3>
                         <p className="text-gray-600 mb-4">
-                            Shops (including supermarkets) are closed on Sundays. It's a day for rest, family, and nature. Plan your grocery shopping accordingly.
+                            Shops (including supermarkets) are closed on Sundays. It&apos;s a day for rest, family, and nature. Plan your grocery shopping accordingly.
                         </p>
                     </div>
                 </div>
@@ -253,7 +253,7 @@ export default function LivingInGermanyPage() {
                     <div>
                         <h3 className="font-bold text-lg mb-2">Do I need to speak German?</h3>
                         <p className="text-gray-700 mb-4">
-                            In big cities like Berlin or Munich, you can survive with English. However, for dealing with bureaucracy ("Ausländerbehörde"), finding a job outside of tech, and making local friends, <strong>German is essential</strong>.
+                            In big cities like Berlin or Munich, you can survive with English. However, for dealing with bureaucracy (&quot;Ausländerbehörde&quot;), finding a job outside of tech, and making local friends, <strong>German is essential</strong>.
                         </p>
                         <Button variant="secondary" asChild>
                             <Link href="/services/language-courses">Find Language Courses</Link>

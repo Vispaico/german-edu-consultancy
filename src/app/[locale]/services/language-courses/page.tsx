@@ -2,16 +2,11 @@ import Image from 'next/image'
 import { Link } from '@/navigation'
 import {
     BookOpen,
-    ClipboardList,
-    FileSignature,
     Headphones,
-    Languages,
     Award,
-    Users,
     ArrowRight,
     CheckCircle2,
     MapPin,
-    Clock,
     GraduationCap,
 } from 'lucide-react'
 

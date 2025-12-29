@@ -52,7 +52,7 @@ export default function WorkInGermanyPage() {
                     Work in Germany: Your Gateway to a Global Career
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                    Germany is not just the economic powerhouse of Europe; it's a land of opportunity for skilled professionals from around the world. With a shortage of skilled workers in many sectors, the doors are wider open than ever before. Here's how you can walk through them.
+                    Germany is not just the economic powerhouse of Europe; it&apos;s a land of opportunity for skilled professionals from around the world. With a shortage of skilled workers in many sectors, the doors are wider open than ever before. Here&apos;s how you can walk through them.
                 </p>
             </header>
 
@@ -85,7 +85,7 @@ export default function WorkInGermanyPage() {
             <section id="shortage" className="mb-16">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">In-Demand Professions</h2>
                 <p className="mb-6 text-gray-700">
-                    Germany is actively looking for skilled workers in these "Mangelberufe" (shortage occupations). If you have skills in these areas, your chances of getting a visa are much higher.
+                    Germany is actively looking for skilled workers in these &quot;Mangelberufe&quot; (shortage occupations). If you have skills in these areas, your chances of getting a visa are much higher.
                 </p>
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {[
@@ -251,7 +251,7 @@ export default function WorkInGermanyPage() {
                 <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                     <h3 className="font-bold text-lg text-gray-900 mb-4">Gross vs. Net Salary</h3>
                     <p className="text-gray-700 mb-4">
-                        In Germany, we talk about "Brutto" (Gross) and "Netto" (Net). Your take-home pay will be lower due to social security contributions.
+                        In Germany, we talk about &quot;Brutto&quot; (Gross) and &quot;Netto&quot; (Net). Your take-home pay will be lower due to social security contributions.
                     </p>
                     <div className="grid sm:grid-cols-2 gap-6">
                         <div className="bg-white p-4 rounded-lg shadow-sm">
@@ -266,7 +266,7 @@ export default function WorkInGermanyPage() {
                         </div>
                         <div className="flex flex-col justify-center">
                             <p className="text-sm text-gray-600 italic">
-                                "Don't be shocked by the deductions! They pay for your free healthcare, pension, and safety net."
+                                &ldquo;Don&apos;t be shocked by the deductions! They pay for your free healthcare, pension, and safety net.&rdquo;
                             </p>
                             <Button variant="link" className="mt-2 h-auto p-0 text-blue-600" asChild>
                                 <a href="https://www.brutto-netto-rechner.info/" target="_blank" rel="noopener noreferrer">Try a Gross-Net Calculator &rarr;</a>
@@ -279,7 +279,7 @@ export default function WorkInGermanyPage() {
             <section id="recognition">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Recognition of Qualifications</h2>
                 <p className="mb-4">
-                    "Anerkennung" (Recognition) is a formal procedure to check if your foreign professional qualification is equivalent to a German one. For many regulated professions (like doctors, nurses, teachers), this is mandatory.
+                    &quot;Anerkennung&quot; (Recognition) is a formal procedure to check if your foreign professional qualification is equivalent to a German one. For many regulated professions (like doctors, nurses, teachers), this is mandatory.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-6">
                     <Button variant="outline" className="flex-1" asChild>

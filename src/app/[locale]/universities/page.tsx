@@ -246,7 +246,7 @@ export default function UniversitiesPage() {
               </div>
               <div className="space-y-2 text-center sm:text-left">
                 <p className="text-sm text-gray-600">
-                  "Choosing the right university isn&apos;t about ranking alone—it&apos;s about matching your ambitions with a campus that supports them. Our team curates shortlists based on your goals, portfolio, and visa strategy so you can focus on thriving once you land in Germany."
+                  &ldquo;Choosing the right university isn&apos;t about ranking alone—it&apos;s about matching your ambitions with a campus that supports them. Our team curates shortlists based on your goals, portfolio, and visa strategy so you can focus on thriving once you land in Germany.&rdquo;
                 </p>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">Do Thi Huyen · General Director & Operation Manager</p>

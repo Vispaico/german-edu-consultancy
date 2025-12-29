@@ -2,7 +2,7 @@ import { ArticleLayout } from '@/components/shared/ArticleLayout'
 import { constructMetadata } from '@/lib/metadata'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/navigation'
-import { GraduationCap, BookOpen, School, Award, Languages, Euro, Globe2, Compass, Map as MapIcon } from 'lucide-react'
+import { BookOpen, School, Award, Languages, Euro, Globe2, Compass, Map as MapIcon, Briefcase } from 'lucide-react'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = constructMetadata({
@@ -50,7 +50,7 @@ export default function StudyInGermanyPage() {
                     Study in Germany: World-Class Education, Zero Tuition
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                    Germany is one of the most popular study destinations in the world. With its top-ranked universities, tuition-free education at public institutions, and vibrant student life, it's the perfect place to launch your academic and professional career.
+                    Germany is one of the most popular study destinations in the world. With its top-ranked universities, tuition-free education at public institutions, and vibrant student life, it&apos;s the perfect place to launch your academic and professional career.
                 </p>
             </header>
 
@@ -70,7 +70,7 @@ export default function StudyInGermanyPage() {
                     <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
                         <Languages className="w-8 h-8 text-blue-600 mb-4" />
                         <h3 className="font-bold text-lg mb-2">English-Taught Programs</h3>
-                        <p className="text-gray-600">Thousands of Master's and an increasing number of Bachelor's programs are taught entirely in English.</p>
+                        <p className="text-gray-600">Thousands of Master&apos;s and an increasing number of Bachelor&apos;s programs are taught entirely in English.</p>
                     </div>
                     <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
                         <Briefcase className="w-8 h-8 text-blue-600 mb-4" />
@@ -119,7 +119,7 @@ export default function StudyInGermanyPage() {
                         <Award className="w-5 h-5" /> Pro Tip: The Studienkolleg
                     </h3>
                     <p className="text-blue-800 text-sm mb-4">
-                        If your high school diploma isn't recognized, a <strong>Studienkolleg</strong> is your bridge to German university. It's a one-year preparatory course ending with the <em>Feststellungsprüfung</em> (assessment test).
+                        If your high school diploma isn&apos;t recognized, a <strong>Studienkolleg</strong> is your bridge to German university. It&apos;s a one-year preparatory course ending with the <em>Feststellungsprüfung</em> (assessment test).
                     </p>
                 </div>
             </section>
@@ -136,7 +136,7 @@ export default function StudyInGermanyPage() {
                     </div>
                     <div className="p-6">
                         <p className="mb-4 text-gray-700">
-                            International students must deposit a specific amount into a "Blocked Account" to prove they can support themselves. This money is released to you monthly once you arrive.
+                            International students must deposit a specific amount into a &quot;Blocked Account&quot; to prove they can support themselves. This money is released to you monthly once you arrive.
                         </p>
                         <div className="grid md:grid-cols-2 gap-6 mb-6">
                             <div>
@@ -154,7 +154,7 @@ export default function StudyInGermanyPage() {
                             </div>
                         </div>
                         <div className="bg-yellow-50 border border-yellow-100 rounded-lg p-4 text-sm text-yellow-800">
-                            <strong>Note:</strong> You cannot withdraw the full amount at once. It's a monthly allowance to ensure your financial stability.
+                            <strong>Note:</strong> You cannot withdraw the full amount at once. It&apos;s a monthly allowance to ensure your financial stability.
                         </div>
                     </div>
                 </div>
@@ -321,25 +321,5 @@ export default function StudyInGermanyPage() {
                 </div>
             </section>
         </ArticleLayout>
-    )
-}
-
-function Briefcase(props: any) {
-    return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-        </svg>
     )
 }

@@ -1,11 +1,9 @@
 import Image from 'next/image'
 import { Link } from '@/navigation'
 import {
-    Briefcase,
     ClipboardList,
     FileSignature,
     Plane,
-    ShieldCheck,
     Home,
     MapPin,
     ArrowRight,

@@ -67,7 +67,7 @@ export default function TUBerlinPage() {
                                 <Compass className="mt-1 size-5" aria-hidden />
                                 <div>
                                     <p className="font-semibold">Startup ecosystem</p>
-                                    <p>Access to Europe's largest startup scene and innovation labs.</p>
+                                    <p>Access to Europe&apos;s largest startup scene and innovation labs.</p>
                                 </div>
                             </div>
                         </div>
