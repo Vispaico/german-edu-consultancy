@@ -1,11 +1,15 @@
 import Image from 'next/image'
 import { Link } from '@/navigation'
 import { notFound } from 'next/navigation'
+import type { ReactNode } from 'react'
 
-import { ArrowLeft, CalendarDays, Clock, Share2, Tag } from 'lucide-react'
+import { ArrowLeft, CalendarDays, Clock, Tag } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import { blogPostBySlug, blogPosts } from '@/data/blog-posts'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { ResponsiveAdSlot } from '@/components/ads/ResponsiveAdSlot'
+import { ShareInsightButton } from '@/components/blog/ShareInsightButton'
+import { blogPostBySlug, blogPosts, type BlogPost } from '@/data/blog-posts'
 
 type PageProps = {
   params: Promise<{
@@ -33,6 +37,134 @@ export async function generateMetadata({ params }: PageProps) {
   }
 }
 
+const LINK_TOKEN_RE = /\[\[([^\]|]+)\|([^\]]+)\]\]/g
+
+function renderInlineTokens(value: string): ReactNode[] {
+  LINK_TOKEN_RE.lastIndex = 0
+  const nodes: ReactNode[] = []
+  let lastIndex = 0
+  let match: RegExpExecArray | null
+  let linkIndex = 0
+
+  while ((match = LINK_TOKEN_RE.exec(value)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(value.slice(lastIndex, match.index))
+    }
+
+    const label = match[1].trim()
+    const hrefToken = match[2].trim()
+    const nofollow = hrefToken.startsWith('nofollow:')
+    const href = nofollow ? hrefToken.slice('nofollow:'.length) : hrefToken
+
+    if (href.startsWith('/')) {
+      nodes.push(
+        <Link
+          key={`link-${match.index}-${linkIndex}`}
+          href={href}
+          className="font-medium text-blue-700 underline underline-offset-4 hover:text-blue-800"
+        >
+          {label}
+        </Link>,
+      )
+    } else {
+      nodes.push(
+        <a
+          key={`link-${match.index}-${linkIndex}`}
+          href={href}
+          target="_blank"
+          rel={nofollow ? 'nofollow sponsored noopener noreferrer' : 'noopener noreferrer'}
+          className="font-medium text-blue-700 underline underline-offset-4 hover:text-blue-800"
+        >
+          {label}
+        </a>,
+      )
+    }
+
+    linkIndex += 1
+    lastIndex = match.index + match[0].length
+  }
+
+  if (lastIndex < value.length) {
+    nodes.push(value.slice(lastIndex))
+  }
+
+  return nodes
+}
+
+function renderParagraph(paragraph: string): ReactNode[] {
+  const lines = paragraph.split('\n')
+  const nodes: ReactNode[] = []
+
+  lines.forEach((line, index) => {
+    nodes.push(...renderInlineTokens(line))
+    if (index < lines.length - 1) {
+      nodes.push(<br key={`br-${index}`} />)
+    }
+  })
+
+  return nodes
+}
+
+const STOPWORDS = new Set([
+  'a',
+  'an',
+  'and',
+  'are',
+  'as',
+  'at',
+  'be',
+  'but',
+  'by',
+  'for',
+  'from',
+  'how',
+  'in',
+  'is',
+  'it',
+  'of',
+  'on',
+  'or',
+  'step',
+  'the',
+  'this',
+  'to',
+  'vs',
+  'what',
+  'with',
+])
+
+function tokenize(text: string): string[] {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .map((token) => token.trim())
+    .filter((token) => token.length >= 3 && !STOPWORDS.has(token))
+}
+
+function getRelatedPosts(currentPost: BlogPost, count = 4): BlogPost[] {
+  const currentTokens = new Set(tokenize(`${currentPost.title} ${currentPost.excerpt}`))
+
+  const scored = blogPosts
+    .filter((post) => post.slug !== currentPost.slug)
+    .map((post) => {
+      const tokens = tokenize(`${post.title} ${post.excerpt}`)
+      const shared = tokens.reduce((acc, token) => (currentTokens.has(token) ? acc + 1 : acc), 0)
+      const categoryBoost = post.category === currentPost.category ? 6 : 0
+
+      return {
+        post,
+        score: categoryBoost + Math.min(shared, 6),
+      }
+    })
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score
+      return new Date(b.post.date).getTime() - new Date(a.post.date).getTime()
+    })
+
+  return scored.slice(0, count).map((item) => item.post)
+}
+
 export default async function BlogArticlePage({ params }: PageProps) {
   const { slug } = await params
   const post = blogPostBySlug[slug]
@@ -46,6 +178,13 @@ export default async function BlogArticlePage({ params }: PageProps) {
     month: 'long',
     day: 'numeric',
   })
+
+  const adLayout = post.adLayout ?? null
+  const checklistSectionIndex = post.sections.findIndex((section) => /checklist|print/i.test(section.heading))
+  const inContentAdAfterIndex = adLayout === 'C' ? (checklistSectionIndex >= 0 ? checklistSectionIndex : 1) : 0
+  const midAdAfterIndex = (adLayout === 'A' || adLayout === 'B') && post.sections.length >= 4 ? 2 : null
+
+  const relatedPosts = getRelatedPosts(post, 4)
 
   return (
     <main className="min-h-screen bg-gray-50 pb-20">
@@ -87,10 +226,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
               <Button asChild variant="secondary" className="rounded-full">
                 <Link href="/contact">Speak with an advisor</Link>
               </Button>
-              <Button variant="ghost" className="rounded-full border border-white/20 text-white hover:border-white/40">
-                <Share2 className="mr-2 size-4" aria-hidden />
-                Share insight
-              </Button>
+              <ShareInsightButton
+                title={post.title}
+                className="rounded-full border border-white/20 text-white hover:border-white/40"
+              />
             </div>
           </div>
 
@@ -110,16 +249,27 @@ export default async function BlogArticlePage({ params }: PageProps) {
         </div>
       </section>
 
+      {adLayout && (
+        <div className="container mx-auto mt-8 px-4">
+          <div className="mx-auto max-w-4xl">
+            <ResponsiveAdSlot label="Top banner" backgroundClass="bg-transparent" />
+          </div>
+        </div>
+      )}
+
       <article className="mt-10 space-y-16 sm:mt-14 lg:mt-16">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl space-y-16 rounded-3xl bg-white p-8 shadow-xl ring-1 ring-slate-200/60 md:p-12">
-            {post.sections.map((section) => (
+            {post.sections.map((section, sectionIndex) => (
               <section key={section.heading} className="space-y-10 md:space-y-12">
                 <div className="space-y-4">
                   <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">{section.heading}</h2>
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph} className="text-base leading-relaxed text-slate-600">
-                      {paragraph}
+                  {section.paragraphs.map((paragraph, paragraphIndex) => (
+                    <p
+                      key={`${section.heading}-${paragraphIndex}`}
+                      className="text-base leading-relaxed text-slate-600"
+                    >
+                      {renderParagraph(paragraph)}
                     </p>
                   ))}
                 </div>
@@ -149,6 +299,14 @@ export default async function BlogArticlePage({ params }: PageProps) {
                     />
                   </div>
                 )}
+
+                {adLayout && sectionIndex === inContentAdAfterIndex && (
+                  <ResponsiveAdSlot label="In-content banner" backgroundClass="bg-slate-50" className="rounded-3xl" />
+                )}
+
+                {adLayout && midAdAfterIndex !== null && sectionIndex === midAdAfterIndex && (
+                  <ResponsiveAdSlot label="Mid-article banner" backgroundClass="bg-slate-50" className="rounded-3xl" />
+                )}
               </section>
             ))}
 
@@ -163,6 +321,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 ))}
               </ul>
             </aside>
+
+            {adLayout && (
+              <ResponsiveAdSlot label="End-of-article banner" backgroundClass="bg-slate-50" className="rounded-3xl" />
+            )}
           </div>
         </div>
 
@@ -184,6 +346,45 @@ export default async function BlogArticlePage({ params }: PageProps) {
             </div>
           </div>
         </div>
+
+        {relatedPosts.length > 0 && (
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-6 flex items-end justify-between gap-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900">Recommended next reads</h3>
+                  <p className="mt-1 text-sm text-slate-600">Short, useful follow-ups based on this topic.</p>
+                </div>
+                <Button asChild variant="outline" className="hidden rounded-full sm:inline-flex">
+                  <Link href="/blog">Browse all articles</Link>
+                </Button>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {relatedPosts.map((related) => (
+                  <Card key={related.slug} className="transition-shadow hover:shadow-lg">
+                    <CardHeader>
+                      <div className="mb-2 text-3xl">{related.emoji}</div>
+                      <div className="flex items-center gap-2 text-sm text-slate-500 mb-2">
+                        <span className="px-2 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">
+                          {related.category}
+                        </span>
+                        <span>{related.readTime}</span>
+                      </div>
+                      <CardTitle className="text-lg line-clamp-2">{related.title}</CardTitle>
+                      <CardDescription className="line-clamp-2">{related.excerpt}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Button asChild className="w-full" variant="outline">
+                        <Link href={`/blog/${related.slug}`}>Read this next</Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </article>
     </main>
   )
