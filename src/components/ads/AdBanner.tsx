@@ -59,8 +59,8 @@ export default function AdBanner({ title, width, height, className }: AdBannerPr
       width={width}
       height={height}
       scrolling="no"
-      sandbox="allow-scripts"
-      referrerPolicy="no-referrer"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      referrerPolicy="no-referrer-when-downgrade"
       loading="lazy"
       style={{ border: 'none', maxWidth: '100%' }}
     />

@@ -15,14 +15,9 @@ type AdVariant = 'desktop' | 'mobile'
 const DESKTOP_BREAKPOINT = 1024
 
 export function ResponsiveAdSlot({ label, backgroundClass = 'bg-white', className = '' }: ResponsiveAdSlotProps) {
-  const isProduction = process.env.NODE_ENV === 'production'
   const [variant, setVariant] = useState<AdVariant | null>(null)
 
   useEffect(() => {
-    if (!isProduction) {
-      return
-    }
-
     const mediaQuery = window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`)
 
     const updateVariant = (matches: boolean) => {
@@ -40,11 +35,7 @@ export function ResponsiveAdSlot({ label, backgroundClass = 'bg-white', classNam
 
     mediaQuery.addListener(listener)
     return () => mediaQuery.removeListener(listener)
-  }, [isProduction])
-
-  if (!isProduction) {
-    return <section className={`${backgroundClass} py-3 sm:py-4 ${className}`} aria-label={`${label} sponsor placement`} />
-  }
+  }, [])
 
   if (variant === null) {
     return <section className={`${backgroundClass} py-3 sm:py-4 ${className}`} aria-label={`${label} sponsor placement`} />
