@@ -14,12 +14,26 @@ const vi = {
   navigation: {
     logoAlt: 'Logo StartinDE',
     items: {
-      universities: 'Đại học',
-      vocational: 'Đào tạo nghề',
-      diplomaConversion: 'Chuyển đổi văn bằng',
+      study: 'Học tập',
+      work: 'Làm việc',
+      living: 'Sống',
       services: 'Dịch vụ',
       blog: 'Blog',
       contact: 'Liên hệ',
+    },
+    studyMenu: {
+      guide: 'Hướng dẫn du học Đức',
+      guideDesc: 'Lộ trình hoàn chỉnh cho sinh viên quốc tế',
+      universities: 'Tìm trường đại học',
+      universitiesDesc: 'Các tổ chức giáo dục hàng đầu Đức',
+      vocational: 'Đào tạo nghề',
+      vocationalDesc: 'Cơ hội giáo dục kép (Ausbildung)',
+    },
+    workMenu: {
+      guide: 'Hướng dẫn làm việc tại Đức',
+      guideDesc: 'Loại visa, Thẻ xanh & Tìm việc',
+      conversion: 'Công nhận văn bằng',
+      conversionDesc: 'Công nhận bằng cấp của bạn',
     },
     servicesMenu: {
       label: 'Dịch vụ',
