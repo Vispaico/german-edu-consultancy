@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"  // Change to "postgresql" for production
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -15,12 +15,13 @@ model User {
   name          String
   phone         String?
   role          Role      @default(STUDENT)
-  emailVerified DateTime?
+  emailverified DateTime?
   image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdat     DateTime  @default(now())
+  updatedat     DateTime  @updatedAt
 
   // Relations
+  blogposts     BlogPost[]
   student       Student?
   consultant    Consultant?
   sessions      Session[]
@@ -35,10 +36,10 @@ enum Role {
 
 model Session {
   id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
+  sessiontoken String   @unique
+  userid       String
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User     @relation(fields: [userid], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
@@ -46,8 +47,8 @@ model VerificationToken {
   identifier String
   token      String   @unique
   expires    DateTime
-  userId     String
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userid     String
+  user       User     @relation(fields: [userid], references: [id], onDelete: Cascade)
 
   @@unique([identifier, token])
 }
@@ -55,35 +56,35 @@ model VerificationToken {
 // Student Profile
 model Student {
   id               String   @id @default(cuid())
-  userId           String   @unique
-  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+  userid           String   @unique
+  user             User     @relation(fields: [userid], references: [id], onDelete: Cascade)
+
   // Personal Information
-  firstName        String
-  lastName         String
-  dateOfBirth      DateTime
+  firstname        String
+  lastname         String
+  dateofbirth      DateTime
   nationality      String   @default("Vietnam")
-  passportNumber   String?
+  passportnumber   String?
   gender           String?
   address          String?
   city             String?
-  
+
   // Academic Information
   education        String?
   major            String?
   gpa              Float?
-  
+
   // German Test Scores
-  testdafScore     String?
-  goetheScore      String?
-  
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  testdafscore     String?
+  goethescore      String?
+
+  createdat        DateTime @default(now())
+  updatedat        DateTime @updatedAt
 
   // Relations
   applications     Application[]
   documents        Document[]
-  testBookings     TestBooking[]
+  testbookings     TestBooking[]
   messages         Message[]
   payments         Payment[]
 }
@@ -91,14 +92,14 @@ model Student {
 // Consultant Profile
 model Consultant {
   id          String   @id @default(cuid())
-  userId      String   @unique
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+  userid      String   @unique
+  user        User     @relation(fields: [userid], references: [id], onDelete: Cascade)
+
   specialization String?
-  experience     Int?     // Years of experience
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  experience     Int?
+
+  createdat   DateTime @default(now())
+  updatedat   DateTime @updatedAt
 
   // Relations
   applications Application[]
@@ -114,18 +115,18 @@ model University {
   city            String
   state           String
   country         String   @default("Germany")
-  
+
   logo            String?
   website         String?
   ranking         Int?
-  
+
   description     String?
   descriptionVi   String?
-  
-  requirements    String?  // JSON string for requirements
-  
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+
+  requirements    String?  // JSON string
+
+  createdat       DateTime @default(now())
+  updatedat       DateTime @updatedAt
 
   // Relations
   courses         Course[]
@@ -135,20 +136,20 @@ model University {
 // Course/Program
 model Course {
   id            String   @id @default(cuid())
-  universityId  String
-  university    University @relation(fields: [universityId], references: [id], onDelete: Cascade)
-  
+  universityid  String
+  university    University @relation(fields: [universityid], references: [id], onDelete: Cascade)
+
   name          String
   nameVi        String?
   degree        String   // Bachelor, Master, PhD
   duration      Int      // Months
   tuition       Int      // EUR per year
-  
+
   description   String?
   requirements  String?  // JSON string
-  
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+
+  createdat     DateTime @default(now())
+  updatedat     DateTime @updatedAt
 
   // Relations
   applications  Application[]
@@ -157,33 +158,33 @@ model Course {
 // Application
 model Application {
   id              String   @id @default(cuid())
-  studentId       String
-  student         Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  
-  universityId    String
-  university      University @relation(fields: [universityId], references: [id])
-  
-  courseId        String?
-  course          Course?  @relation(fields: [courseId], references: [id])
-  
-  consultantId    String?
-  consultant      Consultant? @relation(fields: [consultantId], references: [id])
-  
+  studentid       String
+  student         Student  @relation(fields: [studentid], references: [id], onDelete: Cascade)
+
+  universityid    String
+  university      University @relation(fields: [universityid], references: [id])
+
+  courseid        String?
+  course          Course?  @relation(fields: [courseid], references: [id])
+
+  consultantid    String?
+  consultant      Consultant? @relation(fields: [consultantid], references: [id])
+
   // Application Details
   status          ApplicationStatus @default(DRAFT)
   intake          String   // e.g., "Winter 2025"
-  visaStatus      VisaStatus @default(NOT_STARTED)
-  
+  visastatus      VisaStatus @default(NOT_STARTED)
+
   // Tracking
-  submittedAt     DateTime?
-  offerReceivedAt DateTime?
-  visaAppliedAt   DateTime?
-  visaApprovedAt  DateTime?
-  
+  submittedat     DateTime?
+  offerreceivedat DateTime?
+  visaappliedat   DateTime?
+  visaapprovedat  DateTime?
+
   notes           String?
-  
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+
+  createdat       DateTime @default(now())
+  updatedat       DateTime @updatedAt
 
   // Relations
   documents       Document[]
@@ -216,26 +217,26 @@ enum VisaStatus {
 // Document
 model Document {
   id              String   @id @default(cuid())
-  studentId       String
-  student         Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  
-  applicationId   String?
-  application     Application? @relation(fields: [applicationId], references: [id])
-  
+  studentid       String
+  student         Student  @relation(fields: [studentid], references: [id], onDelete: Cascade)
+
+  applicationid   String?
+  application     Application? @relation(fields: [applicationid], references: [id])
+
   type            DocumentType
   name            String
-  fileName        String
-  fileUrl         String
-  fileSize        Int      // Bytes
-  
+  filename        String
+  fileurl         String
+  filesize        Int      // Bytes
+
   status          DocumentStatus @default(PENDING)
-  verifiedAt      DateTime?
-  verifiedBy      String?
-  
+  verifiedat      DateTime?
+  verifiedby      String?
+
   notes           String?
-  
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+
+  createdat       DateTime @default(now())
+  updatedat       DateTime @updatedAt
 }
 
 enum DocumentType {
@@ -268,24 +269,24 @@ enum DocumentStatus {
 // Language Test Booking
 model TestBooking {
   id          String   @id @default(cuid())
-  studentId   String
-  student     Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  
-  testType    TestType
-  testCenter  String
+  studentid   String
+  student     Student  @relation(fields: [studentid], references: [id], onDelete: Cascade)
+
+  testtype    TestType
+  testcenter  String
   location    String
-  testDate    DateTime
-  
-  registrationId String?
+  testdate    DateTime
+
+  registrationid String?
   status      BookingStatus @default(PENDING)
-  
+
   score       Float?
-  resultDate  DateTime?
-  
+  resultdate  DateTime?
+
   notes       String?
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+
+  createdat   DateTime @default(now())
+  updatedat   DateTime @updatedAt
 }
 
 enum TestType {
@@ -306,34 +307,34 @@ enum BookingStatus {
 // Payment
 model Payment {
   id              String   @id @default(cuid())
-  studentId       String
-  student         Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  
-  applicationId   String?
-  application     Application? @relation(fields: [applicationId], references: [id])
-  
+  studentid       String
+  student         Student  @relation(fields: [studentid], references: [id], onDelete: Cascade)
+
+  applicationid   String?
+  application     Application? @relation(fields: [applicationid], references: [id])
+
   amount          Int      // VND
   type            PaymentType
   method          PaymentMethod
-  
+
   status          PaymentStatus @default(PENDING)
-  
+
   // Bank Transfer Details
-  bankName        String?
-  accountNumber   String?
-  transferCode    String?
-  transferDate    DateTime?
-  
+  bankname        String?
+  accountnumber   String?
+  transfercode    String?
+  transferdate    DateTime?
+
   // Receipt
-  receiptUrl      String?
-  
-  verifiedAt      DateTime?
-  verifiedBy      String?
-  
+  receipturl      String?
+
+  verifiedat      DateTime?
+  verifiedby      String?
+
   notes           String?
-  
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+
+  createdat       DateTime @default(now())
+  updatedat       DateTime @updatedAt
 }
 
 enum PaymentType {
@@ -364,44 +365,88 @@ enum PaymentStatus {
 // Message/Chat
 model Message {
   id          String   @id @default(cuid())
-  studentId   String
-  student     Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  
-  consultantId String?
-  consultant   Consultant? @relation(fields: [consultantId], references: [id])
-  
+  studentid   String
+  student     Student  @relation(fields: [studentid], references: [id], onDelete: Cascade)
+
+  consultantid String?
+  consultant   Consultant? @relation(fields: [consultantid], references: [id])
+
   content     String
-  isFromStudent Boolean @default(true)
-  
-  readAt      DateTime?
-  
-  createdAt   DateTime @default(now())
+  isfromstudent Boolean @default(true)
+
+  readat      DateTime?
+
+  createdat   DateTime @default(now())
 }
 
-// Blog Post
+// Blog Post (with language separation)
 model BlogPost {
   id          String   @id @default(cuid())
-  slug        String   @unique
-  
+  slug        String
+
+  // Language identifier (en or vi)
+  language    String   @default("en")
+
+  // SEO fields
+  metatitle   String?
+  metadescription String?
+
+  // Content fields
   title       String
-  titleVi     String?
-  
   excerpt     String?
-  excerptVi   String?
-  
   content     String
-  contentVi   String?
-  
-  coverImage  String?
-  
+
+  // Images
+  coverimage  String?
+  authorid    String?
+
+  // Category and tags
   category    String?
-  tags        String?  // JSON array
-  
+  tags        String?  // JSON array: ["留学", "签证", "Ausbildung"]
+
+  // Publishing
   published   Boolean  @default(false)
-  publishedAt DateTime?
-  
+  publishedat DateTime?
   views       Int      @default(0)
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+
+  // Timestamps
+  createdat   DateTime @default(now())
+  updatedat   DateTime @updatedAt
+
+  // Relations
+  author      User?    @relation(fields: [authorid], references: [id], onDelete: SetNull)
+
+  // Unique constraint: same slug + language = same article in different languages
+  @@unique([slug, language])
+}
+
+// Newsletter subscribers
+model Newsletter {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String?
+  subscribedat DateTime @default(now())
+  active      Boolean  @default(true)
+  ipaddress   String?
+  unsubscribetoken String?
+  createdat   DateTime @default(now())
+}
+
+// Contact form messages
+model ContactMessage {
+  id          String   @id @default(cuid())
+
+  // Contact information
+  name        String
+  email       String
+  phone       String
+  message     String
+
+  // Tracking
+  ipaddress   String?
+  useragent   String?
+  createdat   DateTime @default(now())
+
+  // Status
+  status      String   @default("new") // new, read, replied, closed
 }

@@ -49,3 +49,9 @@ gedu-projectbrief.md
 
 # content ideation (local only)
 germanedunewarticles.md
+
+# supabase migration scripts (local only, secrets included)
+supabasee/
+
+IMPLEMENTATION_PLAN.md
+
