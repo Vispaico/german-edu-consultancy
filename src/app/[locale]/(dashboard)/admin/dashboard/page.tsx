@@ -55,7 +55,7 @@ export default async function AdminDashboard() {
     })
   ])
 
-  const visaRate = await prisma.application.count().then(total =>
+  const visaRate = await prisma.application.count().then((total: number) =>
     total > 0 ? Math.round((approvedVisas / total) * 100) : 0
   )
 
