@@ -119,7 +119,7 @@ export default async function AdminDashboard() {
             <p className="text-gray-500 text-center py-8">No applications yet</p>
           ) : (
             <div className="space-y-4">
-              {recentApplications.map((app) => (
+              {recentApplications.map((app: any) => (
                 <div key={app.id} className="flex items-center justify-between p-3 border rounded-lg">
                   <div className="flex-1">
                     <h4 className="font-medium">
