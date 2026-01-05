@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 const resetSchema = z.object({
   token: z.string(),
-  password: z.string().min(8),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
 })
 
 export async function POST(req: Request) {
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     const result = resetSchema.safeParse(body)
     if (!result.success) {
       return NextResponse.json(
-        { error: 'Invalid input' },
+        { error: 'Invalid input', details: result.error.flatten().fieldErrors },
         { status: 400 }
       )
     }
@@ -26,10 +26,10 @@ export async function POST(req: Request) {
     const verificationToken = await prisma.verificationToken.findFirst({
       where: {
         token,
-        identifier: { startsWith: 'reset-' },
         expires: { gt: new Date() },
       },
       include: { user: true },
+      orderBy: { expires: 'desc' },
     })
 
     if (!verificationToken || !verificationToken.user) {
@@ -48,18 +48,18 @@ export async function POST(req: Request) {
     })
 
     // Delete used token
-    await prisma.verificationToken.delete({
-      where: { id: verificationToken.id },
+    await prisma.verificationToken.deleteMany({
+      where: { userid: verificationToken.user.id },
     })
 
     return NextResponse.json(
       { success: true, message: 'Password reset successfully' },
       { status: 200 }
     )
-  } catch (error) {
+  } catch (error: any) {
     console.error('Reset password error:', error)
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error.message || 'Internal server error' },
       { status: 500 }
     )
   }

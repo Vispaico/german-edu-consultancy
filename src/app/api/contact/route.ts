@@ -4,10 +4,10 @@ import { sendContactNotification } from '@/lib/email'
 import { z } from 'zod'
 
 const contactSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  phone: z.string().min(5),
-  message: z.string().min(10),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(5, "Phone number is required"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
 })
 
 export async function POST(req: Request) {
@@ -17,6 +17,7 @@ export async function POST(req: Request) {
     // Validate input
     const result = contactSchema.safeParse(body)
     if (!result.success) {
+      console.log('Validation error:', result.error.flatten().fieldErrors)
       return NextResponse.json(
         { error: 'Invalid input', details: result.error.flatten().fieldErrors },
         { status: 400 }
@@ -24,6 +25,15 @@ export async function POST(req: Request) {
     }
 
     const { name, email, phone, message } = result.data
+
+    // Check if email config is set up
+    if (!process.env.EMAIL_CONTACT || !process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error('Email configuration not set up properly')
+      return NextResponse.json(
+        { error: 'Email service not configured. Please contact support.' },
+        { status: 500 }
+      )
+    }
 
     // Store in database
     await prisma.contactMessage.create({
@@ -38,8 +48,10 @@ export async function POST(req: Request) {
       },
     })
 
-    // Send email notification
-    await sendContactNotification({ name, email, phone, message })
+    // Send email notification (non-blocking)
+    sendContactNotification({ name, email, phone, message }).catch(err => {
+      console.error('Failed to send contact notification email:', err)
+    })
 
     return NextResponse.json(
       { success: true, message: 'Message sent successfully' },

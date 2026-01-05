@@ -4,8 +4,7 @@ import { sendNewsletterConfirmation } from '@/lib/email'
 import { z } from 'zod'
 
 const newsletterSchema = z.object({
-  email: z.string().email(),
-  name: z.string().optional(),
+  email: z.string().email("Invalid email address"),
 })
 
 export async function POST(req: Request) {
@@ -21,7 +20,7 @@ export async function POST(req: Request) {
       )
     }
 
-    const { email, name } = result.data
+    const { email } = result.data
 
     // Check if already subscribed
     const existing = await prisma.newsletter.findFirst({
@@ -45,7 +44,6 @@ export async function POST(req: Request) {
     await prisma.newsletter.create({
       data: {
         email,
-        name: name || null,
         active: true,
         unsubscribetoken: unsubscribeToken,
         ipaddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown',
@@ -53,7 +51,7 @@ export async function POST(req: Request) {
     })
 
     // Send confirmation email
-    await sendNewsletterConfirmation(name || null, email)
+    await sendNewsletterConfirmation(null, email)
 
     return NextResponse.json(
       { success: true, message: 'Successfully subscribed!' },
