@@ -80,7 +80,7 @@ export default async function AdminBlogPage() {
             <p className="text-gray-500 text-center py-8">No posts yet. Create your first post!</p>
           ) : (
             <div className="space-y-4">
-              {posts.map((post) => (
+              {posts.map((post: any) => (
                 <div key={post.id} className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
