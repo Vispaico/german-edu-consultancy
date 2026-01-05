@@ -29,7 +29,7 @@ export default async function AdminStudentsPage() {
 
   // Get application counts for each student
   const studentsWithApps = await Promise.all(
-    students.map(async (student) => {
+    students.map(async (student: any) => {
       const applicationsCount = await prisma.application.count({
         where: { studentid: student.id },
       })
@@ -70,7 +70,7 @@ export default async function AdminStudentsPage() {
             <p className="text-gray-500 text-center py-8">No students registered yet.</p>
           ) : (
             <div className="space-y-4">
-              {studentsWithApps.map((student) => (
+              {studentsWithApps.map((student: any) => (
                 <div key={student.id} className="p-4 border rounded-lg flex items-center justify-between">
                   <div className="flex-1">
                     <h3 className="font-semibold">{student.displayName}</h3>
