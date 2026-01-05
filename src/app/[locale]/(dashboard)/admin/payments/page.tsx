@@ -63,15 +63,15 @@ export default async function AdminPaymentsPage({ searchParams }: { searchParams
 
   // Calculate statistics
   const totalPayments = payments.length
-  const pendingPayments = payments.filter((p) => p.status === 'PENDING').length
-  const completedPayments = payments.filter((p) => p.status === 'COMPLETED').length
+  const pendingPayments = payments.filter((p: any) => p.status === 'PENDING').length
+  const completedPayments = payments.filter((p: any) => p.status === 'COMPLETED').length
   
   // Calculate total amount for this month
   const now = new Date()
   const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1)
   const thisMonthTotal = payments
-    .filter((p) => p.createdat >= thisMonthStart && (p.status === 'COMPLETED' || p.status === 'VERIFIED'))
-    .reduce((sum, p) => sum + p.amount, 0)
+    .filter((p: any) => p.createdat >= thisMonthStart && (p.status === 'COMPLETED' || p.status === 'VERIFIED'))
+    .reduce((sum: number, p: any) => sum + p.amount, 0)
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('vi-VN', {
@@ -145,7 +145,7 @@ export default async function AdminPaymentsPage({ searchParams }: { searchParams
             <p className="text-gray-500 text-center py-8">No payments recorded yet.</p>
           ) : (
             <div className="space-y-4">
-              {payments.map((payment) => (
+              {payments.map((payment: any) => (
                 <div key={payment.id} className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
