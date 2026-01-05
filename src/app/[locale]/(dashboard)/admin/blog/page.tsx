@@ -22,8 +22,8 @@ export default async function AdminBlogPage() {
 
   // Calculate stats
   const totalPosts = posts.length
-  const publishedPosts = posts.filter(p => p.published).length
-  const totalViews = posts.reduce((sum, p) => sum + p.views, 0)
+  const publishedPosts = posts.filter((p: any) => p.published).length
+  const totalViews = posts.reduce((sum: any, p: any) => sum + p.views, 0)
 
   return (
     <div className="space-y-8">
