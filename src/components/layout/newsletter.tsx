@@ -3,12 +3,9 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { useTranslations } from 'next-intl'
 
 export function NewsletterSignup() {
-  const t = useTranslations('newsletter')
   const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<{ success: boolean; text: string } | null>(null)
 
@@ -21,7 +18,7 @@ export function NewsletterSignup() {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, name }),
+        body: JSON.stringify({ email }),
       })
 
       const data = await res.json()
@@ -33,7 +30,6 @@ export function NewsletterSignup() {
 
       if (res.ok) {
         setEmail('')
-        setName('')
       }
     } catch {
       setMessage({
@@ -71,13 +67,6 @@ export function NewsletterSignup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="flex-1"
-            />
-            <Input
-              type="text"
-              placeholder="Your name (optional)"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
               className="flex-1"
             />
             <Button
