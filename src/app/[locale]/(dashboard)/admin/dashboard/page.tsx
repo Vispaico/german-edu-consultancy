@@ -153,7 +153,7 @@ export default async function AdminDashboard() {
               <p className="text-gray-500 text-center py-8">No pending documents</p>
             ) : (
               <div className="space-y-3">
-                {pendingDocuments.map((doc) => (
+                {pendingDocuments.map((doc: any) => (
                   <div key={doc.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div>
                       <p className="font-medium text-sm">
