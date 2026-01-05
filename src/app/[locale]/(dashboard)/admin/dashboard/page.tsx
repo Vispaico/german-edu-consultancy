@@ -180,7 +180,7 @@ export default async function AdminDashboard() {
               <p className="text-gray-500 text-center py-8">No pending payments</p>
             ) : (
               <div className="space-y-3">
-                {recentPayments.map((payment) => (
+                {recentPayments.map((payment: any) => (
                   <div key={payment.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div>
                       <p className="font-medium text-sm">
