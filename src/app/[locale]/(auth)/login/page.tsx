@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { signIn } from 'next-auth/react'
 import { Link } from '@/navigation'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
@@ -21,21 +22,18 @@ export default function LoginPage() {
     setLoading(true)
 
     try {
-      // TODO: Implement actual authentication with NextAuth
-      // For now, simple demo validation
-      if (email && password) {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        
-        // Check demo credentials
-        if (email === 'admin@educonsultancy.vn' && password === 'admin123') {
-          router.push('/admin/dashboard')
-        } else if (email === 'student@test.com' && password === 'student123') {
-          router.push('/student/dashboard')
-        } else {
-          setError('Invalid email or password')
-        }
+      const result = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      })
+
+      if (result?.error) {
+        setError('Invalid email or password')
+        return
       }
+
+      router.push('/dashboard' as any)
     } catch {
       setError('An error occurred. Please try again.')
     } finally {
@@ -59,7 +57,7 @@ export default function LoginPage() {
                 {error}
               </div>
             )}
-            
+
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -71,12 +69,12 @@ export default function LoginPage() {
                 required
               />
             </div>
-            
+
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="password">Password</Label>
-                <Link 
-                  href="/forgot-password" 
+                <Link
+                  href="/forgot-password"
                   className="text-sm text-blue-600 hover:underline"
                 >
                   Forgot password?
@@ -101,15 +99,6 @@ export default function LoginPage() {
               {loading ? 'Signing in...' : 'Sign In'}
             </Button>
           </form>
-
-          <div className="mt-4 text-center text-sm">
-            <span className="text-gray-600">Demo accounts:</span>
-            <div className="mt-1 text-xs text-gray-500">
-              Admin: admin@educonsultancy.vn / admin123
-              <br />
-              Student: student@test.com / student123
-            </div>
-          </div>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
           <div className="text-sm text-center text-gray-600">

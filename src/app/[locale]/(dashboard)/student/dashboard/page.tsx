@@ -1,12 +1,80 @@
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+import { redirect } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/navigation'
 
-export default function StudentDashboard() {
+export default async function StudentDashboard() {
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    redirect('/login')
+  }
+
+  // Get the user from database with their student profile
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+    include: { student: true },
+  })
+
+  if (!user || !user.student) {
+    redirect('/login')
+  }
+
+  const student = user.student
+  const displayName = user.student?.firstname && user.student?.lastname 
+    ? `${user.student.firstname} ${user.student.lastname}` 
+    : user.email
+
+  // Fetch real statistics
+  const [
+    totalApplications,
+    pendingDocuments,
+    scheduledTests,
+    unreadMessages,
+    recentApplications,
+    visaApplication,
+  ] = await Promise.all([
+    prisma.application.count({ where: { studentid: student.id } }),
+    prisma.document.count({
+      where: {
+        studentid: student.id,
+        status: 'PENDING',
+      },
+    }),
+    prisma.testBooking.count({
+      where: {
+        studentid: student.id,
+        status: 'CONFIRMED',
+        resultdate: { gte: new Date() },
+      },
+    }),
+    prisma.message.count({
+      where: {
+        studentid: student.id,
+        readat: null,
+      },
+    }),
+    prisma.application.findMany({
+      where: { studentid: student.id },
+      take: 3,
+      orderBy: { createdat: 'desc' },
+      include: { university: true, course: true },
+    }),
+    prisma.application.findFirst({
+      where: { studentid: student.id },
+      orderBy: { createdat: 'desc' },
+    }),
+  ])
+
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Welcome back, Student!</h1>
+        <h1 className="text-3xl font-bold mb-2">
+          Welcome back, {displayName}!
+        </h1>
         <p className="text-gray-600">Here&apos;s an overview of your application progress</p>
       </div>
 
@@ -15,25 +83,25 @@ export default function StudentDashboard() {
         <Card>
           <CardHeader className="pb-3">
             <CardDescription>Active Applications</CardDescription>
-            <CardTitle className="text-3xl">2</CardTitle>
+            <CardTitle className="text-3xl">{totalApplications}</CardTitle>
           </CardHeader>
         </Card>
         <Card>
           <CardHeader className="pb-3">
             <CardDescription>Documents Pending</CardDescription>
-            <CardTitle className="text-3xl">3</CardTitle>
+            <CardTitle className="text-3xl">{pendingDocuments}</CardTitle>
           </CardHeader>
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardDescription>Test Scheduled</CardDescription>
-            <CardTitle className="text-3xl">1</CardTitle>
+            <CardDescription>Tests Scheduled</CardDescription>
+            <CardTitle className="text-3xl">{scheduledTests}</CardTitle>
           </CardHeader>
         </Card>
         <Card>
           <CardHeader className="pb-3">
             <CardDescription>Unread Messages</CardDescription>
-            <CardTitle className="text-3xl">5</CardTitle>
+            <CardTitle className="text-3xl">{unreadMessages}</CardTitle>
           </CardHeader>
         </Card>
       </div>
@@ -45,58 +113,94 @@ export default function StudentDashboard() {
           <CardDescription>Track your university applications</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {[
-              { uni: 'Technical University of Munich', program: 'Master of Computer Science', status: 'Under Review', color: 'blue' },
-              { uni: 'Heidelberg University', program: 'Master of Engineering', status: 'Documents Required', color: 'yellow' }
-            ].map((app, idx) => (
-              <div key={idx} className="flex items-center justify-between p-4 border rounded-lg">
-                <div>
-                  <h3 className="font-semibold">{app.uni}</h3>
-                  <p className="text-sm text-gray-600">{app.program}</p>
+          {recentApplications.length === 0 ? (
+            <p className="text-gray-500 text-center py-4">No applications yet.</p>
+          ) : (
+            <div className="space-y-4">
+              {recentApplications.map((app: any) => (
+                <div key={app.id} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div>
+                    <h3 className="font-semibold">{app.university.name}</h3>
+                    <p className="text-sm text-gray-600">{app.course?.name || 'General Application'}</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className={`px-3 py-1 rounded-full text-xs ${
+                      app.status === 'APPROVED' ? 'bg-green-50 text-green-600' :
+                      app.status === 'OFFER_RECEIVED' ? 'bg-blue-50 text-blue-600' :
+                      app.status === 'UNDER_REVIEW' ? 'bg-yellow-50 text-yellow-600' :
+                      'bg-gray-100 text-gray-600'
+                    }`}>
+                      {app.status.replace('_', ' ')}
+                    </span>
+                    <Button size="sm" asChild>
+                      <Link href={`/student/applications/${app.id}`}>
+                        View
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className={`px-3 py-1 rounded-full text-sm bg-${app.color}-50 text-${app.color}-600`}>
-                    {app.status}
-                  </span>
-                  <Button size="sm" variant="outline">View</Button>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </CardContent>
       </Card>
 
       {/* Visa Timeline */}
       <Card>
         <CardHeader>
-          <CardTitle>Visa Application Timeline</CardTitle>
+          <CardTitle>Visa Application Status</CardTitle>
           <CardDescription>German Student Visa</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {[
-              { step: 'Document Preparation', status: 'completed', date: 'Oct 15, 2025' },
-              { step: 'Application Submitted', status: 'completed', date: 'Oct 22, 2025' },
-              { step: 'Biometrics Done', status: 'completed', date: 'Oct 28, 2025' },
-              { step: 'Medical Examination', status: 'current', date: 'Scheduled for Nov 10, 2025' },
-              { step: 'Visa Decision', status: 'pending', date: 'Pending' }
-            ].map((item, idx) => (
-              <div key={idx} className="flex items-center gap-4">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                  item.status === 'completed' ? 'bg-green-100 text-green-600' :
-                  item.status === 'current' ? 'bg-blue-100 text-blue-600' :
-                  'bg-gray-100 text-gray-400'
-                }`}>
-                  {item.status === 'completed' ? '✓' : idx + 1}
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-medium">{item.step}</h4>
-                  <p className="text-sm text-gray-600">{item.date}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          {!visaApplication ? (
+            <p className="text-gray-500 text-center py-4">
+              Submit an application first to track visa status.
+            </p>
+          ) : (
+            <div className="space-y-4">
+              {(() => {
+                const visaStatus = visaApplication.visastatus
+                const timeline = [
+                  { step: 'Not Started', status: 'NOT_STARTED', label: 'Not Started' },
+                  { step: 'Documents Preparation', status: 'DOCUMENTS_PREPARATION', label: 'Documents Preparation' },
+                  { step: 'Application Submitted', status: 'SUBMITTED', label: 'Submitted' },
+                  { step: 'Biometrics Done', status: 'BIOMETRICS_DONE', label: 'Biometrics Completed' },
+                  { step: 'Medical Examination', status: 'MEDICAL_DONE', label: 'Medical Completed' },
+                  { step: 'Processing', status: 'PROCESSING', label: 'Under Processing' },
+                  { step: 'Approved', status: 'APPROVED', label: 'Visa Approved' },
+                  { step: 'Rejected', status: 'REJECTED', label: 'Visa Rejected' },
+                ]
+                
+                const currentIndex = timeline.findIndex(t => t.status === visaStatus)
+                
+                return timeline.slice(0, visaStatus === 'REJECTED' ? currentIndex + 1 : currentIndex + 1).map((item, idx) => {
+                  const isCompleted = idx < currentIndex || item.status === 'APPROVED'
+                  const isCurrent = item.status === visaStatus && visaStatus !== 'APPROVED' && visaStatus !== 'REJECTED'
+                  
+                  return (
+                    <div key={idx} className="flex items-center gap-4">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        isCompleted ? 'bg-green-100 text-green-600' :
+                        isCurrent ? 'bg-blue-100 text-blue-600' :
+                        'bg-gray-100 text-gray-400'
+                      }`}>
+                        {isCompleted ? '✓' : idx + 1}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-medium">{item.label}</h4>
+                        {isCurrent && (
+                          <p className="text-sm text-blue-600">Current Status</p>
+                        )}
+                        {isCompleted && idx === currentIndex - 1 && item.status !== 'APPROVED' && (
+                          <p className="text-sm text-green-600">Completed</p>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })
+              })()}
+            </div>
+          )}
         </CardContent>
       </Card>
 

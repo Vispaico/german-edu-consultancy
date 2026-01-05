@@ -45,11 +45,24 @@ export default function RegisterPage() {
     setLoading(true)
 
     try {
-      // TODO: Implement actual registration API
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      // Simulate success
-      alert('Registration successful! Please check your email to verify your account.')
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+        }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setError(data.error || 'Registration failed')
+        return
+      }
+
+      alert('Registration successful! Please check your email.')
       router.push('/login')
     } catch {
       setError('Registration failed. Please try again.')

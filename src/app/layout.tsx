@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 
 import './globals.css'
 import '@/components/ProfileCard.css'
+import { Providers } from '@/components/providers'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -24,7 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           crossOrigin="anonymous"
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
