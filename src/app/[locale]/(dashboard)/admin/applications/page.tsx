@@ -26,9 +26,9 @@ export default async function AdminApplicationsPage() {
 
   // Calculate statistics
   const totalApps = applications.length
-  const pendingReview = applications.filter((a) => a.status === 'SUBMITTED' || a.status === 'UNDER_REVIEW').length
-  const approved = applications.filter((a) => a.status === 'OFFER_RECEIVED' || a.status === 'APPROVED').length
-  const rejected = applications.filter((a) => a.status === 'REJECTED' || a.status === 'WITHDRAWN').length
+  const pendingReview = applications.filter((a: any) => a.status === 'SUBMITTED' || a.status === 'UNDER_REVIEW').length
+  const approved = applications.filter((a: any) => a.status === 'OFFER_RECEIVED' || a.status === 'APPROVED').length
+  const rejected = applications.filter((a: any) => a.status === 'REJECTED' || a.status === 'WITHDRAWN').length
 
   return (
     <div className="space-y-8">
