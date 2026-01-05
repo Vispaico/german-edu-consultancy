@@ -80,7 +80,7 @@ export default async function AdminApplicationsPage() {
             <p className="text-gray-500 text-center py-8">No applications yet.</p>
           ) : (
             <div className="space-y-4">
-              {applications.map((app) => (
+              {applications.map((app: any) => (
                 <div key={app.id} className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
