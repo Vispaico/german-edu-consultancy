@@ -46,7 +46,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <Header />
       <div className="min-h-[50vh]">{children}</div>
       <ResponsiveAdSlot label="Sitewide bottom sponsor" backgroundClass="bg-blue-50/40" className="border-t border-blue-100/40" />
-      <Footer />
+      <Footer locale={safeLocale} />
     </NextIntlClientProvider>
   )
 }

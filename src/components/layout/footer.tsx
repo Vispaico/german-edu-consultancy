@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
+import type { Locale } from '@/i18n/routing'
 
 import { Link } from '@/navigation'
 
@@ -8,8 +9,8 @@ type FooterLink = {
   href: string
 }
 
-export async function Footer() {
-  const t = await getTranslations('footer')
+export async function Footer({ locale }: { locale: Locale }) {
+  const t = await getTranslations({ locale, namespace: 'footer' })
   const servicesLinks = t.raw('servicesLinks') as FooterLink[]
   const resourcesLinks = t.raw('resourcesLinks') as FooterLink[]
   const legalLinks = t.raw('legal.links') as FooterLink[]
