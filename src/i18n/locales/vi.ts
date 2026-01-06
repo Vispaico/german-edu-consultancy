@@ -392,6 +392,96 @@ const vi = {
       button: 'Liên hệ',
     },
   },
+  dashboard: {
+    admin: {
+      title: 'Bảng điều khiển quản trị',
+      welcome: 'Xin chào, {name}',
+      stats: {
+        totalStudents: 'Tổng số học sinh',
+        registeredStudents: 'Học sinh đã đăng ký',
+        activeApplications: 'Hồ sơ đang xử lý',
+        pendingReview: 'Chờ duyệt',
+        visaApprovals: 'Duyệt visa',
+        successRate: 'Tỷ lệ thành công',
+        totalRevenue: 'Tổng doanh thu',
+        vndCollected: 'VNĐ đã thu',
+      },
+      recentApplications: {
+        title: 'Hồ sơ gần đây',
+        description: 'Các hồ sơ đại học mới nhất',
+        noApplications: 'Chưa có hồ sơ nào',
+      },
+      pendingActions: {
+        pendingDocuments: {
+          title: 'Chờ xác minh tài liệu',
+          noPending: 'Không có tài liệu nào đang chờ',
+        },
+        paymentVerification: {
+          title: 'Xác minh thanh toán',
+          noPending: 'Không có thanh toán nào đang chờ',
+        },
+      },
+    },
+    student: {
+      welcome: 'Xin chào trở lại, {name}!',
+      overview: 'Dưới đây là tổng quan tiến trình hồ sơ của bạn',
+      stats: {
+        activeApplications: 'Hồ sơ hoạt động',
+        documentsPending: 'Tài liệu đang chờ',
+        testsScheduled: 'Lịch thi đã đặt',
+        unreadMessages: 'Tin nhắn chưa đọc',
+      },
+      currentApplications: {
+        title: 'Hồ sơ hiện tại',
+        description: 'Theo dõi hồ sơ đại học của bạn',
+        noApplications: 'Chưa có hồ sơ nào.',
+        view: 'Xem',
+      },
+      visaStatus: {
+        title: 'Trạng thái hồ sơ visa',
+        description: 'Visa du học sinh Đức',
+        noApplication: 'Nộp hồ sơ trước để theo dõi tình trạng visa.',
+        timeline: {
+          notStarted: 'Chưa bắt đầu',
+          documentsPreparation: 'Chuẩn bị tài liệu',
+          submitted: 'Đã nộp',
+          biometricsDone: 'Đã lấy vân tay',
+          medicalDone: 'Đã khám sức khỏe',
+          processing: 'Đang xử lý',
+          approved: 'Đã duyệt visa',
+          rejected: 'Đã từ chối visa',
+          currentStatus: 'Trạng thái hiện tại',
+          completed: 'Đã hoàn thành',
+        },
+      },
+      resources: {
+        title: 'Tài nguyên tải xuống',
+        description: 'Truy cập tài liệu hữu ích bất cứ lúc nào',
+        guide: {
+          title: 'Study in Germany with Confidence',
+          description: 'Hướng dẫn toàn diện để chuẩn bị cho việc học tập của bạn.',
+          download: 'Tải xuống',
+        },
+      },
+      quickActions: {
+        newApplication: {
+          title: 'Hồ sơ mới',
+          description: 'Bắt đầu hồ sơ đại học mới',
+          applyNow: 'Nộp đơn ngay',
+        },
+        uploadDocuments: {
+          title: 'Tải lên tài liệu',
+          description: 'Nộp tài liệu yêu cầu',
+          upload: 'Tải lên',
+        },
+        bookTest: {
+          title: 'Đặt lịch thi',
+          description: 'Đặt lịch IELTS, TOEFL, hoặc PTE',
+          bookNow: 'Đặt ngay',
+        },
+      },
+    },
+  },
 }
 
 export default vi

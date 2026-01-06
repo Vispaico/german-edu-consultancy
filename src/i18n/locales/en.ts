@@ -398,6 +398,96 @@ const en = {
       button: 'Contact Us',
     },
   },
+  dashboard: {
+    admin: {
+      title: 'Admin Dashboard',
+      welcome: 'Welcome, {name}',
+      stats: {
+        totalStudents: 'Total Students',
+        registeredStudents: 'Registered students',
+        activeApplications: 'Active Applications',
+        pendingReview: 'Pending review',
+        visaApprovals: 'Visa Approvals',
+        successRate: 'Success rate',
+        totalRevenue: 'Total Revenue',
+        vndCollected: 'VNĐ collected',
+      },
+      recentApplications: {
+        title: 'Recent Applications',
+        description: 'Latest university applications',
+        noApplications: 'No applications yet',
+      },
+      pendingActions: {
+        pendingDocuments: {
+          title: 'Pending Document Verification',
+          noPending: 'No pending documents',
+        },
+        paymentVerification: {
+          title: 'Payment Verification',
+          noPending: 'No pending payments',
+        },
+      },
+    },
+    student: {
+      welcome: 'Welcome back, {name}!',
+      overview: "Here's an overview of your application progress",
+      stats: {
+        activeApplications: 'Active Applications',
+        documentsPending: 'Documents Pending',
+        testsScheduled: 'Tests Scheduled',
+        unreadMessages: 'Unread Messages',
+      },
+      currentApplications: {
+        title: 'Current Applications',
+        description: 'Track your university applications',
+        noApplications: 'No applications yet.',
+        view: 'View',
+      },
+      visaStatus: {
+        title: 'Visa Application Status',
+        description: 'German Student Visa',
+        noApplication: 'Submit an application first to track visa status.',
+        timeline: {
+          notStarted: 'Not Started',
+          documentsPreparation: 'Documents Preparation',
+          submitted: 'Submitted',
+          biometricsDone: 'Biometrics Completed',
+          medicalDone: 'Medical Completed',
+          processing: 'Under Processing',
+          approved: 'Visa Approved',
+          rejected: 'Visa Rejected',
+          currentStatus: 'Current Status',
+          completed: 'Completed',
+        },
+      },
+      resources: {
+        title: 'Downloadable Resources',
+        description: 'Access helpful documents anytime',
+        guide: {
+          title: 'Study in Germany with Confidence',
+          description: 'Comprehensive guide to prepare for your studies.',
+          download: 'Download',
+        },
+      },
+      quickActions: {
+        newApplication: {
+          title: 'New Application',
+          description: 'Start a new university application',
+          applyNow: 'Apply Now',
+        },
+        uploadDocuments: {
+          title: 'Upload Documents',
+          description: 'Submit required documents',
+          upload: 'Upload',
+        },
+        bookTest: {
+          title: 'Book Test',
+          description: 'Schedule IELTS, TOEFL, or PTE',
+          bookNow: 'Book Now',
+        },
+      },
+    },
+  },
 }
 
 export default en

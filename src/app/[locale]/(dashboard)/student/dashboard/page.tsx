@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/navigation'
+import { useTranslations } from 'next-intl'
 
 type PageParams = {
   params: Promise<{ locale: string }>
@@ -74,38 +75,40 @@ export default async function StudentDashboard({ params }: PageParams) {
     }),
   ])
 
+  const t = useTranslations('dashboard.student')
+
   return (
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold mb-2">
-          Welcome back, {displayName}!
+          {t('welcome', { name: displayName })}
         </h1>
-        <p className="text-gray-600">Here&apos;s an overview of your application progress</p>
+        <p className="text-gray-600">{t('overview')}</p>
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card>
           <CardHeader className="pb-3">
-            <CardDescription>Active Applications</CardDescription>
+            <CardDescription>{t('stats.activeApplications')}</CardDescription>
             <CardTitle className="text-3xl">{totalApplications}</CardTitle>
           </CardHeader>
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardDescription>Documents Pending</CardDescription>
+            <CardDescription>{t('stats.documentsPending')}</CardDescription>
             <CardTitle className="text-3xl">{pendingDocuments}</CardTitle>
           </CardHeader>
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardDescription>Tests Scheduled</CardDescription>
+            <CardDescription>{t('stats.testsScheduled')}</CardDescription>
             <CardTitle className="text-3xl">{scheduledTests}</CardTitle>
           </CardHeader>
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardDescription>Unread Messages</CardDescription>
+            <CardDescription>{t('stats.unreadMessages')}</CardDescription>
             <CardTitle className="text-3xl">{unreadMessages}</CardTitle>
           </CardHeader>
         </Card>
@@ -114,12 +117,12 @@ export default async function StudentDashboard({ params }: PageParams) {
       {/* Current Applications */}
       <Card>
         <CardHeader>
-          <CardTitle>Current Applications</CardTitle>
-          <CardDescription>Track your university applications</CardDescription>
+          <CardTitle>{t('currentApplications.title')}</CardTitle>
+          <CardDescription>{t('currentApplications.description')}</CardDescription>
         </CardHeader>
         <CardContent>
           {recentApplications.length === 0 ? (
-            <p className="text-gray-500 text-center py-4">No applications yet.</p>
+            <p className="text-gray-500 text-center py-4">{t('currentApplications.noApplications')}</p>
           ) : (
             <div className="space-y-4">
               {recentApplications.map((app) => (
@@ -139,7 +142,7 @@ export default async function StudentDashboard({ params }: PageParams) {
                     </span>
                     <Button size="sm" asChild>
                       <Link href={`/student/applications/${app.id}`}>
-                        View
+                        {t('currentApplications.view')}
                       </Link>
                     </Button>
                   </div>
@@ -153,27 +156,27 @@ export default async function StudentDashboard({ params }: PageParams) {
       {/* Visa Timeline */}
       <Card>
         <CardHeader>
-          <CardTitle>Visa Application Status</CardTitle>
-          <CardDescription>German Student Visa</CardDescription>
+          <CardTitle>{t('visaStatus.title')}</CardTitle>
+          <CardDescription>{t('visaStatus.description')}</CardDescription>
         </CardHeader>
         <CardContent>
           {!visaApplication ? (
             <p className="text-gray-500 text-center py-4">
-              Submit an application first to track visa status.
+              {t('visaStatus.noApplication')}
             </p>
           ) : (
             <div className="space-y-4">
               {(() => {
                 const visaStatus = visaApplication.visastatus
                 const timeline = [
-                  { step: 'Not Started', status: 'NOT_STARTED', label: 'Not Started' },
-                  { step: 'Documents Preparation', status: 'DOCUMENTS_PREPARATION', label: 'Documents Preparation' },
-                  { step: 'Application Submitted', status: 'SUBMITTED', label: 'Submitted' },
-                  { step: 'Biometrics Done', status: 'BIOMETRICS_DONE', label: 'Biometrics Completed' },
-                  { step: 'Medical Examination', status: 'MEDICAL_DONE', label: 'Medical Completed' },
-                  { step: 'Processing', status: 'PROCESSING', label: 'Under Processing' },
-                  { step: 'Approved', status: 'APPROVED', label: 'Visa Approved' },
-                  { step: 'Rejected', status: 'REJECTED', label: 'Visa Rejected' },
+                  { step: t('visaStatus.timeline.notStarted'), status: 'NOT_STARTED', label: t('visaStatus.timeline.notStarted') },
+                  { step: t('visaStatus.timeline.documentsPreparation'), status: 'DOCUMENTS_PREPARATION', label: t('visaStatus.timeline.documentsPreparation') },
+                  { step: t('visaStatus.timeline.submitted'), status: 'SUBMITTED', label: t('visaStatus.timeline.submitted') },
+                  { step: t('visaStatus.timeline.biometricsDone'), status: 'BIOMETRICS_DONE', label: t('visaStatus.timeline.biometricsDone') },
+                  { step: t('visaStatus.timeline.medicalDone'), status: 'MEDICAL_DONE', label: t('visaStatus.timeline.medicalDone') },
+                  { step: t('visaStatus.timeline.processing'), status: 'PROCESSING', label: t('visaStatus.timeline.processing') },
+                  { step: t('visaStatus.timeline.approved'), status: 'APPROVED', label: t('visaStatus.timeline.approved') },
+                  { step: t('visaStatus.timeline.rejected'), status: 'REJECTED', label: t('visaStatus.timeline.rejected') },
                 ]
                 
                 const currentIndex = timeline.findIndex(t => t.status === visaStatus)
@@ -194,10 +197,10 @@ export default async function StudentDashboard({ params }: PageParams) {
                       <div className="flex-1">
                         <h4 className="font-medium">{item.label}</h4>
                         {isCurrent && (
-                          <p className="text-sm text-blue-600">Current Status</p>
+                          <p className="text-sm text-blue-600">{t('visaStatus.timeline.currentStatus')}</p>
                         )}
                         {isCompleted && idx === currentIndex - 1 && item.status !== 'APPROVED' && (
-                          <p className="text-sm text-green-600">Completed</p>
+                          <p className="text-sm text-green-600">{t('visaStatus.timeline.completed')}</p>
                         )}
                       </div>
                     </div>
@@ -212,19 +215,19 @@ export default async function StudentDashboard({ params }: PageParams) {
       {/* Downloadable Resources */}
       <Card>
         <CardHeader>
-          <CardTitle>Downloadable Resources</CardTitle>
-          <CardDescription>Access helpful documents anytime</CardDescription>
+          <CardTitle>{t('resources.title')}</CardTitle>
+          <CardDescription>{t('resources.description')}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             <div className="flex items-center justify-between p-4 border rounded-lg">
               <div>
-                <h3 className="font-semibold">Study in Germany with Confidence</h3>
-                <p className="text-sm text-gray-600">Comprehensive guide to prepare for your studies.</p>
+                <h3 className="font-semibold">{t('resources.guide.title')}</h3>
+                <p className="text-sm text-gray-600">{t('resources.guide.description')}</p>
               </div>
               <Button asChild className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
                 <a href="/api/student-downloads/study-in-germany-with-confidence" download>
-                  Download
+                  {t('resources.guide.download')}
                 </a>
               </Button>
             </div>

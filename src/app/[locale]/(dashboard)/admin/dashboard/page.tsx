@@ -3,6 +3,7 @@ import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { redirect } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 type PageParams = {
   params: Promise<{ locale: string }>
@@ -64,51 +65,53 @@ export default async function AdminDashboard({ params }: PageParams) {
     total > 0 ? Math.round((approvedVisas / total) * 100) : 0
   )
 
+  const t = useTranslations('dashboard.admin')
+
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Admin Dashboard</h1>
-        <p className="text-gray-600">Welcome, {session.user.name}</p>
+        <h1 className="text-3xl font-bold mb-2">{t('title')}</h1>
+        <p className="text-gray-600">{t('welcome', { name: session.user.name })}</p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card>
           <CardHeader className="pb-3">
-            <CardDescription>Total Students</CardDescription>
+            <CardDescription>{t('stats.totalStudents')}</CardDescription>
             <CardTitle className="text-3xl">{totalStudents}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-600">Registered students</p>
+            <p className="text-sm text-gray-600">{t('stats.registeredStudents')}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardDescription>Active Applications</CardDescription>
+            <CardDescription>{t('stats.activeApplications')}</CardDescription>
             <CardTitle className="text-3xl">{pendingApplications}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-blue-600">Pending review</p>
+            <p className="text-sm text-blue-600">{t('stats.pendingReview')}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardDescription>Visa Approvals</CardDescription>
+            <CardDescription>{t('stats.visaApprovals')}</CardDescription>
             <CardTitle className="text-3xl">{visaRate}%</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-green-600">Success rate</p>
+            <p className="text-sm text-green-600">{t('stats.successRate')}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardDescription>Total Revenue</CardDescription>
+            <CardDescription>{t('stats.totalRevenue')}</CardDescription>
             <CardTitle className="text-3xl">
               {totalPayments._sum.amount ? `${(totalPayments._sum.amount / 1000000).toFixed(0)}M` : '0M'}
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-600">VNĐ collected</p>
+            <p className="text-sm text-gray-600">{t('stats.vndCollected')}</p>
           </CardContent>
         </Card>
       </div>
@@ -116,12 +119,12 @@ export default async function AdminDashboard({ params }: PageParams) {
       {/* Recent Applications */}
       <Card>
         <CardHeader>
-          <CardTitle>Recent Applications</CardTitle>
-          <CardDescription>Latest university applications</CardDescription>
+          <CardTitle>{t('recentApplications.title')}</CardTitle>
+          <CardDescription>{t('recentApplications.description')}</CardDescription>
         </CardHeader>
         <CardContent>
           {recentApplications.length === 0 ? (
-            <p className="text-gray-500 text-center py-8">No applications yet</p>
+            <p className="text-gray-500 text-center py-8">{t('recentApplications.noApplications')}</p>
           ) : (
             <div className="space-y-4">
               {recentApplications.map((app) => (
@@ -151,11 +154,11 @@ export default async function AdminDashboard({ params }: PageParams) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>Pending Document Verification</CardTitle>
+            <CardTitle>{t('pendingActions.pendingDocuments.title')}</CardTitle>
           </CardHeader>
           <CardContent>
             {pendingDocuments.length === 0 ? (
-              <p className="text-gray-500 text-center py-8">No pending documents</p>
+              <p className="text-gray-500 text-center py-8">{t('pendingActions.pendingDocuments.noPending')}</p>
             ) : (
               <div className="space-y-3">
                 {pendingDocuments.map((doc) => (
@@ -178,11 +181,11 @@ export default async function AdminDashboard({ params }: PageParams) {
 
         <Card>
           <CardHeader>
-            <CardTitle>Payment Verification</CardTitle>
+            <CardTitle>{t('pendingActions.paymentVerification.title')}</CardTitle>
           </CardHeader>
           <CardContent>
             {recentPayments.length === 0 ? (
-              <p className="text-gray-500 text-center py-8">No pending payments</p>
+              <p className="text-gray-500 text-center py-8">{t('pendingActions.paymentVerification.noPending')}</p>
             ) : (
               <div className="space-y-3">
                 {recentPayments.map((payment) => (
