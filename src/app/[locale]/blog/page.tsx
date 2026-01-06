@@ -4,17 +4,28 @@ import { Button } from '@/components/ui/button'
 import { Suspense } from 'react'
 import { NewsletterSignup } from '@/components/layout/newsletter'
 import { prisma } from '@/lib/prisma'
+import { defaultLocale } from '@/i18n/routing'
 
 export const revalidate = 0
 
 async function BlogContent({ locale }: { locale: string }) {
-  const posts = await prisma.blogPost.findMany({
+  let posts = await prisma.blogPost.findMany({
     where: {
       language: locale,
       published: true,
     },
     orderBy: { createdat: 'desc' },
   })
+
+  if (posts.length === 0 && locale !== defaultLocale) {
+    posts = await prisma.blogPost.findMany({
+      where: {
+        language: defaultLocale,
+        published: true,
+      },
+      orderBy: { createdat: 'desc' },
+    })
+  }
 
   // Get unique categories from posts
   const categories = [

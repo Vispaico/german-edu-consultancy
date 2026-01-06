@@ -5,6 +5,7 @@ import { Eye, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ShareInsightButton } from '@/components/blog/ShareInsightButton'
 import { prisma } from '@/lib/prisma'
+import { defaultLocale } from '@/i18n/routing'
 
 export const revalidate = 0
 
@@ -16,12 +17,26 @@ type PageProps = {
 }
 
 async function BlogPostContent({ slug, locale }: { slug: string; locale: string }) {
-  const post = await prisma.blogPost.findFirst({
+  const localizedPost = await prisma.blogPost.findFirst({
     where: {
       slug,
       language: locale,
       published: true,
     },
+  })
+
+  const fallbackPost = locale === defaultLocale
+    ? null
+    : await prisma.blogPost.findFirst({
+        where: {
+          slug,
+          language: defaultLocale,
+          published: true,
+        },
+      })
+
+  const post = localizedPost || fallbackPost || await prisma.blogPost.findFirst({
+    where: { slug, published: true },
   })
 
   if (!post) {
@@ -44,7 +59,7 @@ async function BlogPostContent({ slug, locale }: { slug: string; locale: string 
 
   const relatedPosts = await prisma.blogPost.findMany({
     where: {
-      language: locale,
+      language: post.language,
       published: true,
       category: post.category,
       NOT: { id: post.id },

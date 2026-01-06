@@ -196,6 +196,31 @@ export const emailTemplates = {
     </body>
     </html>
   `,
+
+  newsletterAdminAlert: (data: { email: string; ip?: string; userAgent?: string }) => `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>New Newsletter Subscriber</title>
+    </head>
+    <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+      <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="background-color: white; border-radius: 8px; padding: 32px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+          <h1 style="color: #1e40af; margin-bottom: 16px;">New Newsletter Subscriber</h1>
+          <p style="color: #333; font-size: 15px; line-height: 1.6;">A visitor just joined the StartinDE newsletter.</p>
+          <div style="margin-top: 20px; padding: 16px; border-radius: 8px; background-color: #f9fafb;">
+            <p style="margin: 8px 0;"><strong>Email:</strong> ${data.email}</p>
+            ${data.ip ? `<p style="margin: 8px 0;"><strong>IP Address:</strong> ${data.ip}</p>` : ''}
+            ${data.userAgent ? `<p style="margin: 8px 0;"><strong>User Agent:</strong> ${data.userAgent}</p>` : ''}
+          </div>
+          <p style="color: #666; font-size: 13px; margin-top: 24px;">Reply directly to reach out or add them to your CRM.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `,
 }
 
 export async function sendSignupEmail(name: string, email: string, verifyUrl?: string) {
@@ -234,5 +259,22 @@ export async function sendNewsletterConfirmation(name: string | null, email: str
     subject: 'You\'re Subscribed! 🎉',
     html: emailTemplates.newsletterConfirm(name),
     cc: [process.env.EMAIL_INFO!].filter(Boolean),
+  })
+}
+
+export async function sendNewsletterAdminNotification(data: { email: string; ip?: string | null; userAgent?: string | null }) {
+  if (!fallbackContactRecipient) {
+    console.warn('No contact recipient email configured. Skipping newsletter admin notification.')
+    return { success: false, error: 'CONTACT_RECIPIENT_MISSING' as const }
+  }
+
+  return sendEmail({
+    to: fallbackContactRecipient,
+    subject: `New Newsletter Subscriber: ${data.email}`,
+    html: emailTemplates.newsletterAdminAlert({
+      email: data.email,
+      ip: data.ip ?? undefined,
+      userAgent: data.userAgent ?? undefined,
+    }),
   })
 }

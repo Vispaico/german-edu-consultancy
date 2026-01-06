@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { sendNewsletterConfirmation } from '@/lib/email'
+import { sendNewsletterAdminNotification, sendNewsletterConfirmation } from '@/lib/email'
 import { z } from 'zod'
 
 const newsletterSchema = z.object({
@@ -49,6 +49,9 @@ export async function POST(req: Request) {
       })
 
       await sendNewsletterConfirmation(existing.name ?? null, email)
+      sendNewsletterAdminNotification({ email, ip: ipAddress, userAgent: req.headers.get('user-agent') }).catch(err => {
+        console.error('Newsletter admin notification failed:', err)
+      })
 
       return NextResponse.json(
         { success: true, message: 'Subscription reactivated!' },
@@ -68,6 +71,9 @@ export async function POST(req: Request) {
 
     // Send confirmation email
     await sendNewsletterConfirmation(null, email)
+    sendNewsletterAdminNotification({ email, ip: ipAddress, userAgent: req.headers.get('user-agent') }).catch(err => {
+      console.error('Newsletter admin notification failed:', err)
+    })
 
     return NextResponse.json(
       { success: true, message: 'Successfully subscribed!' },
