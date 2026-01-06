@@ -5,43 +5,32 @@ import { redirect } from 'next/navigation'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import Link from 'next/link'
+import { Link } from '@/navigation'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import type { PaymentStatus } from '@prisma/client'
 
-interface PaymentWithDetails {
-  id: string
-  amount: number
-  type: string
-  method: string
-  status: string
-  transferdate: Date | null
-  student: {
-    firstname: string | null
-    lastname: string | null
-    user: {
-      email: string | null
-    } | null
-  } | null
-  application: {
-    university: {
-      name: string | null
-    }
-  } | null
+type PageParams = {
+  params: Promise<{ locale: string }>
+  searchParams?: Promise<{ status?: string }>
 }
 
-export default async function AdminPaymentsPage({ searchParams }: { searchParams?: Promise<{ status?: string }> }) {
+export default async function AdminPaymentsPage({ params, searchParams }: PageParams) {
+  const { locale } = await params
   const session = await getServerSession(authOptions)
 
   if (!session || session.user.role !== 'ADMIN') {
-    redirect('/login')
+    redirect(`/${locale}/login`)
   }
 
-  const resolvedSearchParams = await searchParams
+  const resolvedSearchParams = searchParams ? await searchParams : undefined
   const filterStatus = resolvedSearchParams?.status
+  const paymentFilter = filterStatus && filterStatus !== 'all'
+    ? { status: filterStatus as PaymentStatus }
+    : undefined
 
   // Fetch payments with student and application data
   const payments = await prisma.payment.findMany({
-    where: filterStatus ? { status: filterStatus as any } : undefined,
+    where: paymentFilter,
     include: {
       student: {
         include: {
@@ -62,16 +51,15 @@ export default async function AdminPaymentsPage({ searchParams }: { searchParams
   })
 
   // Calculate statistics
-  const totalPayments = payments.length
-  const pendingPayments = payments.filter((p: any) => p.status === 'PENDING').length
-  const completedPayments = payments.filter((p: any) => p.status === 'COMPLETED').length
+  const pendingPayments = payments.filter((p) => p.status === 'PENDING').length
+  const completedPayments = payments.filter((p) => p.status === 'COMPLETED').length
   
   // Calculate total amount for this month
   const now = new Date()
   const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1)
   const thisMonthTotal = payments
-    .filter((p: any) => p.createdat >= thisMonthStart && (p.status === 'COMPLETED' || p.status === 'VERIFIED'))
-    .reduce((sum: number, p: any) => sum + p.amount, 0)
+    .filter((p) => p.createdat >= thisMonthStart && (p.status === 'COMPLETED' || p.status === 'VERIFIED'))
+    .reduce((sum, p) => sum + p.amount, 0)
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('vi-VN', {
@@ -145,7 +133,7 @@ export default async function AdminPaymentsPage({ searchParams }: { searchParams
             <p className="text-gray-500 text-center py-8">No payments recorded yet.</p>
           ) : (
             <div className="space-y-4">
-              {payments.map((payment: any) => (
+              {payments.map((payment) => (
                 <div key={payment.id} className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">

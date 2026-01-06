@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
-import { Link } from '@/navigation'
-import { useRouter } from 'next/navigation'
+import { Link, useRouter } from '@/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -33,7 +32,24 @@ export default function LoginPage() {
         return
       }
 
-      router.push('/dashboard' as any)
+      try {
+        const sessionResponse = await fetch('/api/auth/session', {
+          cache: 'no-store',
+        })
+
+        if (sessionResponse.ok) {
+          const sessionData = await sessionResponse.json()
+          const role = sessionData?.user?.role
+          const targetRoute = role === 'ADMIN' || role === 'CONSULTANT'
+            ? '/admin/dashboard'
+            : '/student/dashboard'
+          router.push(targetRoute)
+        } else {
+          router.push('/student/dashboard')
+        }
+      } catch {
+        router.push('/student/dashboard')
+      }
     } catch {
       setError('An error occurred. Please try again.')
     } finally {

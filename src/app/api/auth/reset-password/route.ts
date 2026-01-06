@@ -56,10 +56,11 @@ export async function POST(req: Request) {
       { success: true, message: 'Password reset successfully' },
       { status: 200 }
     )
-  } catch (error: any) {
+  } catch (error) {
     console.error('Reset password error:', error)
+    const message = error instanceof Error ? error.message : 'Internal server error'
     return NextResponse.json(
-      { error: error.message || 'Internal server error' },
+      { error: message },
       { status: 500 }
     )
   }

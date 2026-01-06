@@ -1,43 +1,57 @@
 import { Link } from '@/navigation'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
-import { Calendar, Eye, ArrowLeft } from 'lucide-react'
+import { Eye, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ShareInsightButton } from '@/components/blog/ShareInsightButton'
+import { prisma } from '@/lib/prisma'
+
+export const revalidate = 0
 
 type PageProps = {
   params: Promise<{
     slug: string
+    locale: string
   }>
 }
 
-async function BlogPostContent({ slug }: { slug: string }) {
-  const res = await fetch(`http://localhost:3000/api/blog?language=en`, {
-    cache: 'no-store',
+async function BlogPostContent({ slug, locale }: { slug: string; locale: string }) {
+  const post = await prisma.blogPost.findFirst({
+    where: {
+      slug,
+      language: locale,
+      published: true,
+    },
   })
-  const posts = await res.json()
-  const post = posts.find((p: any) => p.slug === slug)
 
   if (!post) {
     notFound()
   }
 
-  const publishedAt = post.publishedat ? new Date(post.publishedat).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }) : ''
+  const publishedAt = post.publishedat
+    ? new Date(post.publishedat).toLocaleDateString(locale, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : ''
 
-  const createdAt = new Date(post.createdat).toLocaleDateString('en-US', {
+  const createdAt = new Date(post.createdat).toLocaleDateString(locale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   })
 
-  // Get related posts
-  const relatedPosts = posts
-    .filter((p: any) => p.id !== post.id && p.published && p.category === post.category)
-    .slice(0, 3)
+  const relatedPosts = await prisma.blogPost.findMany({
+    where: {
+      language: locale,
+      published: true,
+      category: post.category,
+      NOT: { id: post.id },
+    },
+    orderBy: { createdat: 'desc' },
+    take: 3,
+  })
 
   return (
     <main className="min-h-screen bg-gray-50 pb-20">
@@ -116,7 +130,7 @@ async function BlogPostContent({ slug }: { slug: string }) {
               <div className="mt-16">
                 <h3 className="text-2xl font-bold mb-6">Related Articles</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {relatedPosts.map((related: any) => (
+                  {relatedPosts.map((related) => (
                     <div key={related.id} className="rounded-lg border hover:shadow-lg transition-shadow">
                       {related.coverimage && (
                         <img
@@ -149,10 +163,10 @@ async function BlogPostContent({ slug }: { slug: string }) {
 }
 
 export default async function BlogArticlePage({ params }: PageProps) {
-  const { slug } = await params
+  const { slug, locale } = await params
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <BlogPostContent slug={slug} />
+      <BlogPostContent slug={slug} locale={locale} />
     </Suspense>
   )
 }

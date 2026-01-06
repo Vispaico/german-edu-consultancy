@@ -26,15 +26,6 @@ export async function POST(req: Request) {
 
     const { name, email, phone, message } = result.data
 
-    // Check if email config is set up
-    if (!process.env.EMAIL_CONTACT || !process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      console.error('Email configuration not set up properly')
-      return NextResponse.json(
-        { error: 'Email service not configured. Please contact support.' },
-        { status: 500 }
-      )
-    }
-
     // Store in database
     await prisma.contactMessage.create({
       data: {

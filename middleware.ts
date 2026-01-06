@@ -3,6 +3,8 @@ import { getToken } from 'next-auth/jwt'
 import { NextRequest, NextResponse } from 'next/server'
 import { defaultLocale, locales } from './src/i18n/routing'
 
+type Locale = (typeof locales)[number]
+
 // Middleware for locale detection
 const intlMiddleware = createMiddleware({
   locales,
@@ -10,44 +12,65 @@ const intlMiddleware = createMiddleware({
   localePrefix: 'as-needed',
 })
 
+const protectedPrefixes = ['/admin', '/student', '/dashboard'] as const
+const publicPrefixes = ['/login', '/register', '/forgot-password', '/reset-password'] as const
+
+function getPathInfo(pathname: string) {
+  const segments = pathname.split('/').filter(Boolean)
+  const maybeLocale = segments[0]
+  const hasLocale = locales.includes(maybeLocale as Locale)
+  const locale = hasLocale ? (maybeLocale as Locale) : defaultLocale
+  const pathSegments = hasLocale ? segments.slice(1) : segments
+  const normalizedPath = '/' + pathSegments.join('/')
+  const cleanPath = normalizedPath.replace(/\/+$/, '')
+  return {
+    locale,
+    normalizedPath: cleanPath === '' ? '/' : cleanPath,
+  }
+}
+
 export default async function middleware(req: NextRequest) {
   // First, handle locale detection
   const intlResponse = intlMiddleware(req)
-  if (intlResponse) return intlResponse
 
-  // Check if it's a protected route
-  const isProtectedPath = 
-    req.nextUrl.pathname.startsWith('/admin') || 
-    req.nextUrl.pathname.startsWith('/student') ||
-    req.nextUrl.pathname.startsWith('/dashboard')
+  const { locale, normalizedPath } = getPathInfo(req.nextUrl.pathname)
 
-  // Public routes that don't require auth
-  const publicPaths = ['/login', '/register', '/forgot-password', '/reset-password', '/api']
-  const isPublicPath = publicPaths.some(path => req.nextUrl.pathname.startsWith(path))
+  const isProtectedPath = protectedPrefixes.some((path) =>
+    normalizedPath === path || normalizedPath.startsWith(`${path}/`)
+  )
 
-  // If it's a protected route (and not a public path), check auth
+  const isPublicPath = publicPrefixes.some((path) =>
+    normalizedPath === path || normalizedPath.startsWith(`${path}/`)
+  )
+
   if (isProtectedPath && !isPublicPath) {
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
     
     if (!token) {
-      // Redirect to login
-      const loginUrl = new URL('/login', req.url)
+      const loginUrl = new URL(`/${locale}/login`, req.url)
       return NextResponse.redirect(loginUrl)
     }
 
     // Check if user has appropriate role
-    if (req.nextUrl.pathname.startsWith('/admin') && token.role !== 'ADMIN') {
-      const dashboardUrl = new URL('/dashboard', req.url)
+    if (normalizedPath.startsWith('/admin') && token.role !== 'ADMIN') {
+      const dashboardUrl = new URL(`/${locale}/student/dashboard`, req.url)
       return NextResponse.redirect(dashboardUrl)
     }
 
-    if (req.nextUrl.pathname.startsWith('/dashboard') && token.role === 'ADMIN') {
-      const adminDashboardUrl = new URL('/admin/dashboard', req.url)
+    if (normalizedPath === '/dashboard') {
+      const destination = token.role === 'ADMIN' || token.role === 'CONSULTANT'
+        ? `/${locale}/admin/dashboard`
+        : `/${locale}/student/dashboard`
+      return NextResponse.redirect(new URL(destination, req.url))
+    }
+
+    if (normalizedPath.startsWith('/dashboard') && token.role === 'ADMIN') {
+      const adminDashboardUrl = new URL(`/${locale}/admin/dashboard`, req.url)
       return NextResponse.redirect(adminDashboardUrl)
     }
   }
 
-  return NextResponse.next()
+  return intlResponse
 }
 
 export const config = {

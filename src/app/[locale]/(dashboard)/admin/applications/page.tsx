@@ -1,17 +1,21 @@
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { redirect, notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import Link from 'next/link'
+import { Link } from '@/navigation'
+type PageParams = {
+  params: Promise<{ locale: string }>
+}
 
-export default async function AdminApplicationsPage() {
+export default async function AdminApplicationsPage({ params }: PageParams) {
+  const { locale } = await params
   const session = await getServerSession(authOptions)
 
   if (!session || session.user.role !== 'ADMIN') {
-    redirect('/login')
+    redirect(`/${locale}/login`)
   }
 
   // Fetch all applications with student and university data
@@ -26,9 +30,9 @@ export default async function AdminApplicationsPage() {
 
   // Calculate statistics
   const totalApps = applications.length
-  const pendingReview = applications.filter((a: any) => a.status === 'SUBMITTED' || a.status === 'UNDER_REVIEW').length
-  const approved = applications.filter((a: any) => a.status === 'OFFER_RECEIVED' || a.status === 'APPROVED').length
-  const rejected = applications.filter((a: any) => a.status === 'REJECTED' || a.status === 'WITHDRAWN').length
+  const pendingReview = applications.filter((a) => a.status === 'SUBMITTED' || a.status === 'UNDER_REVIEW').length
+  const approved = applications.filter((a) => a.status === 'OFFER_RECEIVED' || a.status === 'APPROVED').length
+  const rejected = applications.filter((a) => a.status === 'REJECTED' || a.status === 'WITHDRAWN').length
 
   return (
     <div className="space-y-8">
@@ -80,7 +84,7 @@ export default async function AdminApplicationsPage() {
             <p className="text-gray-500 text-center py-8">No applications yet.</p>
           ) : (
             <div className="space-y-4">
-              {applications.map((app: any) => (
+              {applications.map((app) => (
                 <div key={app.id} className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">

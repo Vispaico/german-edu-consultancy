@@ -3,15 +3,30 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Suspense } from 'react'
 import { NewsletterSignup } from '@/components/layout/newsletter'
+import { prisma } from '@/lib/prisma'
+
+export const revalidate = 0
 
 async function BlogContent({ locale }: { locale: string }) {
-  const res = await fetch(`http://localhost:3000/api/blog?language=${locale}&published=true`, {
-    cache: 'no-store',
+  const posts = await prisma.blogPost.findMany({
+    where: {
+      language: locale,
+      published: true,
+    },
+    orderBy: { createdat: 'desc' },
   })
-  const posts = await res.json()
 
   // Get unique categories from posts
-  const categories = ['All', ...Array.from(new Set(posts.map((post: any) => post.category).filter(Boolean)))] as string[]
+  const categories = [
+    'All',
+    ...Array.from(
+      new Set(
+        posts
+          .map((post) => post.category)
+          .filter((category): category is string => Boolean(category))
+      )
+    ),
+  ]
 
   return (
     <>
@@ -45,7 +60,7 @@ async function BlogContent({ locale }: { locale: string }) {
         </div>
       ) : (
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post: any) => (
+          {posts.map((post) => (
             <Card key={post.id} className="transition-shadow hover:shadow-lg">
               {post.coverimage && (
                 <div className="relative h-48 bg-gray-100">

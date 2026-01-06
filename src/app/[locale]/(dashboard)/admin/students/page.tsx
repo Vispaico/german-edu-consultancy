@@ -5,13 +5,18 @@ import { redirect } from 'next/navigation'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import Link from 'next/link'
+import { Link } from '@/navigation'
 
-export default async function AdminStudentsPage() {
+type PageParams = {
+  params: Promise<{ locale: string }>
+}
+
+export default async function AdminStudentsPage({ params }: PageParams) {
+  const { locale } = await params
   const session = await getServerSession(authOptions)
 
   if (!session || session.user.role !== 'ADMIN') {
-    redirect('/login')
+    redirect(`/${locale}/login`)
   }
 
   // Fetch all students with their roles
@@ -29,7 +34,7 @@ export default async function AdminStudentsPage() {
 
   // Get application counts for each student
   const studentsWithApps = await Promise.all(
-    students.map(async (student: any) => {
+    students.map(async (student) => {
       const applicationsCount = await prisma.application.count({
         where: { studentid: student.id },
       })
@@ -70,7 +75,7 @@ export default async function AdminStudentsPage() {
             <p className="text-gray-500 text-center py-8">No students registered yet.</p>
           ) : (
             <div className="space-y-4">
-              {studentsWithApps.map((student: any) => (
+              {studentsWithApps.map((student) => (
                 <div key={student.id} className="p-4 border rounded-lg flex items-center justify-between">
                   <div className="flex-1">
                     <h3 className="font-semibold">{student.displayName}</h3>

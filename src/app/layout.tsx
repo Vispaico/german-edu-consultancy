@@ -4,12 +4,17 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import '@/components/ProfileCard.css'
 import { Providers } from '@/components/providers'
+import { getMetadataBase, getSiteUrl } from '@/lib/site-config'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
   title: 'Edu Consultancy',
   description: 'Vietnam-focused guidance for studying, working, and living in Germany.',
+  metadataBase: getMetadataBase(),
+  alternates: {
+    canonical: getSiteUrl(),
+  },
   other: {
     'google-adsense-account': 'ca-pub-3279949468229929',
   },

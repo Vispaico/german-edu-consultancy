@@ -1,7 +1,9 @@
 import { MetadataRoute } from 'next'
 import { locales } from '../i18n/routing'
+import { prisma } from '@/lib/prisma'
+import { getSiteUrl } from '@/lib/site-config'
 
-const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://startin-de.com'
+const baseUrl = getSiteUrl()
 
 // Define your main routes here
 const routes = [
@@ -17,15 +19,21 @@ const routes = [
   '/terms',
 ]
 
-// Blog posts will be fetched dynamically
-async function getBlogPosts() {
+type BlogPostEntry = {
+  slug: string
+  updatedat: Date | null
+}
+
+async function getBlogPosts(): Promise<BlogPostEntry[]> {
   try {
-    const response = await fetch(`${baseUrl}/api/blog`, {
-      cache: 'no-store',
+    return await prisma.blogPost.findMany({
+      where: { published: true },
+      select: {
+        slug: true,
+        updatedat: true,
+      },
+      orderBy: { updatedat: 'desc' },
     })
-    if (!response.ok) return []
-    const data = await response.json()
-    return data.posts
   } catch (error) {
     console.error('Error fetching blog posts for sitemap:', error)
     return []
@@ -60,7 +68,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const locale of locales) {
       blogUrls.push({
         url: `${baseUrl}/${locale}/blog/${post.slug}`,
-        lastModified: post.updatedat ? new Date(post.updatedat) : new Date(),
+        lastModified: post.updatedat ?? new Date(),
         changeFrequency: 'monthly',
         priority: 0.6,
         alternates: {

@@ -1,19 +1,20 @@
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { redirect } from 'next/navigation'
+import { defaultLocale } from '@/i18n/routing'
 
 export default async function DashboardRedirectPage() {
   const session = await getServerSession(authOptions)
 
   if (!session) {
-    redirect('/login')
+    redirect(`/${defaultLocale}/login`)
   }
 
   const role = session.user.role
 
   if (role === 'ADMIN' || role === 'CONSULTANT') {
-    redirect('/admin/dashboard')
+    redirect(`/${defaultLocale}/admin/dashboard`)
   } else {
-    redirect('/student/dashboard')
+    redirect(`/${defaultLocale}/student/dashboard`)
   }
 }

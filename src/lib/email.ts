@@ -7,21 +7,35 @@ interface EmailConfig {
   cc?: string[]
 }
 
-// Create transporter with Hostinger SMTP
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: process.env.SMTP_SECURE === 'true', // use true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-})
+const isEmailConfigured = Boolean(
+  process.env.SMTP_HOST &&
+  process.env.SMTP_USER &&
+  process.env.SMTP_PASS
+)
 
-const fromEmail = process.env.EMAIL_NOREPLY || process.env.SMTP_USER
+// Create transporter with Hostinger SMTP when config is available
+const transporter = isEmailConfigured
+  ? nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || '587', 10),
+      secure: (process.env.SMTP_SECURE || 'false').toLowerCase() === 'true',
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    })
+  : null
+
+const fromEmail = process.env.EMAIL_NOREPLY || process.env.SMTP_USER || ''
 const ccEmails = process.env.EMAIL_CC?.split(',').map(e => e.trim()) || []
+const fallbackContactRecipient = process.env.EMAIL_CONTACT || process.env.EMAIL_INFO || process.env.SMTP_USER || ''
 
 export async function sendEmail({ to, subject, html, cc }: EmailConfig) {
+  if (!isEmailConfigured || !transporter || !fromEmail) {
+    console.warn('Email service not fully configured. Skipping send for subject:', subject)
+    return { success: false, error: 'EMAIL_NOT_CONFIGURED' as const }
+  }
+
   try {
     const ccList = [...ccEmails, ...(cc || [])]
 
@@ -149,7 +163,7 @@ export const emailTemplates = {
   `,
 
   // Newsletter confirmation
-  newsletterConfirm: (name: string | null, email: string) => `
+  newsletterConfirm: (name: string | null) => `
     <!DOCTYPE html>
     <html>
     <head>
@@ -202,8 +216,13 @@ export async function sendPasswordResetEmail(name: string, email: string, resetU
 }
 
 export async function sendContactNotification(data: { name: string; email: string; phone: string; message: string }) {
+  if (!fallbackContactRecipient) {
+    console.warn('No contact recipient email configured. Contact notification stored only.')
+    return { success: false, error: 'CONTACT_RECIPIENT_MISSING' as const }
+  }
+
   return sendEmail({
-    to: process.env.EMAIL_CONTACT!,
+    to: fallbackContactRecipient,
     subject: `New Contact: ${data.name}`,
     html: emailTemplates.contactForm(data),
   })
@@ -213,7 +232,7 @@ export async function sendNewsletterConfirmation(name: string | null, email: str
   return sendEmail({
     to: email,
     subject: 'You\'re Subscribed! 🎉',
-    html: emailTemplates.newsletterConfirm(name, email),
+    html: emailTemplates.newsletterConfirm(name),
     cc: [process.env.EMAIL_INFO!].filter(Boolean),
   })
 }

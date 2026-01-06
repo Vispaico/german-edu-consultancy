@@ -4,11 +4,16 @@ import { prisma } from '@/lib/prisma'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { redirect } from 'next/navigation'
 
-export default async function AdminDashboard() {
+type PageParams = {
+  params: Promise<{ locale: string }>
+}
+
+export default async function AdminDashboard({ params }: PageParams) {
+  const { locale } = await params
   const session = await getServerSession(authOptions)
 
   if (!session || session.user.role !== 'ADMIN') {
-    redirect('/login')
+    redirect(`/${locale}/login`)
   }
 
   // Fetch real statistics
@@ -119,7 +124,7 @@ export default async function AdminDashboard() {
             <p className="text-gray-500 text-center py-8">No applications yet</p>
           ) : (
             <div className="space-y-4">
-              {recentApplications.map((app: any) => (
+              {recentApplications.map((app) => (
                 <div key={app.id} className="flex items-center justify-between p-3 border rounded-lg">
                   <div className="flex-1">
                     <h4 className="font-medium">
@@ -153,7 +158,7 @@ export default async function AdminDashboard() {
               <p className="text-gray-500 text-center py-8">No pending documents</p>
             ) : (
               <div className="space-y-3">
-                {pendingDocuments.map((doc: any) => (
+                {pendingDocuments.map((doc) => (
                   <div key={doc.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div>
                       <p className="font-medium text-sm">
@@ -180,7 +185,7 @@ export default async function AdminDashboard() {
               <p className="text-gray-500 text-center py-8">No pending payments</p>
             ) : (
               <div className="space-y-3">
-                {recentPayments.map((payment: any) => (
+                {recentPayments.map((payment) => (
                   <div key={payment.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div>
                       <p className="font-medium text-sm">

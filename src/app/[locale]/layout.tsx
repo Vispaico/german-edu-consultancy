@@ -8,6 +8,7 @@ import { NewsletterSignup } from '@/components/layout/newsletter'
 import { Footer } from '@/components/layout/footer'
 import { Header } from '@/components/layout/header'
 import { locales } from '@/i18n/routing'
+import { getMetadataBase, getSiteUrl } from '@/lib/site-config'
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -25,11 +26,12 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
 
   // Get the pathname for generating alternates
   // Note: This is a simplified version - in production you'd want to capture the full path
-  const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://startin-de.com'
+  const baseUrl = getSiteUrl()
   
   return {
     title: t('title'),
     description: t('description'),
+    metadataBase: getMetadataBase(),
     alternates: {
       canonical: `${baseUrl}/${safeLocale}`,
       languages: {

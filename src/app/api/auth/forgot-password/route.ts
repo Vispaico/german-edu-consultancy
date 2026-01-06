@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { sendPasswordResetEmail } from '@/lib/email'
 import { randomBytes } from 'crypto'
-import bcrypt from 'bcryptjs'
+import { defaultLocale } from '@/i18n/routing'
 
 export async function POST(req: Request) {
   try {
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
           identifier: { startsWith: 'reset-' },
         },
       })
-    } catch (error) {
+    } catch {
       // Ignore deletion errors
       console.log('No existing tokens to delete')
     }
@@ -52,8 +52,9 @@ export async function POST(req: Request) {
     })
 
     // Reset URL
-    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.NEXTAUTH_URL || 'http://localhost:3000'
-    const resetUrl = `${baseUrl}/reset-password?token=${resetToken}`
+    const resolvedBaseUrl = (process.env.NEXTAUTH_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')).replace(/\/$/, '')
+    const resetLocale = process.env.DEFAULT_LOCALE || defaultLocale
+    const resetUrl = `${resolvedBaseUrl}/${resetLocale}/reset-password?token=${resetToken}`
 
     // Send email (don't block on email error)
     try {
@@ -67,10 +68,11 @@ export async function POST(req: Request) {
       { success: true, message: 'Password reset email sent' },
       { status: 200 }
     )
-  } catch (error: any) {
+  } catch (error) {
     console.error('Forgot password error:', error)
+    const message = error instanceof Error ? error.message : 'Internal server error'
     return NextResponse.json(
-      { error: error.message || 'Internal server error' },
+      { error: message },
       { status: 500 }
     )
   }

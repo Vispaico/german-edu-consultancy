@@ -49,6 +49,7 @@ export default function AdminSettingsPage() {
         setMessage({ type: 'error', text: data.error || 'Failed to update profile' })
       }
     } catch (error) {
+      console.error('Admin settings profile update failed:', error)
       setMessage({ type: 'error', text: 'An error occurred while updating profile' })
     } finally {
       setLoading(false)

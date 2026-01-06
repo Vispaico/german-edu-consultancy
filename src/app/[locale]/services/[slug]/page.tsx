@@ -8,6 +8,7 @@ import type { ServiceSlug } from '@/data/services'
 import { getServiceDetail, getServiceDetailSlugs } from '@/data/service-details'
 import { locales, type Locale } from '@/i18n/routing'
 import { Link } from '@/navigation'
+import { getMetadataBase, getSiteUrl } from '@/lib/site-config'
 
 type ServicePageProps = {
   params: Promise<{
@@ -28,12 +29,19 @@ export async function generateMetadata({ params }: ServicePageProps) {
   if (!service) {
     return {
       title: 'Service not found',
+      metadataBase: getMetadataBase(),
     }
   }
+
+  const baseUrl = getSiteUrl()
 
   return {
     title: `${service.hero.title} | StartinDE`,
     description: service.hero.description,
+    metadataBase: getMetadataBase(),
+    alternates: {
+      canonical: `${baseUrl}/${locale}/services/${slug}`,
+    },
   }
 }
 

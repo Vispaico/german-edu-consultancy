@@ -6,11 +6,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Link } from '@/navigation'
 
-export default async function StudentDashboard() {
+type PageParams = {
+  params: Promise<{ locale: string }>
+}
+
+export default async function StudentDashboard({ params }: PageParams) {
+  const { locale } = await params
   const session = await getServerSession(authOptions)
 
   if (!session) {
-    redirect('/login')
+    redirect(`/${locale}/login`)
   }
 
   // Get the user from database with their student profile
@@ -20,7 +25,7 @@ export default async function StudentDashboard() {
   })
 
   if (!user || !user.student) {
-    redirect('/login')
+    redirect(`/${locale}/login`)
   }
 
   const student = user.student
@@ -117,7 +122,7 @@ export default async function StudentDashboard() {
             <p className="text-gray-500 text-center py-4">No applications yet.</p>
           ) : (
             <div className="space-y-4">
-              {recentApplications.map((app: any) => (
+              {recentApplications.map((app) => (
                 <div key={app.id} className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <h3 className="font-semibold">{app.university.name}</h3>

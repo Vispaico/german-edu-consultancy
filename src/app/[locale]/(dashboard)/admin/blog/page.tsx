@@ -7,11 +7,16 @@ import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 
-export default async function AdminBlogPage() {
+type PageParams = {
+  params: Promise<{ locale: string }>
+}
+
+export default async function AdminBlogPage({ params }: PageParams) {
+  const { locale } = await params
   const session = await getServerSession(authOptions)
 
   if (!session || session.user.role !== 'ADMIN') {
-    redirect('/login')
+    redirect(`/${locale}/login`)
   }
 
   // Fetch all posts
@@ -22,8 +27,8 @@ export default async function AdminBlogPage() {
 
   // Calculate stats
   const totalPosts = posts.length
-  const publishedPosts = posts.filter((p: any) => p.published).length
-  const totalViews = posts.reduce((sum: any, p: any) => sum + p.views, 0)
+  const publishedPosts = posts.filter((p) => p.published).length
+  const totalViews = posts.reduce((sum, p) => sum + p.views, 0)
 
   return (
     <div className="space-y-8">
@@ -80,7 +85,7 @@ export default async function AdminBlogPage() {
             <p className="text-gray-500 text-center py-8">No posts yet. Create your first post!</p>
           ) : (
             <div className="space-y-4">
-              {posts.map((post: any) => (
+              {posts.map((post) => (
                 <div key={post.id} className="p-4 border rounded-lg">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">

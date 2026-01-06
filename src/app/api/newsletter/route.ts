@@ -22,31 +22,47 @@ export async function POST(req: Request) {
 
     const { email } = result.data
 
-    // Check if already subscribed
-    const existing = await prisma.newsletter.findFirst({
-      where: {
-        email,
-        active: true,
-      },
+    // Fetch existing subscriber by unique email
+    const existing = await prisma.newsletter.findUnique({
+      where: { email },
     })
 
+    // Generate unsubscribe token
+    const unsubscribeToken = Buffer.from(`${email}-${Date.now()}`).toString('base64')
+    const ipAddress = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown'
+
     if (existing) {
+      if (existing.active) {
+        return NextResponse.json(
+          { success: true, message: 'Already subscribed' },
+          { status: 200 }
+        )
+      }
+
+      await prisma.newsletter.update({
+        where: { id: existing.id },
+        data: {
+          active: true,
+          unsubscribetoken: unsubscribeToken,
+          ipaddress: ipAddress,
+        },
+      })
+
+      await sendNewsletterConfirmation(existing.name ?? null, email)
+
       return NextResponse.json(
-        { success: true, message: 'Already subscribed' },
+        { success: true, message: 'Subscription reactivated!' },
         { status: 200 }
       )
     }
 
-    // Generate unsubscribe token
-    const unsubscribeToken = Buffer.from(`${email}-${Date.now()}`).toString('base64')
-
-    // Subscribe
+    // Subscribe new email
     await prisma.newsletter.create({
       data: {
         email,
         active: true,
         unsubscribetoken: unsubscribeToken,
-        ipaddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown',
+        ipaddress: ipAddress,
       },
     })
 
