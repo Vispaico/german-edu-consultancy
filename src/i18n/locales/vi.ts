@@ -20,6 +20,7 @@ const vi = {
       services: 'Dịch vụ',
       blog: 'Blog',
       contact: 'Liên hệ',
+      dashboard: 'Bảng điều khiển',
     },
     studyMenu: {
       guide: 'Hướng dẫn du học Đức',

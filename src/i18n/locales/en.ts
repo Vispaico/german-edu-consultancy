@@ -20,6 +20,7 @@ const en = {
       services: 'Services',
       blog: 'Blog',
       contact: 'Contact',
+      dashboard: 'Dashboard',
     },
     studyMenu: {
       guide: 'Study in Germany Guide',

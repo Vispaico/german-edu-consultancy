@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { ShareInsightButton } from '@/components/blog/ShareInsightButton'
 import { prisma } from '@/lib/prisma'
 import { defaultLocale } from '@/i18n/routing'
+import type { BlogPost } from '@prisma/client'
 
 export const revalidate = 0
 
@@ -17,27 +18,35 @@ type PageProps = {
 }
 
 async function BlogPostContent({ slug, locale }: { slug: string; locale: string }) {
-  const localizedPost = await prisma.blogPost.findFirst({
-    where: {
-      slug,
-      language: locale,
-      published: true,
-    },
-  })
+  let localizedPost: BlogPost | null = null
+  let fallbackPost: BlogPost | null = null
+  let post: BlogPost | null = null
 
-  const fallbackPost = locale === defaultLocale
-    ? null
-    : await prisma.blogPost.findFirst({
+  try {
+    localizedPost = await prisma.blogPost.findFirst({
+      where: {
+        slug,
+        language: locale,
+        published: true,
+      },
+    })
+
+    if (locale !== defaultLocale) {
+      fallbackPost = await prisma.blogPost.findFirst({
         where: {
           slug,
           language: defaultLocale,
           published: true,
         },
       })
+    }
 
-  const post = localizedPost || fallbackPost || await prisma.blogPost.findFirst({
-    where: { slug, published: true },
-  })
+    post = localizedPost || fallbackPost || await prisma.blogPost.findFirst({
+      where: { slug, published: true },
+    })
+  } catch (error) {
+    console.error(`Failed to load blog post ${slug}:`, error)
+  }
 
   if (!post) {
     notFound()
@@ -57,16 +66,21 @@ async function BlogPostContent({ slug, locale }: { slug: string; locale: string 
     day: 'numeric',
   })
 
-  const relatedPosts = await prisma.blogPost.findMany({
-    where: {
-      language: post.language,
-      published: true,
-      category: post.category,
-      NOT: { id: post.id },
-    },
-    orderBy: { createdat: 'desc' },
-    take: 3,
-  })
+  let relatedPosts: BlogPost[] = []
+  try {
+    relatedPosts = await prisma.blogPost.findMany({
+      where: {
+        language: post.language,
+        published: true,
+        category: post.category,
+        NOT: { id: post.id },
+      },
+      orderBy: { createdat: 'desc' },
+      take: 3,
+    })
+  } catch (error) {
+    console.error(`Failed to load related posts for ${slug}:`, error)
+  }
 
   return (
     <main className="min-h-screen bg-gray-50 pb-20">

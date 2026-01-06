@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import NextLink from 'next/link'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
@@ -28,7 +29,13 @@ export function Header() {
     description: t(service.descriptionKey),
   }))
 
-  const navItems = [
+  const navItems: {
+    label: string
+    href: string
+    description?: string
+    children?: { href: string; label: string; description?: string }[]
+    localize?: boolean
+  }[] = [
     {
       label: tNav('items.study'),
       href: '/study-in-germany',
@@ -57,6 +64,7 @@ export function Header() {
     },
     { href: '/blog', label: tNav('items.blog') },
     { href: '/contact', label: tNav('items.contact') },
+    { href: '/dashboard', label: tNav('items.dashboard'), localize: false },
   ]
 
   const toggleMenu = () => {
@@ -115,9 +123,15 @@ export function Header() {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Link key={item.href} href={item.href} className="text-gray-600 hover:text-gray-900 font-medium">
-                  {item.label}
-                </Link>
+                (item.localize === false ? (
+                  <NextLink key={item.href} href={item.href} className="text-gray-600 hover:text-gray-900 font-medium">
+                    {item.label}
+                  </NextLink>
+                ) : (
+                  <Link key={item.href} href={item.href} className="text-gray-600 hover:text-gray-900 font-medium">
+                    {item.label}
+                  </Link>
+                ))
               )
             )}
           </nav>
@@ -187,14 +201,25 @@ export function Header() {
                   </div>
                 </div>
               ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block rounded-lg px-3 py-2 text-gray-700 font-medium hover:bg-gray-50"
-                >
-                  {item.label}
-                </Link>
+                (item.localize === false ? (
+                  <NextLink
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block rounded-lg px-3 py-2 text-gray-700 font-medium hover:bg-gray-50"
+                  >
+                    {item.label}
+                  </NextLink>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block rounded-lg px-3 py-2 text-gray-700 font-medium hover:bg-gray-50"
+                  >
+                    {item.label}
+                  </Link>
+                ))
               )
             )}
           </nav>

@@ -2,37 +2,34 @@ import { Link } from '@/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Suspense } from 'react'
-import { NewsletterSignup } from '@/components/layout/newsletter'
 import { prisma } from '@/lib/prisma'
-import { defaultLocale } from '@/i18n/routing'
+import type { BlogPost } from '@prisma/client'
 
 export const revalidate = 0
 
 async function BlogContent({ locale }: { locale: string }) {
-  let posts = await prisma.blogPost.findMany({
-    where: {
-      language: locale,
-      published: true,
-    },
-    orderBy: { createdat: 'desc' },
-  })
+  let posts: BlogPost[] = []
 
-  if (posts.length === 0 && locale !== defaultLocale) {
+  try {
     posts = await prisma.blogPost.findMany({
       where: {
-        language: defaultLocale,
         published: true,
       },
       orderBy: { createdat: 'desc' },
     })
+  } catch (error) {
+    console.error('Failed to load blog posts:', error)
   }
+
+  const localizedPosts = posts.filter((post) => post.language === locale)
+  const displayPosts = localizedPosts.length > 0 ? localizedPosts : posts
 
   // Get unique categories from posts
   const categories = [
     'All',
     ...Array.from(
       new Set(
-        posts
+        displayPosts
           .map((post) => post.category)
           .filter((category): category is string => Boolean(category))
       )
@@ -65,13 +62,13 @@ async function BlogContent({ locale }: { locale: string }) {
       </div>
 
       {/* Blog Grid */}
-      {posts.length === 0 ? (
+      {displayPosts.length === 0 ? (
         <div className="text-center py-16">
           <p className="text-gray-600">No blog posts yet. Coming soon!</p>
         </div>
       ) : (
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post) => (
+          {displayPosts.map((post) => (
             <Card key={post.id} className="transition-shadow hover:shadow-lg">
               {post.coverimage && (
                 <div className="relative h-48 bg-gray-100">
@@ -127,7 +124,6 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
         <Suspense fallback={<div>Loading...</div>}>
           <BlogContent locale={locale} />
         </Suspense>
-        <NewsletterSignup />
       </div>
     </div>
   )
