@@ -125,9 +125,6 @@ export function Header() {
 
           <div className="hidden items-center gap-4 md:flex">
             <LanguageSwitcher />
-            <Button variant="ghost" asChild>
-              <Link href="/login">{tNav('auth.login')}</Link>
-            </Button>
             <Button asChild>
               <Link href="/register">{tNav('auth.signup')}</Link>
             </Button>
@@ -203,12 +200,7 @@ export function Header() {
           <div className="flex flex-col gap-2 pt-4 border-t border-gray-100">
             <LanguageSwitcher />
             <div className="grid grid-cols-2 gap-3 mt-2">
-              <Button variant="outline" asChild className="w-full justify-center">
-                <Link href="/login" onClick={() => setIsMenuOpen(false)}>
-                  {tNav('auth.login')}
-                </Link>
-              </Button>
-              <Button asChild className="w-full justify-center">
+              <Button asChild className="w-full justify-center col-span-2">
                 <Link href="/register" onClick={() => setIsMenuOpen(false)}>
                   {tNav('auth.signup')}
                 </Link>

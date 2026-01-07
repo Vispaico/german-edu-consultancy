@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 
 import { authOptions } from '@/lib/auth'
+import { LoginForm } from '@/components/auth/LoginForm'
 
 type DashboardPageProps = {
   params: Promise<{ locale: string }>
@@ -12,7 +13,8 @@ export default async function LocaleDashboardRedirect({ params }: DashboardPageP
   const session = await getServerSession(authOptions)
 
   if (!session) {
-    redirect(`/${locale}/login`)
+    // Show login form directly on the dashboard page
+    return <LoginForm />
   }
 
   const role = session.user.role
