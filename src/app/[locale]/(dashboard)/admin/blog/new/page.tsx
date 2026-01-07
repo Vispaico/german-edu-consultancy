@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import BlogEditor from '@/components/blog/BlogEditor'
 
 const languageOptions = [
   { value: 'en', label: 'English' },
@@ -212,14 +213,11 @@ export default function NewBlogPostPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="content">Content (HTML)</Label>
-              <Textarea
-                id="content"
-                placeholder="Paste formatted HTML content or use a rich text editor output."
-                value={formData.content}
-                onChange={(event) => handleInputChange('content', event.target.value)}
-                rows={10}
-                required
+              <Label htmlFor="content">Content</Label>
+              <BlogEditor
+                content={formData.content}
+                onChange={(content) => handleInputChange('content', content)}
+                placeholder="Write your blog post content here..."
               />
             </div>
 

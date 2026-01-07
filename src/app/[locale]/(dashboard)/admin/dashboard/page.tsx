@@ -3,7 +3,7 @@ import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { redirect } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
 type PageParams = {
   params: Promise<{ locale: string }>
@@ -12,6 +12,7 @@ type PageParams = {
 export default async function AdminDashboard({ params }: PageParams) {
   const { locale } = await params
   const session = await getServerSession(authOptions)
+  const t = await getTranslations('dashboard.admin')
 
   if (!session || session.user.role !== 'ADMIN') {
     redirect(`/${locale}/login`)
@@ -64,8 +65,6 @@ export default async function AdminDashboard({ params }: PageParams) {
   const visaRate = await prisma.application.count().then((total: number) =>
     total > 0 ? Math.round((approvedVisas / total) * 100) : 0
   )
-
-  const t = useTranslations('dashboard.admin')
 
   return (
     <div className="space-y-8">

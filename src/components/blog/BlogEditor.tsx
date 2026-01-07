@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
@@ -26,6 +27,12 @@ interface BlogEditorProps {
 }
 
 export default function BlogEditor({ content, onChange, placeholder = 'Write your post content...' }: BlogEditorProps) {
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -54,8 +61,17 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
     },
   })
 
-  if (!editor) {
-    return null
+  if (!isMounted || !editor) {
+    return (
+      <div className="border rounded-lg p-4">
+        <div className="border-b bg-gray-50 p-2">
+          <div className="h-8 bg-gray-100 rounded animate-pulse" />
+        </div>
+        <div className="p-4">
+          <div className="h-64 bg-gray-100 rounded animate-pulse" />
+        </div>
+      </div>
+    )
   }
 
   const addImage = () => {
@@ -86,6 +102,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           onClick={() => editor.chain().focus().toggleBold().run()}
           disabled={!editor.can().chain().focus().toggleBold().run()}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('bold') ? 'bg-gray-200' : ''}`}
+          aria-label="Bold"
+          title="Bold"
         >
           <Bold className="w-4 h-4" />
         </button>
@@ -95,6 +113,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={!editor.can().chain().focus().toggleItalic().run()}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('italic') ? 'bg-gray-200' : ''}`}
+          aria-label="Italic"
+          title="Italic"
         >
           <Italic className="w-4 h-4" />
         </button>
@@ -104,6 +124,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           onClick={() => editor.chain().focus().toggleStrike().run()}
           disabled={!editor.can().chain().focus().toggleStrike().run()}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('strike') ? 'bg-gray-200' : ''}`}
+          aria-label="Strikethrough"
+          title="Strikethrough"
         >
           <Underline className="w-4 h-4" />
         </button>
@@ -114,6 +136,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('heading', { level: 1 }) ? 'bg-gray-200' : ''}`}
+          aria-label="Heading 1"
+          title="Heading 1"
         >
           H1
         </button>
@@ -122,6 +146,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('heading', { level: 2 }) ? 'bg-gray-200' : ''}`}
+          aria-label="Heading 2"
+          title="Heading 2"
         >
           H2
         </button>
@@ -130,6 +156,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('heading', { level: 3 }) ? 'bg-gray-200' : ''}`}
+          aria-label="Heading 3"
+          title="Heading 3"
         >
           H3
         </button>
@@ -140,6 +168,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           type="button"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('bulletList') ? 'bg-gray-200' : ''}`}
+          aria-label="Bullet List"
+          title="Bullet List"
         >
           <List className="w-4 h-4" />
         </button>
@@ -148,6 +178,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           type="button"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('orderedList') ? 'bg-gray-200' : ''}`}
+          aria-label="Ordered List"
+          title="Ordered List"
         >
           <ListOrdered className="w-4 h-4" />
         </button>
@@ -156,6 +188,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           type="button"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('blockquote') ? 'bg-gray-200' : ''}`}
+          aria-label="Quote"
+          title="Quote"
         >
           <Quote className="w-4 h-4" />
         </button>
@@ -164,6 +198,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           type="button"
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('codeBlock') ? 'bg-gray-200' : ''}`}
+          aria-label="Code Block"
+          title="Code Block"
         >
           <Code className="w-4 h-4" />
         </button>
@@ -175,11 +211,19 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           onClick={addLink}
           disabled={editor.isActive('link')}
           className={`p-2 rounded hover:bg-gray-200 ${editor.isActive('link') ? 'bg-gray-200' : ''}`}
+          aria-label="Add Link"
+          title="Add Link"
         >
           <LinkIcon className="w-4 h-4" />
         </button>
 
-        <button type="button" onClick={addImage} className="p-2 rounded hover:bg-gray-200">
+        <button
+          type="button"
+          onClick={addImage}
+          className="p-2 rounded hover:bg-gray-200"
+          aria-label="Add Image"
+          title="Add Image"
+        >
           <ImageIcon className="w-4 h-4" />
         </button>
 
@@ -190,6 +234,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().undo()}
           className="p-2 rounded hover:bg-gray-200"
+          aria-label="Undo"
+          title="Undo"
         >
           <Undo className="w-4 h-4" />
         </button>
@@ -199,6 +245,8 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
           onClick={() => editor.chain().focus().redo().run()}
           disabled={!editor.can().redo()}
           className="p-2 rounded hover:bg-gray-200"
+          aria-label="Redo"
+          title="Redo"
         >
           <Redo className="w-4 h-4" />
         </button>

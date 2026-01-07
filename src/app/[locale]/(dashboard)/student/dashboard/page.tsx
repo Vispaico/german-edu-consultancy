@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/navigation'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
 type PageParams = {
   params: Promise<{ locale: string }>
@@ -14,6 +14,7 @@ type PageParams = {
 export default async function StudentDashboard({ params }: PageParams) {
   const { locale } = await params
   const session = await getServerSession(authOptions)
+  const t = await getTranslations('dashboard.student')
 
   if (!session) {
     redirect(`/${locale}/login`)
@@ -74,8 +75,6 @@ export default async function StudentDashboard({ params }: PageParams) {
       orderBy: { createdat: 'desc' },
     }),
   ])
-
-  const t = useTranslations('dashboard.student')
 
   return (
     <div className="space-y-8">
