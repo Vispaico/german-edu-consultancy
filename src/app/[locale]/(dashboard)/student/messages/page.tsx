@@ -1,82 +1,121 @@
-'use client'
-
-import { useState } from 'react'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+import { redirect } from 'next/navigation'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { locales } from '@/i18n/routing'
+import { setRequestLocale } from 'next-intl/server'
+import { revalidatePath } from 'next/cache'
 
-export default function StudentMessagesPage() {
-  const [newMessage, setNewMessage] = useState('')
+type PageParams = {
+  params: Promise<{ locale: string }>
+}
 
-  const messages = [
-    {
-      id: 1,
-      from: 'Consultant',
-      message: 'Hi! I reviewed your application to University of Melbourne. Your documents look good!',
-      time: '2 hours ago',
-      isFromStudent: false
+const formatTimestamp = (date: Date, locale: string) =>
+  new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' }).format(date)
+
+export default async function StudentMessagesPage({ params }: PageParams) {
+  const { locale } = await params
+  const safeLocale = locales.includes(locale as (typeof locales)[number])
+    ? (locale as (typeof locales)[number])
+    : locales[0]
+
+  setRequestLocale(safeLocale)
+
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    redirect(`/${safeLocale}/login`)
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+    include: { student: true },
+  })
+
+  if (!user?.student) {
+    redirect(`/${safeLocale}/login`)
+  }
+
+  const messages = await prisma.message.findMany({
+    where: { studentid: user.student.id },
+    orderBy: { createdat: 'asc' },
+    include: {
+      consultant: {
+        include: {
+          user: true,
+        },
+      },
     },
-    {
-      id: 2,
-      from: 'You',
-      message: 'Thank you! When can I expect to hear back from the university?',
-      time: '1 hour ago',
-      isFromStudent: true
-    },
-    {
-      id: 3,
-      from: 'Consultant',
-      message: 'Typically 2-4 weeks. I will update you as soon as we hear from them.',
-      time: '30 minutes ago',
-      isFromStudent: false
+  })
+
+  const sendMessage = async (formData: FormData) => {
+    'use server'
+
+    const content = formData.get('message')
+
+    if (!content || typeof content !== 'string' || !content.trim()) {
+      return
     }
-  ]
+
+    await prisma.message.create({
+      data: {
+        studentid: user.student!.id,
+        content: content.trim(),
+        isfromstudent: true,
+      },
+    })
+
+    revalidatePath(`/${safeLocale}/student/messages`)
+  }
 
   return (
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold mb-2">Messages</h1>
-        <p className="text-gray-600">Chat with your education consultant</p>
+        <p className="text-gray-600">Stay in touch with your StartinDE consultant</p>
       </div>
 
       <Card>
         <CardContent className="pt-6">
-          {/* Messages Thread */}
-          <div className="space-y-4 mb-6 h-96 overflow-y-auto">
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`flex ${msg.isFromStudent ? 'justify-end' : 'justify-start'}`}
-              >
-                <div
-                  className={`max-w-md p-4 rounded-lg ${
-                    msg.isFromStudent
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-900'
-                  }`}
-                >
-                  <p className="text-sm font-medium mb-1">{msg.from}</p>
-                  <p>{msg.message}</p>
-                  <p className={`text-xs mt-2 ${
-                    msg.isFromStudent ? 'text-blue-100' : 'text-gray-500'
-                  }`}>
-                    {msg.time}
-                  </p>
+          <div className="space-y-4 mb-6 h-96 overflow-y-auto pr-2">
+            {messages.length === 0 ? (
+              <p className="text-center text-gray-500">You have no messages yet.</p>
+            ) : (
+              messages.map((msg) => (
+                <div key={msg.id} className={`flex ${msg.isfromstudent ? 'justify-end' : 'justify-start'}`}>
+                  <div
+                    className={`max-w-md p-4 rounded-lg ${
+                      msg.isfromstudent ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-900'
+                    }`}
+                  >
+                    <p className="text-sm font-medium mb-1">
+                      {msg.isfromstudent ? 'You' : msg.consultant?.user?.name || 'Consultant'}
+                    </p>
+                    <p>{msg.content}</p>
+                    <p className={`text-xs mt-2 ${msg.isfromstudent ? 'text-blue-100' : 'text-gray-500'}`}>
+                      {formatTimestamp(msg.createdat, safeLocale)}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
 
-          {/* Message Input */}
-          <div className="flex gap-2">
+          <form action={sendMessage} className="space-y-3">
             <Textarea
-              placeholder="Type your message..."
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
+              name="message"
               rows={3}
+              placeholder="Type your message..."
+              required
+              className="resize-none"
             />
-            <Button className="self-end bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">Send</Button>
-          </div>
+            <Button type="submit" className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
+              Send Message
+            </Button>
+          </form>
         </CardContent>
       </Card>
     </div>

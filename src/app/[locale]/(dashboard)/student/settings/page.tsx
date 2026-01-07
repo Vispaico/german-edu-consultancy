@@ -1,85 +1,166 @@
-'use client'
-
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+import { redirect } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { locales } from '@/i18n/routing'
+import { setRequestLocale } from 'next-intl/server'
+import { revalidatePath } from 'next/cache'
+import { Link } from '@/navigation'
 
-export default function StudentSettingsPage() {
+type PageParams = {
+  params: Promise<{ locale: string }>
+}
+
+export default async function StudentSettingsPage({ params }: PageParams) {
+  const { locale } = await params
+  const safeLocale = locales.includes(locale as (typeof locales)[number])
+    ? (locale as (typeof locales)[number])
+    : locales[0]
+
+  setRequestLocale(safeLocale)
+
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    redirect(`/${safeLocale}/login`)
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+    include: { student: true },
+  })
+
+  if (!user?.student) {
+    redirect(`/${safeLocale}/login`)
+  }
+
+  const profile = {
+    firstname: user.student.firstname || '',
+    lastname: user.student.lastname || '',
+    nationality: user.student.nationality || '',
+    city: user.student.city || '',
+    address: user.student.address || '',
+    phone: user.phone || '',
+    email: user.email,
+  }
+
+  const updateProfile = async (formData: FormData) => {
+    'use server'
+
+    const firstname = formData.get('firstname')?.toString().trim() || profile.firstname
+    const lastname = formData.get('lastname')?.toString().trim() || profile.lastname
+    const nationality = formData.get('nationality')?.toString().trim() || profile.nationality || 'Vietnam'
+    const city = formData.get('city')?.toString().trim() || undefined
+    const address = formData.get('address')?.toString().trim() || undefined
+    const phone = formData.get('phone')?.toString().trim() || undefined
+
+    await prisma.student.update({
+      where: { id: user.student!.id },
+      data: {
+        firstname,
+        lastname,
+        nationality,
+        city,
+        address,
+      },
+    })
+
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        phone,
+      },
+    })
+
+    revalidatePath(`/${safeLocale}/student/settings`)
+  }
+
   return (
     <div className="space-y-8 max-w-2xl">
       <div>
         <h1 className="text-3xl font-bold mb-2">Settings</h1>
-        <p className="text-gray-600">Manage your account settings and preferences</p>
+        <p className="text-gray-600">Keep your StartinDE profile up to date</p>
       </div>
 
-      {/* Profile Settings */}
       <Card>
         <CardHeader>
           <CardTitle>Profile Information</CardTitle>
-          <CardDescription>Update your personal details</CardDescription>
+          <CardDescription>These details are shared with your consultant</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name">Full Name</Label>
-            <Input id="name" defaultValue="Nguyen Van A" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" defaultValue="student@test.com" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="phone">Phone Number</Label>
-            <Input id="phone" defaultValue="+84 123 456 789" />
-          </div>
-          <Button className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">Save Changes</Button>
+        <CardContent>
+          <form action={updateProfile} className="space-y-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="firstname">First Name</Label>
+                <Input id="firstname" name="firstname" defaultValue={profile.firstname} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="lastname">Last Name</Label>
+                <Input id="lastname" name="lastname" defaultValue={profile.lastname} />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="nationality">Nationality</Label>
+                <Input id="nationality" name="nationality" defaultValue={profile.nationality} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="city">City</Label>
+                <Input id="city" name="city" defaultValue={profile.city} />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="address">Address</Label>
+              <Input id="address" name="address" defaultValue={profile.address} />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="phone">Phone Number</Label>
+              <Input id="phone" name="phone" defaultValue={profile.phone} placeholder="+84..." />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="email">Account Email</Label>
+              <Input id="email" name="email" defaultValue={profile.email} readOnly className="bg-gray-50" />
+            </div>
+
+            <Button type="submit" className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
+              Save Changes
+            </Button>
+          </form>
         </CardContent>
       </Card>
 
-      {/* Password */}
       <Card>
         <CardHeader>
-          <CardTitle>Change Password</CardTitle>
-          <CardDescription>Update your password</CardDescription>
+          <CardTitle>Password & Security</CardTitle>
+          <CardDescription>Reset your password through the secure portal</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="current">Current Password</Label>
-            <Input id="current" type="password" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="new">New Password</Label>
-            <Input id="new" type="password" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="confirm">Confirm New Password</Label>
-            <Input id="confirm" type="password" />
-          </div>
-          <Button className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">Update Password</Button>
+          <p className="text-sm text-gray-600">
+            Use the password reset flow to update your credentials. We will email you a secure link immediately.
+          </p>
+          <Button asChild variant="outline">
+            <Link href="/forgot-password">Reset Password</Link>
+          </Button>
         </CardContent>
       </Card>
 
-      {/* Notifications */}
       <Card>
         <CardHeader>
-          <CardTitle>Notifications</CardTitle>
-          <CardDescription>Manage how you receive updates</CardDescription>
+          <CardTitle>Notification Preferences</CardTitle>
+          <CardDescription>Email alerts are automatically sent for documents, messages, and status updates.</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium">Email Notifications</p>
-              <p className="text-sm text-gray-600">Receive updates via email</p>
-            </div>
-            <input type="checkbox" defaultChecked className="w-4 h-4" />
-          </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium">Application Updates</p>
-              <p className="text-sm text-gray-600">Get notified about application status changes</p>
-            </div>
-            <input type="checkbox" defaultChecked className="w-4 h-4" />
-          </div>
+        <CardContent>
+          <p className="text-sm text-gray-600">
+            Want to change how often you hear from us? Let your consultant know in the Messages tab and we will update your preferences manually.
+          </p>
         </CardContent>
       </Card>
     </div>

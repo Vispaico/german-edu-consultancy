@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
@@ -27,11 +26,6 @@ interface BlogEditorProps {
 }
 
 export default function BlogEditor({ content, onChange, placeholder = 'Write your post content...' }: BlogEditorProps) {
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   const editor = useEditor({
     extensions: [
@@ -61,7 +55,7 @@ export default function BlogEditor({ content, onChange, placeholder = 'Write you
     },
   })
 
-  if (!isMounted || !editor) {
+  if (!editor) {
     return (
       <div className="border rounded-lg p-4">
         <div className="border-b bg-gray-50 p-2">

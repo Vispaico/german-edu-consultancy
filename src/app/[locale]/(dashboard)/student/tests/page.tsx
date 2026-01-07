@@ -1,129 +1,178 @@
-'use client'
-
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
+import { redirect } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { locales } from '@/i18n/routing'
+import { setRequestLocale } from 'next-intl/server'
+import { Link } from '@/navigation'
 
-export default function StudentTestsPage() {
-  const upcomingTests = [
-    {
-      id: 1,
-      type: 'IELTS Academic',
-      center: 'British Council - Haiphong UAC',
-      date: '2025-11-15',
-      time: '09:00 AM',
-      status: 'Confirmed'
+type PageParams = {
+  params: Promise<{ locale: string }>
+}
+
+const statusBadgeClasses: Record<string, string> = {
+  PENDING: 'bg-yellow-50 text-yellow-600',
+  CONFIRMED: 'bg-green-50 text-green-600',
+  COMPLETED: 'bg-blue-50 text-blue-600',
+  CANCELLED: 'bg-red-50 text-red-600',
+  NO_SHOW: 'bg-gray-100 text-gray-600',
+}
+
+const formatStatus = (status: string) =>
+  status.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())
+
+export default async function StudentTestsPage({ params }: PageParams) {
+  const { locale } = await params
+  const safeLocale = locales.includes(locale as (typeof locales)[number])
+    ? (locale as (typeof locales)[number])
+    : locales[0]
+
+  setRequestLocale(safeLocale)
+
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    redirect(`/${safeLocale}/login`)
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+    include: { student: true },
+  })
+
+  if (!user?.student) {
+    redirect(`/${safeLocale}/login`)
+  }
+
+  const testBookings = await prisma.testBooking.findMany({
+    where: { studentid: user.student.id },
+    orderBy: { testdate: 'asc' },
+  })
+
+  const now = new Date()
+  const upcoming = testBookings.filter(
+    (booking) => booking.testdate >= now && !['COMPLETED', 'CANCELLED', 'NO_SHOW'].includes(booking.status)
+  )
+  const past = testBookings.filter(
+    (booking) => booking.testdate < now || ['COMPLETED', 'CANCELLED', 'NO_SHOW'].includes(booking.status)
+  )
+
+  const formatDateTime = (date: Date) =>
+    new Intl.DateTimeFormat(safeLocale, { dateStyle: 'long', timeStyle: 'short' }).format(date)
+
+  const centerSummary = testBookings.reduce<Record<string, { location: string; count: number }>>((acc, booking) => {
+    const key = booking.testcenter
+    if (!acc[key]) {
+      acc[key] = { location: booking.location, count: 0 }
     }
-  ]
+    acc[key].count += 1
+    return acc
+  }, {})
 
-  const pastTests = [
-    {
-      id: 2,
-      type: 'IELTS Academic',
-      date: '2025-09-20',
-      score: 7.5,
-      breakdown: 'L: 8.0, R: 7.5, W: 7.0, S: 7.5'
-    }
-  ]
-
-  const testCenters = [
-    { name: 'British Council - Haiphong UAC', location: 'Haiphong', provider: 'British Council' },
-    { name: 'IDP IELTS - HCMC', location: 'Ho Chi Minh City', provider: 'IDP' },
-    { name: 'British Council - HCMC UAC', location: 'Ho Chi Minh City', provider: 'British Council' }
-  ]
+  const uniqueCenters = Object.entries(centerSummary)
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-3xl font-bold mb-2">Language Tests</h1>
-          <p className="text-gray-600">Book and manage your IELTS, TOEFL, and PTE tests</p>
+          <p className="text-gray-600">Your IELTS, TOEFL, and PTE bookings managed in one view</p>
         </div>
-        <Button className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">Book New Test</Button>
+        <Button asChild className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
+          <Link href="/contact">Request New Test Booking</Link>
+        </Button>
       </div>
 
-      {/* Upcoming Tests */}
       <Card>
         <CardHeader>
           <CardTitle>Upcoming Tests</CardTitle>
-          <CardDescription>Your scheduled language tests</CardDescription>
+          <CardDescription>Confirmed or pending seats</CardDescription>
         </CardHeader>
         <CardContent>
-          {upcomingTests.length > 0 ? (
+          {upcoming.length === 0 ? (
+            <p className="text-gray-500 text-center py-6">You have no upcoming tests scheduled.</p>
+          ) : (
             <div className="space-y-4">
-              {upcomingTests.map((test) => (
+              {upcoming.map((test) => (
                 <div key={test.id} className="p-4 border rounded-lg">
-                  <div className="flex items-start justify-between">
+                  <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                     <div>
-                      <h3 className="font-semibold text-lg">{test.type}</h3>
-                      <p className="text-sm text-gray-600 mt-1">{test.center}</p>
-                      <p className="text-sm text-gray-600">
-                        📅 {test.date} at {test.time}
-                      </p>
+                      <h3 className="font-semibold text-lg">{formatStatus(test.testtype)}</h3>
+                      <p className="text-sm text-gray-600">{test.testcenter} • {test.location}</p>
+                      <p className="text-sm text-gray-600">{formatDateTime(test.testdate)}</p>
+                      {test.registrationid && (
+                        <p className="text-xs text-gray-500 mt-1">Registration ID: {test.registrationid}</p>
+                      )}
                     </div>
-                    <span className="px-3 py-1 rounded-full text-sm bg-green-50 text-green-600">
-                      {test.status}
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      statusBadgeClasses[test.status] ?? 'bg-gray-100 text-gray-600'
+                    }`}>
+                      {formatStatus(test.status)}
                     </span>
-                  </div>
-                  <div className="mt-4 flex gap-2">
-                    <Button size="sm" className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">View Details</Button>
-                    <Button size="sm" variant="destructive">Cancel</Button>
                   </div>
                 </div>
               ))}
             </div>
-          ) : (
-            <p className="text-gray-500 text-center py-8">No upcoming tests scheduled</p>
           )}
         </CardContent>
       </Card>
 
-      {/* Past Results */}
       <Card>
         <CardHeader>
-          <CardTitle>Test Results</CardTitle>
-          <CardDescription>Your previous test scores</CardDescription>
+          <CardTitle>Results & History</CardTitle>
+          <CardDescription>Scores from completed tests</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {pastTests.map((test) => (
-              <div key={test.id} className="p-4 border rounded-lg">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="font-semibold">{test.type}</h3>
-                    <p className="text-sm text-gray-600">Test Date: {test.date}</p>
-                    <p className="text-sm text-gray-600">{test.breakdown}</p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-3xl font-bold text-blue-600">{test.score}</div>
-                    <p className="text-sm text-gray-600">Overall</p>
+          {past.length === 0 ? (
+            <p className="text-gray-500 text-center py-6">No completed tests yet.</p>
+          ) : (
+            <div className="space-y-4">
+              {past.map((test) => (
+                <div key={test.id} className="p-4 border rounded-lg">
+                  <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                    <div>
+                      <h3 className="font-semibold">{formatStatus(test.testtype)}</h3>
+                      <p className="text-sm text-gray-600">{formatDateTime(test.testdate)}</p>
+                      {test.notes && <p className="text-sm text-gray-500">{test.notes}</p>}
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs uppercase text-gray-500">Overall</p>
+                      <p className="text-3xl font-bold text-blue-600">{test.score ?? '—'}</p>
+                      {test.resultdate && (
+                        <p className="text-xs text-gray-500">Posted {formatDateTime(test.resultdate)}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </CardContent>
       </Card>
 
-      {/* Test Centers */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Test Centers in Vietnam</CardTitle>
-          <CardDescription>Available IELTS test centers</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-3">
-            {testCenters.map((center, idx) => (
-              <div key={idx} className="p-3 border rounded-lg flex items-center justify-between">
-                <div>
-                  <h4 className="font-medium">{center.name}</h4>
-                  <p className="text-sm text-gray-600">{center.location} • {center.provider}</p>
+      {testBookings.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Frequently Used Test Centers</CardTitle>
+            <CardDescription>Based on your confirmed and past bookings</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {uniqueCenters.map(([center, info]) => (
+                <div key={center} className="p-3 border rounded-lg flex items-center justify-between">
+                  <div>
+                    <h4 className="font-medium">{center}</h4>
+                    <p className="text-sm text-gray-600">{info.location}</p>
+                  </div>
+                  <span className="text-sm text-gray-500">{info.count} booking{info.count > 1 ? 's' : ''}</span>
                 </div>
-                <Button size="sm" className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">View Schedule</Button>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
     </div>
   )
 }
