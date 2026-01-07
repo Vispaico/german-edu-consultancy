@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { redirect } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
+import { locales } from '@/i18n/routing'
 
 type PageParams = {
   params: Promise<{ locale: string }>
@@ -11,8 +13,10 @@ type PageParams = {
 
 export default async function AdminDashboard({ params }: PageParams) {
   const { locale } = await params
+  const safeLocale = locales.includes(locale as (typeof locales)[number]) ? (locale as (typeof locales)[number]) : locales[0]
+  setRequestLocale(safeLocale)
   const session = await getServerSession(authOptions)
-  const t = await getTranslations('dashboard.admin')
+  const t = await getTranslations({ locale: safeLocale, namespace: 'dashboard.admin' })
 
   if (!session || session.user.role !== 'ADMIN') {
     redirect(`/${locale}/login`)
