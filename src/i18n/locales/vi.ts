@@ -484,4 +484,26 @@ const vi = {
   },
 }
 
-export default vi
+
+
+  dashboardNav: {
+    student: {
+      dashboard: 'Bảng điều khiển',
+      applications: 'Hồ sơ',
+      universities: 'Trường đại học',
+      documents: 'Tài liệu',
+      tests: 'Lịch thi',
+      messages: 'Tin nhắn',
+      settings: 'Cài đặt',
+    },
+    admin: {
+      dashboard: 'Bảng điều khiển',
+      students: 'Sinh viên',
+      applications: 'Hồ sơ',
+      universities: 'Trường đại học',
+      payments: 'Thanh toán',
+      blog: 'Blog',
+      settings: 'Cài đặt',
+    },
+    logout: 'Đăng xuất',
+  },export default vi

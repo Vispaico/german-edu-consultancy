@@ -243,10 +243,10 @@ export default async function StudentDashboard({ params }: PageParams) {
         <Card className="cursor-pointer hover:shadow-lg transition-shadow">
           <CardContent className="pt-6 text-center">
             <div className="text-4xl mb-2">📝</div>
-            <h3 className="font-semibold mb-2">{t('quickActions.newApplication.title')}</h3>
-            <p className="text-sm text-gray-600 mb-4">{t('quickActions.newApplication.description')}</p>
+            <h3 className="font-semibold mb-2">New Application</h3>
+            <p className="text-sm text-gray-600 mb-4">Start a new university application</p>
             <Button asChild className="w-full bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
-              <Link href="/student/applications/new">{t('quickActions.newApplication.applyNow')}</Link>
+              <Link href="/student/applications/new">Apply Now</Link>
             </Button>
           </CardContent>
         </Card>
@@ -254,10 +254,10 @@ export default async function StudentDashboard({ params }: PageParams) {
         <Card className="cursor-pointer hover:shadow-lg transition-shadow">
           <CardContent className="pt-6 text-center">
             <div className="text-4xl mb-2">📄</div>
-            <h3 className="font-semibold mb-2">{t('quickActions.uploadDocuments.title')}</h3>
-            <p className="text-sm text-gray-600 mb-4">{t('quickActions.uploadDocuments.description')}</p>
+            <h3 className="font-semibold mb-2">Upload Documents</h3>
+            <p className="text-sm text-gray-600 mb-4">Submit required documents</p>
             <Button asChild className="w-full bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
-              <Link href="/student/documents">{t('quickActions.uploadDocuments.upload')}</Link>
+              <Link href="/student/documents">Upload</Link>
             </Button>
           </CardContent>
         </Card>
@@ -265,10 +265,10 @@ export default async function StudentDashboard({ params }: PageParams) {
         <Card className="cursor-pointer hover:shadow-lg transition-shadow">
           <CardContent className="pt-6 text-center">
             <div className="text-4xl mb-2">📚</div>
-            <h3 className="font-semibold mb-2">{t('quickActions.bookTest.title')}</h3>
-            <p className="text-sm text-gray-600 mb-4">{t('quickActions.bookTest.description')}</p>
+            <h3 className="font-semibold mb-2">Book Test</h3>
+            <p className="text-sm text-gray-600 mb-4">Schedule IELTS, TOEFL, or PTE</p>
             <Button asChild className="w-full bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
-              <Link href="/student/tests">{t('quickActions.bookTest.bookNow')}</Link>
+              <Link href="/student/tests">Book Now</Link>
             </Button>
           </CardContent>
         </Card>
