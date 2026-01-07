@@ -490,26 +490,4 @@ const en = {
   },
 }
 
-
-
-  dashboardNav: {
-    student: {
-      dashboard: 'Dashboard',
-      applications: 'Applications',
-      universities: 'Universities',
-      documents: 'Documents',
-      tests: 'Tests',
-      messages: 'Messages',
-      settings: 'Settings',
-    },
-    admin: {
-      dashboard: 'Dashboard',
-      students: 'Students',
-      applications: 'Applications',
-      universities: 'Universities',
-      payments: 'Payments',
-      blog: 'Blog',
-      settings: 'Settings',
-    },
-    logout: 'Logout',
-  },export default en
+export default en

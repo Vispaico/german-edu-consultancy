@@ -506,4 +506,7 @@ const vi = {
       settings: 'Cài đặt',
     },
     logout: 'Đăng xuất',
-  },export default vi
+  }
+}
+
+export default vi
