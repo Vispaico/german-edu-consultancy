@@ -2,14 +2,13 @@
 
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
-import { Link, useRouter } from '@/navigation'
+import { Link } from '@/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 
 export function LoginForm() {
-  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -21,38 +20,20 @@ export function LoginForm() {
     setLoading(true)
 
     try {
+      // Use automatic redirect to dashboard
       const result = await signIn('credentials', {
         email,
         password,
-        redirect: false,
+        redirectTo: '/dashboard',
       })
 
       if (result?.error) {
         setError('Invalid email or password')
-        return
+        setLoading(false)
       }
-
-      try {
-        const sessionResponse = await fetch('/api/auth/session', {
-          cache: 'no-store',
-        })
-
-        if (sessionResponse.ok) {
-          const sessionData = await sessionResponse.json()
-          const role = sessionData?.user?.role
-          const targetRoute = role === 'ADMIN' || role === 'CONSULTANT'
-            ? '/admin/dashboard'
-            : '/student/dashboard'
-          router.push(targetRoute)
-        } else {
-          router.push('/student/dashboard')
-        }
-      } catch {
-        router.push('/student/dashboard')
-      }
+      // If successful, the redirect will happen automatically
     } catch {
       setError('An error occurred. Please try again.')
-    } finally {
       setLoading(false)
     }
   }
