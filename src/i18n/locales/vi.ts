@@ -482,10 +482,6 @@ const vi = {
       },
     },
   },
-}
-
-
-
   dashboardNav: {
     student: {
       dashboard: 'Bảng điều khiển',
@@ -506,7 +502,7 @@ const vi = {
       settings: 'Cài đặt',
     },
     logout: 'Đăng xuất',
-  }
+  },
 }
 
 export default vi
