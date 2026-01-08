@@ -20,6 +20,7 @@ const vi = {
       study: 'Học tập',
       work: 'Làm việc',
       living: 'Sống',
+      hub: 'Trung tâm Đức',
       services: 'Dịch vụ',
       blog: 'Blog',
       contact: 'Liên hệ',
@@ -235,6 +236,80 @@ const vi = {
         'Chia sẻ mục tiêu du học và nhận lộ trình học tập tại Đức trong 48 giờ, kèm gợi ý học bổng và kế hoạch visa.',
       primary: 'Đặt lịch tư vấn',
       secondary: 'Xem FAQ',
+    },
+  },
+  // --- Section: Germany Hub
+  germanyHub: {
+    meta: {
+      title: 'Trung tâm Đức: Trang trụ cột cho học tập, sinh hoạt & công nhận văn bằng',
+      description:
+        'Dùng trang này làm liên kết chuẩn tới các hướng dẫn về du học, cuộc sống, Ausbildung và công nhận bằng tại Đức.',
+    },
+    hero: {
+      eyebrow: 'Chỉ mục liên kết chuẩn',
+      title: 'Trung tâm Đức cho bài viết, mạng xã hội và đối tác',
+      subtitle:
+        'Gắn link này mỗi khi bạn nhắc tới Đức. Trang gom 4 hướng dẫn trụ cột và luôn được cập nhật khi chính sách thay đổi.',
+      primaryCta: 'Mở hướng dẫn du học',
+      secondaryCta: 'Xem tất cả dịch vụ',
+    },
+    pillars: {
+      eyebrow: 'Trang trụ cột',
+      title: '4 hub để dẫn link mọi nơi',
+      description:
+        'Thêm vào blog, email và mạng xã hội để độc giả luôn xem phiên bản mới nhất.',
+      study: {
+        title: 'Du học Đức',
+        description: 'Lộ trình hồ sơ, học bổng, tài khoản phong toả và visa du học.',
+        highlights: [
+          'Mốc thời gian tuyển sinh & loại chương trình',
+          'Tài khoản phong toả, bảo hiểm và phương án học bổng',
+          'Checklist hồ sơ visa du học và luyện phỏng vấn',
+        ],
+      },
+      living: {
+        title: 'Sinh hoạt tại Đức',
+        description: 'Chi phí, thuê nhà, đi lại, văn hoá và bảo hiểm y tế.',
+        highlights: [
+          'Tóm tắt chi phí sinh hoạt & thuê nhà',
+          'Anmeldung, giấy tờ và bảo hiểm cơ bản',
+          'Đi lại, phân loại rác và quy định Chủ nhật để tránh phạt',
+        ],
+      },
+      vocational: {
+        title: 'Đào tạo nghề (Ausbildung)',
+        description: 'Lộ trình dual, kỳ vọng doanh nghiệp và thủ tục visa.',
+        highlights: [
+          'Điều kiện, trình độ tiếng Đức và cấu trúc hợp đồng',
+          'Mức lương, tài khoản phong toả và quy tắc bảo hiểm',
+          'Checklist visa và tiến độ tìm doanh nghiệp nhận đào tạo',
+        ],
+      },
+      conversion: {
+        title: 'Công nhận văn bằng (Anerkennung)',
+        description: 'Các hướng công nhận, hồ sơ cần dịch và thời gian xử lý.',
+        highlights: [
+          'Cơ quan thẩm định và lộ trình công nhận',
+          'Chuẩn bị hồ sơ, dịch thuật và lệ phí',
+          'Thời gian xử lý và bước tiếp theo sau khi được công nhận',
+        ],
+      },
+    },
+    usage: {
+      title: 'Cách sử dụng hub',
+      description: 'Một đường link duy nhất để gắn vào blog, mạng xã hội, tài liệu đối tác và cuối email.',
+      steps: [
+        'Gắn link /germany-hub mỗi khi nhắc tới hướng dẫn về Đức, sau đó trỏ sâu tới trang trụ cột tương ứng.',
+        'Dùng các bullet nổi bật làm gợi ý anchor text cho blog, caption và email CTA.',
+        'Khi chính sách đổi, chúng tôi cập nhật trang trụ cột — bài viết của bạn vẫn đúng nhờ link hub.',
+      ],
+      note: 'Chia sẻ một URL cho đối tác và cộng đồng; 4 hướng dẫn trụ cột sẽ luôn nằm ở đây.',
+    },
+    services: {
+      title: 'Cần cố vấn xử lý thay bạn?',
+      description: 'Đội ngũ song ngữ chuẩn bị hồ sơ, luyện phỏng vấn và hỗ trợ ổn định cuộc sống tại Đức.',
+      primaryCta: 'Đặt lịch tư vấn',
+      secondaryCta: 'Xem dịch vụ',
     },
   },
   // --- Section: Services

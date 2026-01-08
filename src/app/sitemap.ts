@@ -11,6 +11,7 @@ const routes = [
   '/study-in-germany',
   '/work-in-germany',
   '/living-in-germany',
+  '/germany-hub',
   '/contact',
   '/blog',
   '/about',

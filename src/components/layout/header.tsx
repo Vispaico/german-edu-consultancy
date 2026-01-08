@@ -47,6 +47,7 @@ export function Header() {
       ]
     },
     { href: '/living-in-germany', label: tNav('items.living') },
+    { href: '/germany-hub', label: tNav('items.hub') },
     {
       label: tNav('servicesMenu.label'),
       href: '/services',

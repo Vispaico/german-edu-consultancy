@@ -20,6 +20,7 @@ const en = {
       study: 'Study',
       work: 'Work',
       living: 'Living',
+      hub: 'Germany Hub',
       services: 'Services',
       blog: 'Blog',
       contact: 'Contact',
@@ -240,6 +241,80 @@ const en = {
         'Share your study goals and receive a personalised German study pathway in 48 hours—complete with scholarship options and visa roadmap.',
       primary: 'Book Free Consultation',
       secondary: 'View FAQs',
+    },
+  },
+  // --- Section: Germany Hub
+  germanyHub: {
+    meta: {
+      title: 'Germany Hub: Pillar guides for study, living & recognition',
+      description:
+        'Use this hub as the canonical link to our guides on studying, living, Ausbildung, and diploma recognition in Germany.',
+    },
+    hero: {
+      eyebrow: 'Canonical guide index',
+      title: 'Germany Hub for articles, posts, and partners',
+      subtitle:
+        'Link to this page whenever you mention Germany in content. It anchors readers to our four pillar guides and stays updated as policies change.',
+      primaryCta: 'Open the study guide',
+      secondaryCta: 'See all services',
+    },
+    pillars: {
+      eyebrow: 'Pillar guides',
+      title: 'Four hubs you can reference everywhere',
+      description:
+        'Add these as internal links in blog posts, newsletters, and social content to keep readers on the latest version.',
+      study: {
+        title: 'Study in Germany',
+        description: 'Admissions, scholarships, blocked accounts, and student visa steps.',
+        highlights: [
+          'Admission timelines & program types',
+          'Blocked account, insurance, and scholarship options',
+          'Student visa documents and interview prep',
+        ],
+      },
+      living: {
+        title: 'Living in Germany',
+        description: 'Cost of living snapshots, housing, transport, and culture notes.',
+        highlights: [
+          'Cost of living & housing quick facts',
+          'Anmeldung, bureaucracy, and insurance basics',
+          'Transport, recycling, and Sunday rules to avoid fines',
+        ],
+      },
+      vocational: {
+        title: 'Vocational training (Ausbildung)',
+        description: 'Dual training pathways, employer expectations, and visa steps.',
+        highlights: [
+          'Eligibility, German level, and contract structure',
+          'Salary ranges, blocked account, and insurance rules',
+          'Visa checklist and job search timelines',
+        ],
+      },
+      conversion: {
+        title: 'Diploma conversion (Anerkennung)',
+        description: 'Recognition options, documents, and expected timelines.',
+        highlights: [
+          'Key authorities and recognition routes',
+          'Document prep, translations, and fees',
+          'Processing timelines and next steps after approval',
+        ],
+      },
+    },
+    usage: {
+      title: 'How to use this hub',
+      description: 'A single URL you can drop into blogs, social posts, partner decks, and email footers.',
+      steps: [
+        'Link to /germany-hub whenever you mention Germany guides, then deep-link to the specific pillar.',
+        'Use the highlight bullets as anchor text ideas for blogs, captions, and email CTAs.',
+        'If policies change, we update the pillar pages—your articles stay accurate via this hub.',
+      ],
+      note: 'Share one URL with partners and communities; the four pillar guides live here permanently.',
+    },
+    services: {
+      title: 'Need an advisor to handle the steps for you?',
+      description: 'Our bilingual team prepares documents, trains you for interviews, and supports settlement in Germany.',
+      primaryCta: 'Book a consultation',
+      secondaryCta: 'Explore services',
     },
   },
   // --- Section: Services
