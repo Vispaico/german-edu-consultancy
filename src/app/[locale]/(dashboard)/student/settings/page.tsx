@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { locales } from '@/i18n/routing'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { revalidatePath } from 'next/cache'
 import { Link } from '@/navigation'
 
@@ -22,6 +22,7 @@ export default async function StudentSettingsPage({ params }: PageParams) {
     : locales[0]
 
   setRequestLocale(safeLocale)
+  const t = await getTranslations({ locale: safeLocale, namespace: 'dashboard.studentPages.settings' })
 
   const session = await getServerSession(authOptions)
 
@@ -82,56 +83,56 @@ export default async function StudentSettingsPage({ params }: PageParams) {
   return (
     <div className="space-y-8 max-w-2xl">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Settings</h1>
-        <p className="text-gray-600">Keep your StartinDE profile up to date</p>
+        <h1 className="text-3xl font-bold mb-2">{t('title')}</h1>
+        <p className="text-gray-600">{t('description')}</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Profile Information</CardTitle>
-          <CardDescription>These details are shared with your consultant</CardDescription>
+          <CardTitle>{t('profileTitle')}</CardTitle>
+          <CardDescription>{t('profileDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <form action={updateProfile} className="space-y-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="firstname">First Name</Label>
+                <Label htmlFor="firstname">{t('fields.firstname')}</Label>
                 <Input id="firstname" name="firstname" defaultValue={profile.firstname} />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="lastname">Last Name</Label>
+                <Label htmlFor="lastname">{t('fields.lastname')}</Label>
                 <Input id="lastname" name="lastname" defaultValue={profile.lastname} />
               </div>
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="nationality">Nationality</Label>
+                <Label htmlFor="nationality">{t('fields.nationality')}</Label>
                 <Input id="nationality" name="nationality" defaultValue={profile.nationality} />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="city">City</Label>
+                <Label htmlFor="city">{t('fields.city')}</Label>
                 <Input id="city" name="city" defaultValue={profile.city} />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="address">Address</Label>
+              <Label htmlFor="address">{t('fields.address')}</Label>
               <Input id="address" name="address" defaultValue={profile.address} />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone">Phone Number</Label>
+              <Label htmlFor="phone">{t('fields.phone')}</Label>
               <Input id="phone" name="phone" defaultValue={profile.phone} placeholder="+84..." />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Account Email</Label>
+              <Label htmlFor="email">{t('fields.email')}</Label>
               <Input id="email" name="email" defaultValue={profile.email} readOnly className="bg-gray-50" />
             </div>
 
             <Button type="submit" className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
-              Save Changes
+              {t('save')}
             </Button>
           </form>
         </CardContent>
@@ -139,28 +140,24 @@ export default async function StudentSettingsPage({ params }: PageParams) {
 
       <Card>
         <CardHeader>
-          <CardTitle>Password & Security</CardTitle>
-          <CardDescription>Reset your password through the secure portal</CardDescription>
+          <CardTitle>{t('passwordTitle')}</CardTitle>
+          <CardDescription>{t('passwordDescription')}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-sm text-gray-600">
-            Use the password reset flow to update your credentials. We will email you a secure link immediately.
-          </p>
+          <p className="text-sm text-gray-600">{t('resetDescription')}</p>
           <Button asChild variant="outline">
-            <Link href="/forgot-password">Reset Password</Link>
+            <Link href="/forgot-password">{t('resetCta')}</Link>
           </Button>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Notification Preferences</CardTitle>
-          <CardDescription>Email alerts are automatically sent for documents, messages, and status updates.</CardDescription>
+          <CardTitle>{t('notificationsTitle')}</CardTitle>
+          <CardDescription>{t('notificationsDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-gray-600">
-            Want to change how often you hear from us? Let your consultant know in the Messages tab and we will update your preferences manually.
-          </p>
+          <p className="text-sm text-gray-600">{t('notificationsNote')}</p>
         </CardContent>
       </Card>
     </div>

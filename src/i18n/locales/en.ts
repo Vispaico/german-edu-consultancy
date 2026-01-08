@@ -1,8 +1,10 @@
 const en = {
+  // --- Section: Metadata
   metadata: {
     title: 'Edu Consultancy - Study in Germany',
     description: 'Professional education consultancy helping international students study in Germany',
   },
+  // --- Section: Common
   common: {
     bookConsultation: 'Book Free Consultation',
     viewFaqs: 'View FAQs',
@@ -11,6 +13,7 @@ const en = {
     exploreServices: 'View all services',
     localeSwitcherLabel: 'Select language',
   },
+  // --- Section: Navigation
   navigation: {
     logoAlt: 'StartinDE logo',
     items: {
@@ -50,6 +53,7 @@ const en = {
     },
   },
 
+  // --- Section: Hero
   hero: {
     titleSegment: 'with Confidence.',
     titlePrefix: 'Live in Germany',
@@ -72,6 +76,7 @@ const en = {
       },
     },
   },
+  // --- Section: Home Page
   home: {
     services: {
       title: 'Our Services',
@@ -237,6 +242,7 @@ const en = {
       secondary: 'View FAQs',
     },
   },
+  // --- Section: Services
   services: {
     cards: {
       'university-selection': {
@@ -315,6 +321,7 @@ const en = {
       },
     },
   },
+  // --- Section: Footer
   footer: {
     description:
       'Your trusted partner for living, working and studying in Germany. Professional guidance since 2025.',
@@ -349,6 +356,7 @@ const en = {
       ],
     },
   },
+  // --- Section: About Page
   about: {
     hero: {
       eyebrow: 'Since 2025',
@@ -398,6 +406,7 @@ const en = {
       button: 'Contact Us',
     },
   },
+  // --- Section: Dashboard
   dashboard: {
     admin: {
       title: 'Admin Dashboard',
@@ -485,6 +494,209 @@ const en = {
           description: 'Schedule IELTS, TOEFL, or PTE',
           bookNow: 'Book Now',
         },
+      },
+    },
+    // --- Section: Dashboard Student Pages
+    studentPages: {
+      applications: {
+        title: 'My Applications',
+        description: 'Track every university submission and offer in one place',
+        button: 'Start New Application',
+        stats: {
+          total: 'Total Applications',
+          review: 'In Review',
+          offers: 'Offers',
+          approved: 'Approved',
+        },
+        timelineTitle: 'Application Timeline',
+        timelineDescription: 'Latest updates from StartinDE consultants',
+        empty: 'You have not created any applications yet.',
+        submittedLabel: 'Submitted {date}',
+        consultantLabel: 'Consultant: {name}',
+        viewDetails: 'View Details',
+        status: {
+          DRAFT: 'Draft',
+          SUBMITTED: 'Submitted',
+          UNDER_REVIEW: 'Under Review',
+          OFFER_RECEIVED: 'Offer Received',
+          OFFER_ACCEPTED: 'Offer Accepted',
+          VISA_PROCESSING: 'Visa Processing',
+          APPROVED: 'Approved',
+          REJECTED: 'Rejected',
+          WITHDRAWN: 'Withdrawn',
+        },
+      },
+      documents: {
+        title: 'My Documents',
+        description: 'Upload and manage your application documents',
+        empty: 'You have not uploaded any documents yet.',
+        linkedTo: 'Linked to {university}',
+        notesLabel: 'Notes',
+        uploadedOn: 'Uploaded {date}',
+        download: 'Download',
+        status: {
+          PENDING: 'Pending',
+          VERIFIED: 'Verified',
+          REJECTED: 'Rejected',
+          EXPIRED: 'Expired',
+        },
+        types: {
+          PASSPORT: 'Passport',
+          TRANSCRIPT: 'Transcript',
+          DIPLOMA: 'Diploma',
+          IELTS_CERTIFICATE: 'IELTS Certificate',
+          TOEFL_CERTIFICATE: 'TOEFL Certificate',
+          PTE_CERTIFICATE: 'PTE Certificate',
+          TESTDAF_CERTIFICATE: 'TestDaF Certificate',
+          GOETHE_CERTIFICATE: 'Goethe Certificate',
+          RECOMMENDATION_LETTER: 'Recommendation Letter',
+          PERSONAL_STATEMENT: 'Personal Statement',
+          CV: 'Curriculum Vitae',
+          FINANCIAL_PROOF: 'Financial Proof',
+          BIRTH_CERTIFICATE: 'Birth Certificate',
+          VISA_APPLICATION: 'Visa Application',
+          MEDICAL_CERTIFICATE: 'Medical Certificate',
+          POLICE_CHECK: 'Police Check',
+          OTHER: 'Other Document',
+        },
+        upload: {
+          title: 'Upload New Document',
+          description: 'Supported formats: PDF, JPG, PNG (Max 10MB)',
+          button: 'Upload',
+          uploading: 'Uploading…',
+        },
+      },
+      messages: {
+        title: 'Messages',
+        description: 'Stay in touch with your StartinDE consultant',
+        empty: 'You have no messages yet.',
+        you: 'You',
+        consultant: 'Consultant',
+        placeholder: 'Type your message...',
+        send: 'Send Message',
+      },
+      settings: {
+        title: 'Settings',
+        description: 'Keep your StartinDE profile up to date',
+        profileTitle: 'Profile Information',
+        profileDescription: 'These details are shared with your consultant',
+        fields: {
+          firstname: 'First Name',
+          lastname: 'Last Name',
+          nationality: 'Nationality',
+          city: 'City',
+          address: 'Address',
+          phone: 'Phone Number',
+          email: 'Account Email',
+        },
+        save: 'Save Changes',
+        passwordTitle: 'Password & Security',
+        passwordDescription: 'Reset your password through the secure portal',
+        resetCta: 'Reset Password',
+        resetDescription: 'Use the password reset flow to update your credentials. We will email you a secure link immediately.',
+        notificationsTitle: 'Notification Preferences',
+        notificationsDescription: 'Email alerts are automatically sent for documents, messages, and status updates.',
+        notificationsNote: 'Want to change how often you hear from us? Tell your consultant in Messages and we will update preferences manually.',
+      },
+      tests: {
+        title: 'Language Tests',
+        description: 'Your IELTS, TOEFL, and PTE bookings managed in one view',
+        requestCta: 'Request New Test Booking',
+        upcomingTitle: 'Upcoming Tests',
+        upcomingDescription: 'Confirmed or pending seats',
+        emptyUpcoming: 'You have no upcoming tests scheduled.',
+        historyTitle: 'Results & History',
+        historyDescription: 'Scores from completed tests',
+        emptyHistory: 'No completed tests yet.',
+        registrationLabel: 'Registration ID: {id}',
+        postedLabel: 'Posted {date}',
+        centersTitle: 'Frequently Used Test Centers',
+        centersDescription: 'Based on your confirmed and past bookings',
+        bookingsCount: '{count, plural, one {# booking} other {# bookings}}',
+      },
+      universities: {
+        title: 'Browse Universities',
+        description: '{count}+ curated German institutions with current data',
+        viewDirectory: 'View Full Directory',
+        empty: 'Universities will appear here once your consultant builds your shortlist.',
+        programSummary: '{programs} programs • {applications} active applications',
+        viewPrograms: 'View Programs',
+      },
+    },
+  },
+
+  // --- Section: Dashboard Navigation
+  dashboardNav: {
+    student: {
+      dashboard: 'Dashboard',
+      applications: 'Applications',
+      universities: 'Universities',
+      documents: 'Documents',
+      tests: 'Tests',
+      messages: 'Messages',
+      settings: 'Settings',
+    },
+    admin: {
+      dashboard: 'Dashboard',
+      students: 'Students',
+      applications: 'Applications',
+      universities: 'Universities',
+      payments: 'Payments',
+      blog: 'Blog',
+      settings: 'Settings',
+    },
+    logout: 'Logout',
+  },
+
+  // --- Section: Newsletter Signup
+  newsletter: {
+    title: 'Subscribe to Our Newsletter',
+    description: 'Get the latest updates about studying in Germany, visa tips, scholarship opportunities, and more.',
+    inputPlaceholder: 'Enter your email',
+    button: 'Subscribe',
+    buttonLoading: 'Subscribing...',
+    success: 'Subscribed successfully!',
+    error: 'Failed to subscribe. Please try again.',
+    privacy: 'We respect your privacy. Unsubscribe anytime.',
+  },
+
+  // --- Section: Contact Page
+  contact: {
+    title: 'Contact Us',
+    description: 'Get in touch with our team of expert advisors',
+    form: {
+      title: 'Send us a message',
+      successTitle: 'Message Sent!',
+      successDescription: "We'll get back to you within 24 hours.",
+      error: 'Failed to send message. Please try again.',
+      fields: {
+        name: 'Full Name',
+        email: 'Email',
+        phone: 'Phone',
+        message: 'Message',
+      },
+      button: 'Send Message',
+      buttonLoading: 'Sending...',
+    },
+    info: {
+      location: {
+        title: '📍 Office Location',
+        addressLine1: '23/32 To 2 Xom Trung',
+        addressLine2: 'Haiphong, Vietnam',
+      },
+      phone: {
+        title: '📞 Phone',
+        value: '+84 123 456 789',
+      },
+      email: {
+        title: '✉️ Email',
+        value: 'info@startin-de.com',
+      },
+      hours: {
+        title: '🕐 Office Hours',
+        weekdays: 'Mon - Fri: 9:00 AM - 6:00 PM',
+        saturday: 'Sat: 9:00 AM - 1:00 PM',
+        sunday: 'Sun: Closed',
       },
     },
   },

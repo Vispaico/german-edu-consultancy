@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Link } from '@/navigation'
 import { locales } from '@/i18n/routing'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 type PageParams = {
   params: Promise<{ locale: string }>
@@ -34,6 +34,8 @@ export default async function StudentApplicationsPage({ params }: PageParams) {
     : locales[0]
 
   setRequestLocale(safeLocale)
+
+  const t = await getTranslations({ locale: safeLocale, namespace: 'dashboard.studentPages.applications' })
 
   const session = await getServerSession(authOptions)
 
@@ -77,36 +79,36 @@ export default async function StudentApplicationsPage({ params }: PageParams) {
     <div className="space-y-8">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-3xl font-bold mb-2">My Applications</h1>
-          <p className="text-gray-600">Track every university submission and offer in one place</p>
+          <h1 className="text-3xl font-bold mb-2">{t('title')}</h1>
+          <p className="text-gray-600">{t('description')}</p>
         </div>
         <Button asChild className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
-          <Link href="/student/applications/new">Start New Application</Link>
+          <Link href="/student/applications/new">{t('button')}</Link>
         </Button>
       </div>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         <Card>
           <CardContent className="pt-6">
-            <p className="text-sm text-gray-600">Total Applications</p>
+            <p className="text-sm text-gray-600">{t('stats.total')}</p>
             <p className="text-3xl font-bold mt-2">{stats.total}</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="pt-6">
-            <p className="text-sm text-gray-600">In Review</p>
+            <p className="text-sm text-gray-600">{t('stats.review')}</p>
             <p className="text-3xl font-bold mt-2">{stats.pending}</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="pt-6">
-            <p className="text-sm text-gray-600">Offers</p>
+            <p className="text-sm text-gray-600">{t('stats.offers')}</p>
             <p className="text-3xl font-bold mt-2">{stats.offers}</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="pt-6">
-            <p className="text-sm text-gray-600">Approved</p>
+            <p className="text-sm text-gray-600">{t('stats.approved')}</p>
             <p className="text-3xl font-bold mt-2">{stats.approved}</p>
           </CardContent>
         </Card>
@@ -114,42 +116,49 @@ export default async function StudentApplicationsPage({ params }: PageParams) {
 
       <Card>
         <CardHeader>
-          <CardTitle>Application Timeline</CardTitle>
-          <CardDescription>Latest updates from StartinDE consultants</CardDescription>
+          <CardTitle>{t('timelineTitle')}</CardTitle>
+          <CardDescription>{t('timelineDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           {applications.length === 0 ? (
-            <p className="text-gray-500 text-center py-6">You have not created any applications yet.</p>
+            <p className="text-gray-500 text-center py-6">{t('empty')}</p>
           ) : (
             <div className="space-y-4">
-              {applications.map((app) => (
-                <div key={app.id} className="p-4 border rounded-lg">
-                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                    <div>
-                      <h3 className="font-semibold text-lg">{app.university?.name ?? 'Unknown University'}</h3>
-                      <p className="text-sm text-gray-600">
-                        {app.course?.name || 'General Application'} • Intake {app.intake}
-                      </p>
-                      <p className="text-xs text-gray-500 mt-1">
-                        Submitted {app.submittedat ? formatDate.format(app.submittedat) : formatDate.format(app.createdat)}
-                      </p>
-                      {app.consultant?.user?.name && (
-                        <p className="text-xs text-gray-500 mt-1">
-                          Consultant: {app.consultant.user.name}
+              {applications.map((app) => {
+                const statusKey = `status.${app.status}` as Parameters<typeof t>[0]
+                const statusLabel = t(statusKey, { defaultMessage: formatStatus(app.status) })
+
+                return (
+                  <div key={app.id} className="p-4 border rounded-lg">
+                    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                      <div>
+                        <h3 className="font-semibold text-lg">{app.university?.name ?? 'Unknown University'}</h3>
+                        <p className="text-sm text-gray-600">
+                          {app.course?.name || 'General Application'} • Intake {app.intake}
                         </p>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${statusStyles[app.status] ?? 'bg-gray-100 text-gray-600'}`}>
-                        {formatStatus(app.status)}
-                      </span>
-                      <Button size="sm" asChild className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
-                        <Link href={`/student/applications/${app.id}`}>View Details</Link>
-                      </Button>
+                        <p className="text-xs text-gray-500 mt-1">
+                          {t('submittedLabel', {
+                            date: formatDate.format(app.submittedat ?? app.createdat),
+                          })}
+                        </p>
+                        {app.consultant?.user?.name && (
+                          <p className="text-xs text-gray-500 mt-1">
+                            {t('consultantLabel', { name: app.consultant.user.name })}
+                          </p>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${statusStyles[app.status] ?? 'bg-gray-100 text-gray-600'}`}>
+                          {statusLabel}
+                        </span>
+                        <Button size="sm" asChild className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
+                          <Link href={`/student/applications/${app.id}`}>{t('viewDetails')}</Link>
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           )}
         </CardContent>

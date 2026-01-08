@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -11,6 +12,7 @@ type StudentDocumentUploadProps = {
 
 export function StudentDocumentUpload({ onUploadComplete }: StudentDocumentUploadProps) {
   const [uploading, setUploading] = useState(false)
+  const t = useTranslations('dashboard.studentPages.documents.upload')
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files?.length || uploading) return
@@ -26,8 +28,8 @@ export function StudentDocumentUpload({ onUploadComplete }: StudentDocumentUploa
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Upload New Document</CardTitle>
-        <CardDescription>Supported formats: PDF, JPG, PNG (Max 10MB)</CardDescription>
+        <CardTitle>{t('title')}</CardTitle>
+        <CardDescription>{t('description')}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex items-center gap-4">
@@ -42,7 +44,7 @@ export function StudentDocumentUpload({ onUploadComplete }: StudentDocumentUploa
             disabled={uploading}
             className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200"
           >
-            {uploading ? 'Uploading…' : 'Upload'}
+            {uploading ? t('uploading') : t('button')}
           </Button>
         </div>
       </CardContent>

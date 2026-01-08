@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { locales } from '@/i18n/routing'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/navigation'
 
 type PageParams = {
@@ -30,6 +30,7 @@ export default async function StudentTestsPage({ params }: PageParams) {
     : locales[0]
 
   setRequestLocale(safeLocale)
+  const t = await getTranslations({ locale: safeLocale, namespace: 'dashboard.studentPages.tests' })
 
   const session = await getServerSession(authOptions)
 
@@ -77,22 +78,22 @@ export default async function StudentTestsPage({ params }: PageParams) {
     <div className="space-y-8">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Language Tests</h1>
-          <p className="text-gray-600">Your IELTS, TOEFL, and PTE bookings managed in one view</p>
+          <h1 className="text-3xl font-bold mb-2">{t('title')}</h1>
+          <p className="text-gray-600">{t('description')}</p>
         </div>
         <Button asChild className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200">
-          <Link href="/contact">Request New Test Booking</Link>
+          <Link href="/contact">{t('requestCta')}</Link>
         </Button>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Upcoming Tests</CardTitle>
-          <CardDescription>Confirmed or pending seats</CardDescription>
+          <CardTitle>{t('upcomingTitle')}</CardTitle>
+          <CardDescription>{t('upcomingDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           {upcoming.length === 0 ? (
-            <p className="text-gray-500 text-center py-6">You have no upcoming tests scheduled.</p>
+            <p className="text-gray-500 text-center py-6">{t('emptyUpcoming')}</p>
           ) : (
             <div className="space-y-4">
               {upcoming.map((test) => (
@@ -103,7 +104,7 @@ export default async function StudentTestsPage({ params }: PageParams) {
                       <p className="text-sm text-gray-600">{test.testcenter} • {test.location}</p>
                       <p className="text-sm text-gray-600">{formatDateTime(test.testdate)}</p>
                       {test.registrationid && (
-                        <p className="text-xs text-gray-500 mt-1">Registration ID: {test.registrationid}</p>
+                        <p className="text-xs text-gray-500 mt-1">{t('registrationLabel', { id: test.registrationid })}</p>
                       )}
                     </div>
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -121,12 +122,12 @@ export default async function StudentTestsPage({ params }: PageParams) {
 
       <Card>
         <CardHeader>
-          <CardTitle>Results & History</CardTitle>
-          <CardDescription>Scores from completed tests</CardDescription>
+          <CardTitle>{t('historyTitle')}</CardTitle>
+          <CardDescription>{t('historyDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           {past.length === 0 ? (
-            <p className="text-gray-500 text-center py-6">No completed tests yet.</p>
+            <p className="text-gray-500 text-center py-6">{t('emptyHistory')}</p>
           ) : (
             <div className="space-y-4">
               {past.map((test) => (
@@ -141,7 +142,7 @@ export default async function StudentTestsPage({ params }: PageParams) {
                       <p className="text-xs uppercase text-gray-500">Overall</p>
                       <p className="text-3xl font-bold text-blue-600">{test.score ?? '—'}</p>
                       {test.resultdate && (
-                        <p className="text-xs text-gray-500">Posted {formatDateTime(test.resultdate)}</p>
+                        <p className="text-xs text-gray-500">{t('postedLabel', { date: formatDateTime(test.resultdate) })}</p>
                       )}
                     </div>
                   </div>
@@ -155,8 +156,8 @@ export default async function StudentTestsPage({ params }: PageParams) {
       {testBookings.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle>Frequently Used Test Centers</CardTitle>
-            <CardDescription>Based on your confirmed and past bookings</CardDescription>
+            <CardTitle>{t('centersTitle')}</CardTitle>
+            <CardDescription>{t('centersDescription')}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -166,7 +167,7 @@ export default async function StudentTestsPage({ params }: PageParams) {
                     <h4 className="font-medium">{center}</h4>
                     <p className="text-sm text-gray-600">{info.location}</p>
                   </div>
-                  <span className="text-sm text-gray-500">{info.count} booking{info.count > 1 ? 's' : ''}</span>
+                  <span className="text-sm text-gray-500">{t('bookingsCount', { count: info.count })}</span>
                 </div>
               ))}
             </div>

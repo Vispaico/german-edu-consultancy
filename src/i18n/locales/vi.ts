@@ -1,8 +1,10 @@
 const vi = {
+  // --- Section: Metadata
   metadata: {
     title: 'Edu Consultancy - Du học Đức',
     description: 'Đội ngũ cố vấn chuyên nghiệp đồng hành cùng học sinh Việt Nam chinh phục giấc mơ Đức',
   },
+  // --- Section: Common
   common: {
     bookConsultation: 'Đặt lịch tư vấn miễn phí',
     viewFaqs: 'Xem câu hỏi thường gặp',
@@ -11,6 +13,7 @@ const vi = {
     exploreServices: 'Xem tất cả dịch vụ',
     localeSwitcherLabel: 'Chọn ngôn ngữ',
   },
+  // --- Section: Navigation
   navigation: {
     logoAlt: 'Logo StartinDE',
     items: {
@@ -49,6 +52,7 @@ const vi = {
       toggle: 'Mở/đóng menu',
     },
   },
+  // --- Section: Hero
   hero: {
     titleSegment: 'trọn vẹn tự tin.',
     titlePrefix: 'Sống và học tập tại Đức',
@@ -71,6 +75,7 @@ const vi = {
       },
     },
   },
+  // --- Section: Home Page
   home: {
     services: {
       title: 'Dịch vụ nổi bật',
@@ -232,6 +237,7 @@ const vi = {
       secondary: 'Xem FAQ',
     },
   },
+  // --- Section: Services
   services: {
     cards: {
       'university-selection': {
@@ -309,6 +315,7 @@ const vi = {
       },
     },
   },
+  // --- Section: Footer
   footer: {
     description:
       'Đối tác tin cậy cho hành trình học tập, làm việc và định cư tại Đức. Phục vụ chuyên nghiệp từ năm 2025.',
@@ -343,6 +350,7 @@ const vi = {
       ],
     },
   },
+  // --- Section: About Page
   about: {
     hero: {
       eyebrow: 'Từ năm 2025',
@@ -392,6 +400,7 @@ const vi = {
       button: 'Liên hệ',
     },
   },
+  // --- Section: Dashboard
   dashboard: {
     admin: {
       title: 'Bảng điều khiển quản trị',
@@ -481,7 +490,135 @@ const vi = {
         },
       },
     },
+    // --- Section: Dashboard Student Pages
+    studentPages: {
+      applications: {
+        title: 'Hồ sơ của tôi',
+        description: 'Theo dõi mọi hồ sơ đại học và thư mời trong một nơi',
+        button: 'Tạo hồ sơ mới',
+        stats: {
+          total: 'Tổng số hồ sơ',
+          review: 'Đang xử lý',
+          offers: 'Thư mời',
+          approved: 'Đã chấp nhận',
+        },
+        timelineTitle: 'Dòng thời gian hồ sơ',
+        timelineDescription: 'Cập nhật mới nhất từ đội ngũ cố vấn StartinDE',
+        empty: 'Bạn chưa tạo hồ sơ nào.',
+        submittedLabel: 'Nộp ngày {date}',
+        consultantLabel: 'Cố vấn: {name}',
+        viewDetails: 'Xem chi tiết',
+        status: {
+          DRAFT: 'Nháp',
+          SUBMITTED: 'Đã nộp',
+          UNDER_REVIEW: 'Đang xét duyệt',
+          OFFER_RECEIVED: 'Đã nhận offer',
+          OFFER_ACCEPTED: 'Đã chấp nhận offer',
+          VISA_PROCESSING: 'Đang xử lý visa',
+          APPROVED: 'Đã chấp thuận',
+          REJECTED: 'Bị từ chối',
+          WITHDRAWN: 'Đã rút',
+        },
+      },
+      documents: {
+        title: 'Tài liệu của tôi',
+        description: 'Quản lý và tải lên tài liệu cho hồ sơ của bạn',
+        empty: 'Bạn chưa tải tài liệu nào.',
+        linkedTo: 'Gắn với {university}',
+        notesLabel: 'Ghi chú',
+        uploadedOn: 'Tải lên ngày {date}',
+        download: 'Tải xuống',
+        status: {
+          PENDING: 'Đang chờ',
+          VERIFIED: 'Đã duyệt',
+          REJECTED: 'Bị từ chối',
+          EXPIRED: 'Hết hạn',
+        },
+        types: {
+          PASSPORT: 'Hộ chiếu',
+          TRANSCRIPT: 'Bảng điểm',
+          DIPLOMA: 'Bằng tốt nghiệp',
+          IELTS_CERTIFICATE: 'Chứng chỉ IELTS',
+          TOEFL_CERTIFICATE: 'Chứng chỉ TOEFL',
+          PTE_CERTIFICATE: 'Chứng chỉ PTE',
+          TESTDAF_CERTIFICATE: 'Chứng chỉ TestDaF',
+          GOETHE_CERTIFICATE: 'Chứng chỉ Goethe',
+          RECOMMENDATION_LETTER: 'Thư giới thiệu',
+          PERSONAL_STATEMENT: 'Thư động lực',
+          CV: 'CV',
+          FINANCIAL_PROOF: 'Chứng minh tài chính',
+          BIRTH_CERTIFICATE: 'Giấy khai sinh',
+          VISA_APPLICATION: 'Hồ sơ visa',
+          MEDICAL_CERTIFICATE: 'Giấy khám sức khỏe',
+          POLICE_CHECK: 'Lý lịch tư pháp',
+          OTHER: 'Tài liệu khác',
+        },
+        upload: {
+          title: 'Tải tài liệu mới',
+          description: 'Hỗ trợ PDF, JPG, PNG (tối đa 10MB)',
+          button: 'Tải lên',
+          uploading: 'Đang tải...',
+        },
+      },
+      messages: {
+        title: 'Tin nhắn',
+        description: 'Trao đổi nhanh với cố vấn StartinDE',
+        empty: 'Bạn chưa có cuộc trò chuyện nào.',
+        you: 'Bạn',
+        consultant: 'Cố vấn',
+        placeholder: 'Nhập tin nhắn...',
+        send: 'Gửi tin nhắn',
+      },
+      settings: {
+        title: 'Cài đặt',
+        description: 'Cập nhật hồ sơ StartinDE của bạn',
+        profileTitle: 'Thông tin cá nhân',
+        profileDescription: 'Thông tin này sẽ được chia sẻ với cố vấn của bạn',
+        fields: {
+          firstname: 'Tên',
+          lastname: 'Họ',
+          nationality: 'Quốc tịch',
+          city: 'Thành phố',
+          address: 'Địa chỉ',
+          phone: 'Số điện thoại',
+          email: 'Email tài khoản',
+        },
+        save: 'Lưu thay đổi',
+        passwordTitle: 'Mật khẩu & bảo mật',
+        passwordDescription: 'Đổi mật khẩu qua cổng bảo mật',
+        resetCta: 'Đặt lại mật khẩu',
+        resetDescription: 'Sử dụng quy trình đặt lại mật khẩu, chúng tôi sẽ gửi liên kết bảo mật qua email.',
+        notificationsTitle: 'Thông báo',
+        notificationsDescription: 'Chúng tôi tự động gửi email khi có cập nhật tài liệu, tin nhắn và trạng thái.',
+        notificationsNote: 'Muốn thay đổi tần suất nhận email? Hãy nhắn cho cố vấn trong mục Tin nhắn để chúng tôi điều chỉnh thủ công.',
+      },
+      tests: {
+        title: 'Lịch thi ngoại ngữ',
+        description: 'Theo dõi IELTS, TOEFL, PTE của bạn trong một nơi',
+        requestCta: 'Yêu cầu đặt lịch thi mới',
+        upcomingTitle: 'Kỳ thi sắp diễn ra',
+        upcomingDescription: 'Ghế đã xác nhận hoặc đang chờ',
+        emptyUpcoming: 'Bạn chưa có kỳ thi sắp tới.',
+        historyTitle: 'Kết quả & lịch sử',
+        historyDescription: 'Điểm số các kỳ thi đã hoàn thành',
+        emptyHistory: 'Chưa có kỳ thi nào hoàn thành.',
+        registrationLabel: 'Mã đăng ký: {id}',
+        postedLabel: 'Cập nhật {date}',
+        centersTitle: 'Trung tâm thi thường dùng',
+        centersDescription: 'Dựa trên các kỳ thi bạn đã đặt',
+        bookingsCount: '{count, plural, one {# lần đặt} other {# lần đặt}}',
+      },
+      universities: {
+        title: 'Khám phá trường đại học',
+        description: '{count}+ trường tại Đức với dữ liệu mới nhất',
+        viewDirectory: 'Xem toàn bộ danh sách',
+        empty: 'Danh sách sẽ xuất hiện khi cố vấn tạo shortlist cho bạn.',
+        programSummary: '{programs} chương trình • {applications} hồ sơ đang xử lý',
+        viewPrograms: 'Xem chương trình',
+      },
+    },
   },
+  // --- Section: Dashboard Navigation
   dashboardNav: {
     student: {
       dashboard: 'Bảng điều khiển',
@@ -502,6 +639,59 @@ const vi = {
       settings: 'Cài đặt',
     },
     logout: 'Đăng xuất',
+  },
+
+  // --- Section: Newsletter Signup
+  newsletter: {
+    title: 'Đăng ký nhận bản tin',
+    description: 'Nhận cập nhật mới nhất về du học Đức, visa và học bổng.',
+    inputPlaceholder: 'Nhập email của bạn',
+    button: 'Đăng ký',
+    buttonLoading: 'Đang đăng ký...',
+    success: 'Đăng ký thành công!',
+    error: 'Không thể đăng ký. Vui lòng thử lại.',
+    privacy: 'Chúng tôi tôn trọng quyền riêng tư của bạn. Có thể hủy bất cứ lúc nào.',
+  },
+
+  // --- Section: Contact Page
+  contact: {
+    title: 'Liên hệ',
+    description: 'Kết nối với đội ngũ cố vấn giàu kinh nghiệm của chúng tôi',
+    form: {
+      title: 'Gửi tin nhắn cho chúng tôi',
+      successTitle: 'Đã gửi thành công!',
+      successDescription: 'Chúng tôi sẽ phản hồi trong vòng 24 giờ.',
+      error: 'Gửi thất bại. Vui lòng thử lại.',
+      fields: {
+        name: 'Họ và tên',
+        email: 'Email',
+        phone: 'Số điện thoại',
+        message: 'Nội dung',
+      },
+      button: 'Gửi tin nhắn',
+      buttonLoading: 'Đang gửi...',
+    },
+    info: {
+      location: {
+        title: '📍 Văn phòng',
+        addressLine1: '23/32 Tổ 2 Xóm Trung',
+        addressLine2: 'Hải Phòng, Việt Nam',
+      },
+      phone: {
+        title: '📞 Điện thoại',
+        value: '+84 123 456 789',
+      },
+      email: {
+        title: '✉️ Email',
+        value: 'info@startin-de.com',
+      },
+      hours: {
+        title: '🕐 Giờ làm việc',
+        weekdays: 'Thứ 2 - Thứ 6: 9:00 - 18:00',
+        saturday: 'Thứ 7: 9:00 - 13:00',
+        sunday: 'Chủ nhật: Nghỉ',
+      },
+    },
   },
 }
 

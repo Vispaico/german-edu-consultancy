@@ -1,9 +1,30 @@
 'use client'
 
-import { useState } from 'react'
-import { Link, usePathname } from '@/navigation'
+import { useEffect, useMemo, useState } from 'react'
+import { Link, usePathname, useRouter } from '@/navigation'
+import { useTranslations } from 'next-intl'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+
+const STUDENT_NAV = [
+  { key: 'dashboard', href: '/student/dashboard', icon: '📊' },
+  { key: 'applications', href: '/student/applications', icon: '📝' },
+  { key: 'universities', href: '/student/universities', icon: '🎓' },
+  { key: 'documents', href: '/student/documents', icon: '📄' },
+  { key: 'tests', href: '/student/tests', icon: '📚' },
+  { key: 'messages', href: '/student/messages', icon: '💬' },
+  { key: 'settings', href: '/student/settings', icon: '⚙️' },
+]
+
+const ADMIN_NAV = [
+  { key: 'dashboard', href: '/admin/dashboard', icon: '📊' },
+  { key: 'students', href: '/admin/students', icon: '👥' },
+  { key: 'applications', href: '/admin/applications', icon: '📝' },
+  { key: 'universities', href: '/admin/universities', icon: '🎓' },
+  { key: 'payments', href: '/admin/payments', icon: '💰' },
+  { key: 'blog', href: '/admin/blog', icon: '📰' },
+  { key: 'settings', href: '/admin/settings', icon: '⚙️' },
+]
 
 export default function DashboardLayout({
   children,
@@ -11,31 +32,19 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
+  const router = useRouter()
+  const tNav = useTranslations('dashboardNav')
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const isStudent = pathname?.startsWith('/student')
   const isAdmin = pathname?.startsWith('/admin')
 
-  const studentNav = [
-    { name: 'Dashboard', href: '/student/dashboard', icon: '📊' },
-    { name: 'Applications', href: '/student/applications', icon: '📝' },
-    { name: 'Universities', href: '/student/universities', icon: '🎓' },
-    { name: 'Documents', href: '/student/documents', icon: '📄' },
-    { name: 'Tests', href: '/student/tests', icon: '📚' },
-    { name: 'Messages', href: '/student/messages', icon: '💬' },
-    { name: 'Settings', href: '/student/settings', icon: '⚙️' },
-  ]
+  const navigation = useMemo(() => (isStudent ? STUDENT_NAV : isAdmin ? ADMIN_NAV : []), [isStudent, isAdmin])
 
-  const adminNav = [
-    { name: 'Dashboard', href: '/admin/dashboard', icon: '📊' },
-    { name: 'Students', href: '/admin/students', icon: '👥' },
-    { name: 'Applications', href: '/admin/applications', icon: '📝' },
-    { name: 'Universities', href: '/admin/universities', icon: '🎓' },
-    { name: 'Payments', href: '/admin/payments', icon: '💰' },
-    { name: 'Blog', href: '/admin/blog', icon: '📰' },
-    { name: 'Settings', href: '/admin/settings', icon: '⚙️' },
-  ]
-
-  const navigation = isStudent ? studentNav : isAdmin ? adminNav : []
+  useEffect(() => {
+    navigation.forEach((item) => {
+      router.prefetch?.(item.href)
+    })
+  }, [navigation, router])
 
   return (
     <div className="min-h-screen bg-gray-50 pt-[72px]">
@@ -74,6 +83,7 @@ export default function DashboardLayout({
                   <Link
                     key={item.href}
                     href={item.href}
+                    prefetch
                     onClick={() => setSidebarOpen(false)}
                     className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors ${
                       isActive
@@ -82,7 +92,7 @@ export default function DashboardLayout({
                     }`}
                   >
                     <span>{item.icon}</span>
-                    <span>{item.name}</span>
+                    <span>{tNav(`${isStudent ? 'student' : 'admin'}.${item.key}`)}</span>
                   </Link>
                 )
               })}
@@ -90,7 +100,7 @@ export default function DashboardLayout({
 
             <div className="mt-auto px-4 pb-4 pt-2">
               <Button variant="outline" className="w-full" asChild>
-                <Link href="/login">Logout</Link>
+                <Link href="/login">{tNav('logout')}</Link>
               </Button>
             </div>
           </div>
@@ -110,7 +120,7 @@ export default function DashboardLayout({
               <span className="text-lg font-semibold">BIZZ EDUCATION</span>
             </div>
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/login">Logout</Link>
+              <Link href="/login">{tNav('logout')}</Link>
             </Button>
           </header>
 

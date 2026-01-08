@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { StudentDocumentUpload } from '@/components/student/student-document-upload'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { locales } from '@/i18n/routing'
 import type { DocumentStatus, DocumentType } from '@prisma/client'
 
@@ -20,29 +20,6 @@ const statusStyles: Record<DocumentStatus, string> = {
   EXPIRED: 'bg-gray-100 text-gray-600',
 }
 
-const documentTypeLabels: Partial<Record<DocumentType, string>> = {
-  PASSPORT: 'Passport',
-  TRANSCRIPT: 'Transcript',
-  DIPLOMA: 'Diploma',
-  IELTS_CERTIFICATE: 'IELTS Certificate',
-  TOEFL_CERTIFICATE: 'TOEFL Certificate',
-  PTE_CERTIFICATE: 'PTE Certificate',
-  TESTDAF_CERTIFICATE: 'TestDaF Certificate',
-  GOETHE_CERTIFICATE: 'Goethe Certificate',
-  RECOMMENDATION_LETTER: 'Recommendation Letter',
-  PERSONAL_STATEMENT: 'Personal Statement',
-  CV: 'Curriculum Vitae',
-  FINANCIAL_PROOF: 'Financial Proof',
-  BIRTH_CERTIFICATE: 'Birth Certificate',
-  VISA_APPLICATION: 'Visa Application',
-  MEDICAL_CERTIFICATE: 'Medical Certificate',
-  POLICE_CHECK: 'Police Check',
-  OTHER: 'Other Document',
-}
-
-const formatDocumentType = (type: DocumentType) =>
-  documentTypeLabels[type] ?? type.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())
-
 const formatFileSize = (bytes: number) => {
   if (!bytes) return '—'
   const sizes = ['B', 'KB', 'MB', 'GB']
@@ -51,9 +28,6 @@ const formatFileSize = (bytes: number) => {
   return `${value.toFixed(value >= 10 ? 0 : 1)} ${sizes[i]}`
 }
 
-const formatStatusLabel = (status: DocumentStatus) =>
-  status.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())
-
 export default async function StudentDocumentsPage({ params }: PageParams) {
   const { locale } = await params
   const safeLocale = locales.includes(locale as (typeof locales)[number])
@@ -61,6 +35,7 @@ export default async function StudentDocumentsPage({ params }: PageParams) {
     : locales[0]
 
   setRequestLocale(safeLocale)
+  const t = await getTranslations({ locale: safeLocale, namespace: 'dashboard.studentPages.documents' })
   const session = await getServerSession(authOptions)
 
   if (!session) {
@@ -90,11 +65,25 @@ export default async function StudentDocumentsPage({ params }: PageParams) {
 
   const dateFormatter = new Intl.DateTimeFormat(safeLocale, { dateStyle: 'medium' })
 
+  const formatDocumentType = (type: DocumentType) => {
+    const key = `types.${type}` as Parameters<typeof t>[0]
+    return t(key, {
+      defaultMessage: type.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()),
+    })
+  }
+
+  const formatStatusLabel = (status: DocumentStatus) => {
+    const key = `status.${status}` as Parameters<typeof t>[0]
+    return t(key, {
+      defaultMessage: status.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase()),
+    })
+  }
+
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold mb-2">My Documents</h1>
-        <p className="text-gray-600">Upload and manage your application documents</p>
+        <h1 className="text-3xl font-bold mb-2">{t('title')}</h1>
+        <p className="text-gray-600">{t('description')}</p>
       </div>
 
       <StudentDocumentUpload />
@@ -103,7 +92,7 @@ export default async function StudentDocumentsPage({ params }: PageParams) {
         {documents.length === 0 ? (
           <Card>
             <CardContent className="py-10 text-center text-gray-500">
-              You have not uploaded any documents yet.
+              {t('empty')}
             </CardContent>
           </Card>
         ) : (
@@ -114,15 +103,15 @@ export default async function StudentDocumentsPage({ params }: PageParams) {
                   <div className="flex-1">
                     <h3 className="font-semibold">{doc.name || formatDocumentType(doc.type)}</h3>
                     <p className="text-sm text-gray-600">
-                      {formatDocumentType(doc.type)} • {formatFileSize(doc.filesize)} • Uploaded {dateFormatter.format(doc.createdat)}
+                      {formatDocumentType(doc.type)} • {formatFileSize(doc.filesize)} • {t('uploadedOn', { date: dateFormatter.format(doc.createdat) })}
                     </p>
                     {doc.application?.university && (
                       <p className="text-xs text-gray-500 mt-1">
-                        Linked to {doc.application.university.name}
+                        {t('linkedTo', { university: doc.application.university.name })}
                       </p>
                     )}
                     {doc.notes && (
-                      <p className="text-xs text-gray-500 mt-1">Notes: {doc.notes}</p>
+                      <p className="text-xs text-gray-500 mt-1">{t('notesLabel')}: {doc.notes}</p>
                     )}
                   </div>
                   <div className="flex items-center gap-4">
@@ -135,7 +124,7 @@ export default async function StudentDocumentsPage({ params }: PageParams) {
                       className="bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-200"
                     >
                       <a href={doc.fileurl} target="_blank" rel="noopener noreferrer">
-                        Download
+                        {t('download')}
                       </a>
                     </Button>
                   </div>
