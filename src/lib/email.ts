@@ -64,16 +64,18 @@ export const emailTemplates = {
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Welcome to StartinDE</title>
+      <title>Willkommen bei StartinDE</title>
     </head>
     <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
       <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background-color: white; border-radius: 8px; padding: 40px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <h1 style="color: #1e40af; margin-bottom: 10px;">Welcome to StartinDE! 🎓</h1>
+          <h1 style="color: #1e40af; margin-bottom: 10px;">Willkommen bei StartinDE! 🎓</h1>
           <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
             Hi ${name},
           </p>
           <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+            Vielen Dank für Ihre Anmeldung bei StartinDE! Wir freuen uns, Sie auf Ihrem Weg zum Studium in Deutschland zu unterstützen.
+            Cảm ơn bạn đã đăng ký với StartinDE! Chúng tôi rất vui mừng được hỗ trợ bạn trên hành trình du học tại Đức.
             Thank you for signing up with StartinDE! We're excited to help you on your journey to study in Germany.
           </p>
           ${verifyUrl ? `
@@ -82,8 +84,8 @@ export const emailTemplates = {
           </div>
           ` : ''}
           <p style="color: #666; font-size: 14px; margin-top: 30px;">
-            Best regards,<br>
-            The StartinDE Team
+            Beste Grüsse,<br>
+            Das StartinDE Team
           </p>
         </div>
         <div style="text-align: center; margin-top: 20px; color: #999; font-size: 12px;">
@@ -111,17 +113,21 @@ export const emailTemplates = {
             Hi ${name},
           </p>
           <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+            Wir haben eine Anfrage zum Zurücksetzen Ihres Passworts erhalten. Klicken Sie auf die Schaltfläche unten, um ein neues Passwort zu erstellen:
+            Chúng tôi đã nhận được yêu cầu đặt lại mật khẩu của bạn. Vui lòng nhấp vào nút bên dưới để tạo mật khẩu mới:
             We received a request to reset your password. Click the button below to create a new password:
           </p>
           <div style="text-align: center; margin: 30px 0;">
             <a href="${resetUrl}" style="display: inline-block; background-color: #1e40af; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">Reset Password</a>
           </div>
           <p style="color: #999; font-size: 12px; margin-top: 20px;">
+            Dieser Link ist nur noch eine Stunde gültig. Falls Sie diese E-Mail nicht angefordert haben, ignorieren Sie sie bitte.
+            Liên kết này sẽ hết hạn sau 1 giờ. Nếu bạn không yêu cầu liên kết này, vui lòng bỏ qua email này.
             This link will expire in 1 hour. If you didn't request this, please ignore this email.
           </p>
           <p style="color: #666; font-size: 14px; margin-top: 30px;">
-            Best regards,<br>
-            The StartinDE Team
+            Beste Grüsse,<br>
+            Das StartinDE Team
           </p>
         </div>
         <div style="text-align: center; margin-top: 20px; color: #999; font-size: 12px;">
@@ -179,14 +185,18 @@ export const emailTemplates = {
             ${name ? `Hi ${name},` : 'Hi,'}
           </p>
           <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+            Vielen Dank für Ihr Abonnement des StartinDE-Newsletters! Sie erhalten regelmäßig Neuigkeiten zum Studieren in Deutschland, Visatipps, Stipendienmöglichkeiten und vieles mehr.
+            Cảm ơn bạn đã đăng ký nhận bản tin StartinDE! Bạn sẽ nhận được thông tin cập nhật về việc du học tại Đức, mẹo xin visa, cơ hội học bổng và nhiều hơn nữa.
             Thank you for subscribing to the StartinDE newsletter! You'll receive updates about studying in Germany, visa tips, scholarship opportunities, and more.
           </p>
           <p style="color: #999; font-size: 12px; margin-top: 20px;">
-            If you didn't subscribe, please contact us at info@startin-de.com
+           Falls Sie kein Abonnement abgeschlossen haben, kontaktieren Sie uns bitte unter info@startin-de.com.
+           Nếu bạn chưa đăng ký, vui lòng liên hệ với chúng tôi qua địa chỉ info@startin-de.com
+           If you didn't subscribe, please contact us at info@startin-de.com 
           </p>
           <p style="color: #666; font-size: 14px; margin-top: 30px;">
-            Best regards,<br>
-            The StartinDE Team
+            Beste Grüße,<br>
+            Das StartinDE Team
           </p>
         </div>
         <div style="text-align: center; margin-top: 20px; color: #999; font-size: 12px;">
